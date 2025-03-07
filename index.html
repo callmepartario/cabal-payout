@@ -24,24 +24,23 @@
       </div>
     </div>
     <hr>
-    <h2>Prepare Report</h2>
     <form id="voyage">
-      <h3 class="h4">Faction Information</h3>
-      <label for="voyage-number" class="form-label">Select your faction, and assign a voyage number:</label>
+      <h2 class="h3">Faction</h2>
+      <label for="voyage-number" class="form-label">Select your faction and assign a voyage number:</label>
       <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-number">
       <ul class="list-inline mt-2">
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-mg"><img src="images/faction-mg.webp" class="icon" alt="" aria-hidden="true">Marauders of Golden Shores</button></li>
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ac"><img src="images/faction-ac.webp" class="icon" alt="" aria-hidden="true">Ashen Creed</button></li>
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ao"><img src="images/faction-ao.webp" class="icon" alt="" aria-hidden="true">Ancient Order of Chaos</button></li>
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ns"><img src="images/faction-ns.webp" class="icon" alt="" aria-hidden="true">Norsemen of the Shores</button></li>
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-kw"><img src="images/faction-kw.webp" class="icon" alt="" aria-hidden="true">Kinship of the Wilds</button></li>
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-lf"><img src="images/cabal.webp" class="icon" alt="" aria-hidden="true">Lord of the Fleets</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ac"><img src="images/faction-ac.webp" class="icon" alt="" aria-hidden="true">Ashen Creed</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ao"><img src="images/faction-ao.webp" class="icon" alt="" aria-hidden="true">Ancient Order of Chaos</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-mg"><img src="images/faction-mg.webp" class="icon" alt="" aria-hidden="true">Marauders of Golden Shores</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-kw"><img src="images/faction-kw.webp" class="icon" alt="" aria-hidden="true">Kinship of the Wilds</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ns"><img src="images/faction-ns.webp" class="icon" alt="" aria-hidden="true">Norsemen of the Shores</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-lf"><img src="images/cabal.webp" class="icon" alt="" aria-hidden="true">Lord of the Fleets</button></li>
       </ul>
       <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
-        <div>See <code>#criminal-enterprise</code> for your chosen faction's current voyage count, for example, "151st".</div>
-        <div>If you haven't pledged yourself to a faction, select the Lord of the Fleets.</div>
+        <div>See <code>#criminal-enterprise</code> for the faction's current voyage count, for example, "151st". If you don't have a faction, select the Lord of the Fleets.</div>
       </div>
-      <h3 class="h4">Ship Information</h3>
+      <hr>
+      <h2 class="h3">Ship</h2>
       <label for="ship-name" class="form-label">Select the ship name and type used for hosting the voyage:</label>
       <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="ship-name">
       <ul class="list-inline mt-2">
@@ -52,57 +51,61 @@
       <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
         <div>See <code>#captain-ships-of-the-cabal</code> for available ships from your selected faction.</div>
       </div>
-      <h3 class="h4">Job Type</h3>
+      <hr>
+      <h2 class="h3">Job Type</h2>
       <ul class="list-inline">
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-errand">Errand (5%)</button></li>
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-heist">Heist (8%)</button></li>
       </ul>
       <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
-        <div>To post an errand, you must be rank Smuggler or higher.</div>
-        <div>To post a heist, you be a rank Boatswain or higher and sailing a Brigantine or Galleon.</div>
-        <div>See <code>#how-to-make-money</code> for more.</div>
+        <div>To post an errand, you must be rank Smuggler or higher. To post a heist, you must be rank Boatswain or higher, and sailing on a Brigantine or Galleon. See <code>#how-to-make-money</code> for more.</div>
       </div>
-      <h3 class="h4">Plunder</h3>
-      <table class="table table-responsive-lg table-dark">
-        <thead>
-          <tr>
-            <th scope="col">Currency</th>
-            <th scope="col">Start</th>
-            <th scope="col">End</th>
-            <th scope="col" class="text-end">Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><img src="images/currency-gold.webp" aria-hidden="true" alt="" class="float-start icon">Gold</th>
-            <td>
-              <label for="gold-start" class="form-label visually-hidden">Starting Gold</label>
-              <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="gold-start">
-            </td>
-            <td>
-              <label for="gold-end" class="form-label visually-hidden"> Ending Gold</label>
-              <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="gold-end">
-            </td>
-            <td class="text-end">$1</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="images/currency-doubloon.webp" aria-hidden="true" alt="" class="float-start icon">Doubloons</th>
-            <td>
-              <label for="doubloon-start" class="form-label visually-hidden">Starting Doubloons</label>
-              <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="doubloon-start">
-            </td>
-            <td>
-              <label for="doubloon-end" class="form-label visually-hidden"> Ending Doubloons</label>
-              <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="doubloon-end">
-            </td>
-            <td class="text-end">$25</td>
-          </tr>
-        </tbody>
-      </table>       
-      <h3 class="h4">Crewmate Ranks</h3>
+      <hr>
+      <h2 class="h3">Plunder</h2>
+      <div class="d-table w-100 mb-3">
+        <div class="d-table-row">
+          <div class="d-table-cell">
+            
+            <label for="gold-start" class="form-label"><img src="images/currency-gold.webp" alt="Gold" class="d-inline-block icon">Start</label>
+          </div>
+          <div class="d-table-cell">
+            <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="gold-start">
+          </div>
+        </div>
+        <div class="d-table-row">
+          <div class="d-table-cell">
+            <label for="gold-start" class="form-label"><img src="images/currency-gold.webp" alt="Gold" class="d-inline-block icon">End</label>
+          </div>
+          <div class="d-table-cell">
+            <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="gold-end">
+          </div>
+        </div>
+        <div class="d-table-row">
+          <div class="d-table-cell">
+            <label for="doubloon-start" class="form-label"><img src="images/currency-doubloon.webp" alt="Doubloons" class="d-inline-block icon">Start</label>
+          </div>
+          <div class="d-table-cell">
+            <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="doubloon-start">
+          </div>
+        </div>
+        <div class="d-table-row">
+          <div class="d-table-cell">
+            <label for="doubloon-start" class="form-label"><img src="images/currency-doubloon.webp" alt="Doubloons" class="d-inline-block icon">End</label>
+          </div>
+          <div class="d-table-cell">
+            <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="doubloon-end">
+          </div>
+        </div>
+      </div>
+      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
+        <div>Each gold is worth $1 in plunder. Each doubloon is worth $25.</div>
+      </div>
+      <hr>
+      <h2 class="h3">Crew</h2>
       <p>Select all ranks represented by the crew:</p>
       <div class="row">
         <div class="col">
+          <h4 class="h5">Sailor Ranks</h4>
           <ul class="list-unstyled">
             <li class="mt-1">
               <div class="form-check">
@@ -149,6 +152,7 @@
           </ul>
         </div>
         <div class="col">
+          <h4 class="h5">Officer Ranks</h4>
           <ul class="list-unstyled">
             <li class="mt-1">
               <div class="form-check">
@@ -195,14 +199,15 @@
           </ul>
         </div>
       </div>
-      <h3 class="h4">Bonus</h3>
-      <p>Check to see if the crew's voyage is eligible for a bonus:</p>
+      <hr>
+      <h2 class="h3">Bonus</h2>
+      <p>Available bonuses depend on ship, job type, and crew:</p>
       <table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
-            <th scope="col">Bonus</th>
-            <th scope="col">Requirements</th>
-            <th scope="col" class="text-end">Amount</th>
+            <th scope="col">Type</th>
+            <th scope="col">Prerequisites</th>
+            <th scope="col" class="text-end">Bonus</th>
           </tr>
         </thead>
         <tbody>
@@ -214,7 +219,7 @@
               </div>
             </th>
             <td>Each crewmate has a different specialty rank.</td>
-            <td class="text-end">+$1000</td>
+            <td class="text-end">$1000</td>
           </tr>
           <tr class="d-none" id="bonus-list-full-house">
             <th scope="row">
@@ -223,8 +228,8 @@
                 <label class="form-check-label" for="bonus-full-house">Full House</label>
               </div>
             </th>
-            <td>Crewmates are members of of two Cabal of Thieves factions.</td>
-            <td class="text-end">+$2000</td>
+            <td>Crewmates are members of two Cabal of Thieves factions.</td>
+            <td class="text-end">$2000</td>
           </tr>
           <tr class="d-none" id="bonus-list-royal-flush">
             <th scope="row">
@@ -234,7 +239,7 @@
               </div>
             </th>
             <td>Each crewmate is a member of the same Cabal of Thieves faction, and each has a different specialty rank.</td>
-            <td class="text-end">+$2500</td>
+            <td class="text-end">$2500</td>
           </tr>
           <tr class="d-none" id="bonus-list-united-deck">
             <th scope="row">
@@ -244,7 +249,7 @@
               </div>
             </th>
             <td>Each crewmate represents a different Cabal of Thieves faction.</td>
-            <td class="text-end">+$2500</td>
+            <td class="text-end">$2500</td>
           </tr>
           <tr class="d-none" id="bonus-list-pai-gow">
             <th scope="row">
@@ -253,8 +258,8 @@
                 <label class="form-check-label" for="bonus-pai-gow">Pai Gow</label>
               </div>
             </th>
-            <td>Each crewmate is a Stowaway, Recruit, Rum Runner, Crate Smuggler, Smuggler, or Flintlock Dealer.</td>
-            <td class="text-end">+$3000</td>
+            <td>No crewmate has an officer rank.</td>
+            <td class="text-end">$3000</td>
           </tr>
           <tr>
             <th scope="row">
@@ -264,32 +269,33 @@
               </div>
             </th>
             <td>
-              <label for="bonus-dice-crew" class="form-label">Number of Stowaways and Recruits:</label>
+              <label for="bonus-dice-crew" class="form-label">Number of crew who are Stowaways or Recruits:</label>
               <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="bonus-dice-crew">
             </td>
-            <td class="text-end">+$<span id="bonus-dice-value">1000</span></td>
+            <td class="text-end">$<span id="bonus-dice-value">1000</span> <span class="d-block">each</span></td>
           </tr>
         </tbody>
       </table>
       <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
-        <div>Purchase a specialty rank from <code>#pirate-emporium</code> for $10000. Specialty ranks are shown as icons after crewmates' Discord names.</div>
-        <div>If you take the Royal Flush and Straight Ship bonus, only Royal Flush counts.</div>
-        <div>Two additional bonuses are applied automatically based on your total plunder:</div>
+        <div>Purchase a specialty rank from <code>#pirate-emporium</code> for $10000. Specialty ranks are shown as icons after crewmates' Discord names. If you take the Royal Flush and Straight Ship bonus, only Royal Flush counts.</div>
+        <div>Dice pays $1000 for each Stowaway or Recruit crewmate on an errand, and $500 on a heist. Two additional bonuses are applied automatically based on your total plunder:</div>
         <ul class="mb-0">
-          <li>Blackjack &mdash; If total plunder is $170000&ndash;$210000 &mdash; +$3000</li>
-          <li>Craps Table &mdash; If total plunder is $620000 or more &mdash; +$5000</li>
+          <li>Blackjack &mdash; Plunder is $170000&ndash;$210000 &mdash; $3000</li>
+          <li>Craps Table &mdash; Plunder is $620000 or more &mdash; $5000</li>
         </ul>
       </div>
     </form>
     <hr>
-    <h2>Finalize Report</h2>
-    <label for="voyage-summary" class="form-label">Briefly summarize the voyage:</label>
+    <h2 class="h3">Summary</h2>
+    <label for="voyage-summary" class="form-label">Describe the voyage:</label>
     <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-summary">
-    <button type="button" class="btn btn-success mt-2" id="generate-report">Generate Report</button>
     <hr>
+    <h2 class="h3">Report Results</h2>
+    <button type="button" class="btn btn-success mt-2 mb-3" id="generate-report">Generate Report</button>
     <div class="d-none" id="report-container">
-      <h2>Report Results</h2>
-      <p>Press the Generate Report again to update this report with any changes made above.</p>
+      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
+        <div>Pressing the button again updates this report with any changes.</div>
+      </div>
       <table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
@@ -348,12 +354,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
-        <div>Faction vaults earn a percentage of total plunder based on the voyage's Job Type. Any earned bonuses are added to this amount.</div>
-        <div>The Lord of the Fleets doesn't maintain a vault.</div>
-        <div>If the faction vault or crew cut is $0, be sure you've selected a faction, ship, job type, and crewmate ranks above.</div>
-      </div>
-      <h3 class="h4">Crewmate Earnings by Rank</h3>
+      <h3 class="h5">Crewmate Earnings by Rank</h3>
       <table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
@@ -451,10 +452,10 @@
         </tbody>
       </table>
       <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
-        <div>Crewmates are paid a percentage of the Faction Vault's cut.</div>
-        <div>Stowaways don't earn income. In order to be reach rank Recruit, the Stowaway must be listed on two voyages, and one of the following:</div>
+        <div>Faction vaults earn a percentage of total plunder based on the voyage's Job Type. Any earned bonuses are added to this amount. The Lord of the Fleets doesn't maintain a vault.</div>
+        <div>Crewmates are paid a percentage of the Faction Vault's cut, but Stowaways don't earn income. In order to be reach rank Recruit, the Stowaway must be listed on two voyages, and one of the following:</div>
         <ul class="mb-0">
-          <li>Earned $500000</li>
+          <li>Sailed on voyages totaling $500000</li>
           <li>Wait at least four days since joining the Cabal of Thieves' Discord server</li>
         </ul>
         <div>If the stowaway completes any of these criteria, note it in the report. See <code>#ranks-and-promotion</code> for more.</div>
@@ -502,12 +503,14 @@
       </div>
       <hr>
     </div>
+    <hr>
     <ul class="list-inline small">
-      <a class="btn btn-dark" href="https://www.seaofthieves.com">Sea of Thieves</a>
-      <a class="btn btn-dark" href="https://thecabalofthieves.com">The Cabal of Thieves</a>
-      <a class="btn btn-dark" href="https://github.com/callmepartario/cabal-payout">Github</a>
-      <a class="btn btn-dark" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></a>
-    </div>
+      <li class="list-inline-item mb-2"><a class="btn btn-dark" href="https://www.seaofthieves.com">Sea of Thieves</a></li>
+      <li class="list-inline-item mb-2"><a class="btn btn-dark" href="https://thecabalofthieves.com">The Cabal of Thieves</a></li>
+      <li class="list-inline-item mb-2"><a class="btn btn-dark" href="https://github.com/callmepartario/cabal-payout">Github</a></li>
+      <li class="list-inline-item mb-2"><a class="btn btn-dark" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></a></li>
+    </ul>
+    <p class="small"><em>This tool is an independent producton, and is not affiliated with Sea of Thieves or the Cabal of Thieves.</em></p>
   </div>
   <script src="js/cabal-calc.js"></script>
 </body>

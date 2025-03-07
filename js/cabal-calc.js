@@ -396,8 +396,8 @@ function checkBonusDice() {
     }
     else {
         bonusDiceAmount = 0;
-        document.getElementById('total-bonus-dice-amount').classList.add('d-none');
-        document.getElementById('report-bonus-dice-amount').classList.add('d-none');
+        document.getElementById('total-bonus-dice').classList.add('d-none');
+        document.getElementById('report-bonus-dice').classList.add('d-none');
     }
 };
 function checkBonusBlackjack() {
