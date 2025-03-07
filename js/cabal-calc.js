@@ -118,7 +118,6 @@ document.getElementById('select-job-errand').onclick = function() {selectJobErra
 document.getElementById('select-job-heist').onclick = function() {selectJobHeist()};
 
 document.getElementById('generate-report').onclick = function() {generateReport()};
-document.getElementById('copy-report').onclick = function() {copyReport()};
 
 /* Select Faction */
 function deselectFaction() {
