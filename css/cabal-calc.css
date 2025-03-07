@@ -2,8 +2,6 @@ body { }
 
 a { color: #facc8e; }
 a:hover { color: #fca832; }
-
-.bg-gradient { background: linear-gradient(180deg, #354040 0%, #1d2933 100%); }
 .bg-black { background-color: #181818; }
 .bg-note { color: #ccc; background-color: #293033; }
 
@@ -18,6 +16,8 @@ h1 {
     line-height: 1;
     padding-top: 1rem;
 }
+
+.btn-secondary { background-color: #292b2e; }
 
 .btn-ao { background-color: #315633; }
 .btn-ac { background-color: #411817; }
