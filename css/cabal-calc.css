@@ -1,0 +1,33 @@
+body { }
+
+a { color: #facc8e; }
+a:hover { color: #fca832; }
+
+.bg-gradient { background: linear-gradient(180deg, #354040 0%, #1d2933 100%); }
+.bg-black { background-color: #181818; }
+.bg-note { color: #ccc; background-color: #293033; }
+
+.cabal-logo { margin-top: 1rem; margin-left: 1rem; max-width: 100px; }
+
+h1 {
+    font-family: "Jim Nightshade";
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    font-size: 3.5rem;
+    line-height: 1;
+    padding-top: 1rem;
+}
+
+.btn-ao { background-color: #315633; }
+.btn-ac { background-color: #411817; }
+.btn-kw { background-color: #4a2756; }
+.btn-mg { background-color: #2b514a; }
+.btn-ns { background-color: #234a6c; }
+.btn-lf { background-color: #a96403; } 
+
+code, .copyblock { color: #facc8e; }
+
+img.icon { width: 1.5rem; margin-right: 0.5rem; }
+
+w-100 { width: 100%; }
