@@ -308,29 +308,29 @@
     <hr>
     <h2 class="h3" id="section-report">Report Results</h2>
     <button type="button" class="btn btn-primary mt-2 mb-3" id="generate-report">Generate Report</button>
+    <div class="bg-errors border border-golden p-2 rounded-3 small mb-2 d-none" id="errors-true">
+      <div><span id="report-error-count">0</span> errors detected in the report:</div>
+      <ol class="mb-0">
+        <li class="d-none" id="warning-voyage-number"><a href="#section-faction">Missing voyage number</a></li>
+        <li class="d-none" id="warning-faction"><a href="#section-faction">Missing faction</a></li>
+        <li class="d-none" id="warning-ship-name"><a href="#section-ship">Missing ship name</a></li>
+        <li class="d-none" id="warning-ship-type"><a href="#section-ship">Missing ship type</a></li>
+        <li class="d-none" id="warning-job-type"><a href="#section-job">Missing job type</a></li>
+        <li class="d-none" id="warning-roles"><a href="#section-crew">Too many crew ranks selected</a> for <a href="#section-ship">ship type</a></li>
+        <li class="d-none" id="warning-roles-errand"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Errand</a> (requires Smuggler or higher)</a></li>
+        <li class="d-none" id="warning-roles-heist"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Heist</a> (requires Boatswain or higher)</a></li>
+        <li class="d-none" id="warning-gold-missing"><a href="#section-plunder">Missing gold amounts</a></li>
+        <li class="d-none" id="warning-gold-negative"><a href="#section-plunder">Negative gold earned</a></li>
+        <li class="d-none" id="warning-doubloon-missing"><a href="#section-plunder">Missing doubloon amounts</a></li>
+        <li class="d-none" id="warning-doubloon-negative"><a href="#section-plunder">Negative doubloons earned</a></li>
+        <li class="d-none" id="warning-bonus-pai-gow-select"><a href="#section-crew">No officers in crew</a>, but <a href="#section-bonus">Pai Gow bonus</a> not selected</li>
+        <li class="d-none" id="warning-bonus-pai-gow-rank"><a href="#section-bonus">Pai Gow</a> requires no <a href="#section-crew">Officer crewmates</a></li>
+        <li class="d-none" id="warning-bonus-dice-select"><a href="#section-crew">Recruit or Stowaway in crew</a>, but <a href="#section-bonus">Dice bonus</a> not selected</li>
+        <li class="d-none" id="warning-bonus-dice-math">Invalid <a href="#section-bonus">Dice bonus</a> for <a href="#section-ship">ship type</a> or <a href="#section-crew">crew ranks</a></li>
+        <li class="d-none" id="warning-summary"><a href="#section-summary">Missing summary</a></li>
+      </ol>
+    </div>
     <div class="d-none" id="report-container">
-      <div class="bg-errors border border-golden p-2 rounded-3 small mb-2" id="errors-true">
-        <div><span id="report-error-count">0</span> errors detected in the report:</div>
-        <ol class="mb-0">
-          <li class="d-none" id="warning-voyage-number"><a href="#section-faction">Missing voyage number</a></li>
-          <li class="d-none" id="warning-faction"><a href="#section-faction">Missing faction</a></li>
-          <li class="d-none" id="warning-ship-name"><a href="#section-ship">Missing ship name</a></li>
-          <li class="d-none" id="warning-ship-type"><a href="#section-ship">Missing ship type</a></li>
-          <li class="d-none" id="warning-job-type"><a href="#section-job">Missing job type</a></li>
-          <li class="d-none" id="warning-roles"><a href="#section-crew">Too many crew ranks selected</a> for <a href="#section-ship">ship type</a></li>
-          <li class="d-none" id="warning-roles-errand"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Errand</a> (requires Smuggler or higher)</a></li>
-          <li class="d-none" id="warning-roles-heist"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Heist</a> (requires Boatswain or higher)</a></li>
-          <li class="d-none" id="warning-gold-missing"><a href="#section-plunder">Missing gold amounts</a></li>
-          <li class="d-none" id="warning-gold-negative"><a href="#section-plunder">Negative gold earned</a></li>
-          <li class="d-none" id="warning-doubloon-missing"><a href="#section-plunder">Missing doubloon amounts</a></li>
-          <li class="d-none" id="warning-doubloon-negative"><a href="#section-plunder">Negative doubloons earned</a></li>
-          <li class="d-none" id="warning-bonus-pai-gow-select"><a href="#section-crew">No officers in crew</a>, but <a href="#section-bonus">Pai Gow bonus</a> not selected</li>
-          <li class="d-none" id="warning-bonus-pai-gow-rank"><a href="#section-bonus">Pai Gow</a> requires no <a href="#section-crew">Officer crewmates</a></li>
-          <li class="d-none" id="warning-bonus-dice-select"><a href="#section-crew">Recruit or Stowaway in crew</a>, but <a href="#section-bonus">Dice bonus</a> not selected</li>
-          <li class="d-none" id="warning-bonus-dice-math">Invalid <a href="#section-bonus">Dice bonus</a> for <a href="#section-ship">ship type</a> or <a href="#section-crew">crew ranks</a></li>
-          <li class="d-none" id="warning-summary"><a href="#section-summary">Missing summary</a></li>
-        </ol>
-      </div>
       <div class="bg-success border-border-success p-2 rounded-3 small mb-2" id="errors-false">
         <div>Report successful. No errors detected.</div>
       </div>
