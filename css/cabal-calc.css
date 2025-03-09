@@ -19,12 +19,9 @@ h1 {
 
 .btn-secondary { background-color: #292b2e; }
 
-.btn-ao { background-color: #315633; }
-.btn-ac { background-color: #411817; }
-.btn-kw { background-color: #4a2756; }
-.btn-mg { background-color: #2b514a; }
-.btn-ns { background-color: #234a6c; }
-.btn-lf { background-color: #a96403; } 
+.bg-errors { background-color: #500; }
+
+.border-golden { border-color: #facc8e !important; }
 
 code, .copyblock { color: #facc8e; }
 
