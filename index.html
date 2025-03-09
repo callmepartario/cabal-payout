@@ -44,7 +44,7 @@
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-mg"><img src="images/faction-mg.webp" class="icon" alt="" aria-hidden="true">Marauders of Golden Shores</button></li>
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-lf"><img src="images/cabal.webp" class="icon" alt="" aria-hidden="true">Lord of the Fleets</button></li>
       </ul>
-      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
+      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
         <div>See <code>#criminal-enterprise</code></div>
       </div>
       <hr>
@@ -56,7 +56,7 @@
           <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-brigantine"><img src="images/ship-brigantine.webp" class="icon" alt="" aria-hidden="true">Brigantine</button></li>
           <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-galleon"><img src="images/ship-galleon.webp" class="icon" alt="" aria-hidden="true">Galleon</button></li>
       </ul>
-      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
+      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
         <div>See <code>#captain-ships-of-the-cabal</code></div>
       </div>
       <hr>
@@ -65,7 +65,7 @@
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-errand">Errand (5%)</button></li>
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-heist">Heist (8%)</button></li>
       </ul>
-      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
+      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
         <div>See <code>#how-to-make-money</code></div>
       </div>
       <hr>
@@ -112,8 +112,13 @@
           </div>
         </div>
       </div>
-      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
-        <div>Each gold is worth $1 in plunder. Each doubloon is worth $25.</div>
+      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
+        <div>Each gold is worth $1 in plunder. Each doubloon is worth $25. Gold and doubloon contribute to the voyage's total plunder.</div>
+        <div>You can earn a bonus based on the total:</div>
+        <ul class="mb-0">
+          <li>Blackjack &mdash; Total plunder is $170,000&ndash;$210,000 &mdash; $3,000</li>
+          <li>Craps Table &mdash; Total plunder is $620,000 or more &mdash; $5,000</li>
+        </ul>
       </div>
       <hr>
       <h2 class="h3" id="section-crew">Crew</h2>
@@ -291,14 +296,10 @@
           </tr>
         </tbody>
       </table>
-      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
-        <div>Purchase a specialty rank from <code>#pirate-emporium</code> for $10,000, which are displayed as icons on Discord names. The Royal Flush supersedes the Straight Ship.</div>
+      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
+        <div>See <code>#pirate-emporium</code> to purchase a specialty rank for $10,000. These ranks display as icons on Discord names in chat.</div>
+        <div>Royal Flush supersedes the Straight Ship bonus.</div>
         <div>Dice pays $1,000 each Stowaway or Recruit crewmate on an errand, and $500 each on a heist.</div>
-        <div>Two additional bonuses are applied automatically:</div>
-        <ul class="mb-0">
-          <li>Blackjack &mdash; Plunder is $170,000&ndash;$210,000 &mdash; $3,000</li>
-          <li>Craps Table &mdash; Plunder is $620,000 or more &mdash; $5,000</li>
-        </ul>
       </div>
     </form>
     <hr>
@@ -334,7 +335,7 @@
       <div class="bg-success border-border-success p-2 rounded-3 small mb-2" id="errors-false">
         <div>Report successful. No errors detected.</div>
       </div>
-      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
+      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
         <div>Pressing the button again updates this report with any changes.</div>
       </div>
       <h3 class="h5">Total</h3>
@@ -508,7 +509,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="small bg-note border border-dark text-secondary p-2 rounded-2 mt-1 mb-3">
+      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
         <div>The Lord of the Fleets doesn't maintain a vault. Stowaways don't earn income. In order to be reach rank Recruit, the Stowaway must be listed on two voyages, and one of the following:</div>
         <ul class="mb-0">
           <li>Sailed on voyages totaling $500,000</li>
@@ -516,46 +517,49 @@
         </ul>
         <div>If the stowaway completes any of these criteria, note it in the report. See <code>#ranks-and-promotion</code> for more.</div>
       </div>
-      <p>You can click following report to copy it to the clipboard, then paste it into Discord to finish it:</p>
-      <div class="border border-dark p-3 rounded-3 mt-3 copyblock font-monospace bg-note small" id="copy-report">
+      <p>Copy this report to the clipboard, then paste it into Discord to finish your activity log and link crewmate accounts:</p>
+      <div class="border border-dark p-3 rounded-3 mt-3 copyblock font-monospace ed-tips small" id="copy-report">
         <div># <span id="report-voyage-number">&mdash;</span> Voyage of @<span id="report-faction-name">&mdash;</span></div>
         <div>**Ship:** <span id="report-ship-name">&mdash;</span></div>
         <div>**Job Type:** <span id="report-job-type">&mdash;</span></div>
         <div>**Report:** <span id="report-voyage-summary">&mdash;</span></div>
+        <div>&nbsp;</div>
         <div>## :feather: Log</div>
         <div>1 &times; </div>
         <div>1 &times; </div>
         <div>1 &times; </div>
         <div>1 &times; </div>
         <div>1 &times; </div>
+        <div>&nbsp;</div>
         <div>## :TreasureHunter: Plunder</div>
-        <div>:coingold: **Gold:** $<span id="report-gold-start">&mdash;</span> :arrow_right: $<span id="report-gold-end">&mdash;</span> (+$<span id="report-total-gold-value">&mdash;</span>)</div>
-        <div>:coindoubloon: **Doubloons:** <span id="report-doubloon-start">&mdash;</span> :arrow_right: <span id="report-doubloon-end">&mdash;</span> (+<span id="report-doubloon-count">&mdash;</span>, +$<span id="report-doubloon-gold">&mdash;</span>)</div>
+        <div>:coingold: **Gold:** <!--$<span id="report-gold-start">&mdash;</span> :arrow_right: $<span id="report-gold-end">&mdash;</span>--> $<span id="report-total-gold-value">&mdash;</span></div>
+        <div>:coindoubloon: **Doubloons:** <!--<span id="report-doubloon-start">&mdash;</span> :arrow_right: <span id="report-doubloon-end">&mdash;</span>--> <span id="report-doubloon-count">&mdash;</span>, +$<span id="report-doubloon-gold">&mdash;</span></div>
         <div>:TreasureHunter: **Total:** ($<span id="report-plunder">&mdash;</span>)</div>
-        <div class="d-none" id="report-bonus-straight-ship">:game_die: **Straight Ship:** (+$1,000)</div>
-        <div class="d-none" id="report-bonus-full-house">:game_die: **Full House:** (+$2,000)</div>
-        <div class="d-none" id="report-bonus-royal-flush">:game_die: **Royal Flush:** (+$2,000)</div>
-        <div class="d-none" id="report-bonus-united-deck">:game_die: **United Deck:** (+$2,500)</div>
-        <div class="d-none" id="report-bonus-pai-gow">:game_die: **Pai Gow:** (+$3,000)</div>
-        <div class="d-none" id="report-bonus-blackjack">:game_die: **Blackjack:** (+$3,000)</div>
-        <div class="d-none" id="report-bonus-craps-table">:game_die: **Craps Table:** (+$5,000)</div>
-        <div class="d-none" id="report-bonus-dice">:game_die: **Dice:** (+<span id="report-bonus-dice-amount"></span>)</div>
+        <div class="d-none" id="report-bonus-straight-ship">:game_die: **Straight Ship:** $1,000</div>
+        <div class="d-none" id="report-bonus-full-house">:game_die: **Full House:** $2,000</div>
+        <div class="d-none" id="report-bonus-royal-flush">:game_die: **Royal Flush:** $2,000</div>
+        <div class="d-none" id="report-bonus-united-deck">:game_die: **United Deck:** $2,500</div>
+        <div class="d-none" id="report-bonus-pai-gow">:game_die: **Pai Gow:** $3,000</div>
+        <div class="d-none" id="report-bonus-blackjack">:game_die: **Blackjack:** $3,000</div>
+        <div class="d-none" id="report-bonus-craps-table">:game_die: **Craps Table:** $5,000</div>
+        <div class="d-none" id="report-bonus-dice">:game_die: **Dice:** $<span id="report-bonus-dice-amount"></span></div>
+        <div>&nbsp;</div>
         <div>## <span id="report-ship-type">&mdash;</span> Crew</div>
-        <div><span id="report-faction-icon">:cabal:</span> <span id="report-faction-vault">Crew Cut</span> (+$<span id="report-faction-vault-amount">&mdash;</span>)</div>
+        <div><span id="report-faction-icon">:cabal:</span> <span id="report-faction-vault">Crew Cut</span> $<span id="report-faction-vault-amount">&mdash;</span></div>
         <div class="d-none" id="report-rank-stowaway">@ (Stowaway) (Achievements)</div>
-        <div class="d-none" id="report-rank-r">@ (R) (+$<span id="report-rank-amount-r">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-rr">@ (RR) (+$<span id="report-rank-amount-rr">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-cs">@ (CS) (+$<span id="report-rank-amount-cs">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-s">@ (S) (+$<span id="report-rank-amount-s">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-fd">@ (FD) (+$<span id="report-rank-amount-fd">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-ds">@ (DS) (+$<span id="report-rank-amount-ds">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-bs">@ (BS) (+$<span id="report-rank-amount-bs">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-pm">@ (PM) (+$<span id="report-rank-amount-pm">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-qm">@ (QM) (+$<span id="report-rank-amount-qm">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-1m">@ (1M) (+$<span id="report-rank-amount-1m">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-cc">@ (CC) (+$<span id="report-rank-amount-cc">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-cb">@ (CB) (+$<span id="report-rank-amount-cb">&mdash;</span>)</div>
-        <div class="d-none" id="report-rank-cl">@ (CL) (+$<span id="report-rank-amount-cl">&mdash;</span>)</div>
+        <div class="d-none" id="report-rank-r">@ (R) $<span id="report-rank-amount-r">&mdash;</span></div>
+        <div class="d-none" id="report-rank-rr">@ (RR) $<span id="report-rank-amount-rr">&mdash;</span></div>
+        <div class="d-none" id="report-rank-cs">@ (CS) $<span id="report-rank-amount-cs">&mdash;</span></div>
+        <div class="d-none" id="report-rank-s">@ (S) $<span id="report-rank-amount-s">&mdash;</span></div>
+        <div class="d-none" id="report-rank-fd">@ (FD) $<span id="report-rank-amount-fd">&mdash;</span></div>
+        <div class="d-none" id="report-rank-ds">@ (DS) $<span id="report-rank-amount-ds">&mdash;</span></div>
+        <div class="d-none" id="report-rank-bs">@ (BS) $<span id="report-rank-amount-bs">&mdash;</span></div>
+        <div class="d-none" id="report-rank-pm">@ (PM) $<span id="report-rank-amount-pm">&mdash;</span></div>
+        <div class="d-none" id="report-rank-qm">@ (QM) $<span id="report-rank-amount-qm">&mdash;</span></div>
+        <div class="d-none" id="report-rank-1m">@ (1M) $<span id="report-rank-amount-1m">&mdash;</span></div>
+        <div class="d-none" id="report-rank-cc">@ (CC) $<span id="report-rank-amount-cc">&mdash;</span></div>
+        <div class="d-none" id="report-rank-cb">@ (CB) $<span id="report-rank-amount-cb">&mdash;</span></div>
+        <div class="d-none" id="report-rank-cl">@ (CL) $<span id="report-rank-amount-cl">&mdash;</span></div>
       </div>
     </div>
     <hr>
@@ -563,7 +567,9 @@
       <li class="list-inline-item mb-2"><a class="btn btn-dark" href="https://github.com/callmepartario/cabal-payout">Github</a></li>
       <li class="list-inline-item mb-2"><a class="btn btn-dark" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></li>
     </ul>
-    <p class="small"><em>This tool is an independent production, and is not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</em></p>
+    <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
+      <div><em>This tool is an independent production, and is not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</em></div>
+    </div>
   </div>
   <script src="js/cabal-calc.js"></script>
 </body>

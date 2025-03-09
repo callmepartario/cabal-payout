@@ -3,7 +3,7 @@ body { }
 a { color: #facc8e; }
 a:hover { color: #fca832; }
 .bg-black { background-color: #181818; }
-.bg-note { color: #ccc; background-color: #293033; }
+.ed-tips { color: #aaa; background-color: #314954; }
 
 .cabal-logo { margin-top: 1rem; margin-left: 1rem; max-width: 100px; }
 

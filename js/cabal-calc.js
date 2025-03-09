@@ -196,7 +196,7 @@ function selectFactionNS() {
     faction = 'NS';
     factionFleet = "The Norsemen's Storm Fleet";
     factionIcon = "<img src='images/faction-ns.webp' aria-hidden='true' alt='' class='icon'>";
-    factionIconReport = ":Norsemen:";
+    factionIconReport = ":Norseman:";
     factionVault = 'Norsemen Vault';
     factionVaultAccount = '@norsemenvault';
 };
@@ -681,7 +681,7 @@ function checkReportErrors() {
         document.getElementById('warning-job-type').classList.add('d-none');
     }
     /* Check gold */
-    if (goldStartValue == 0 || goldEndValue == 0) { 
+    if (goldStartValue === '' || goldEndValue === '') { 
         document.getElementById('warning-gold-missing').classList.remove('d-none');
         errorCount++;
     }
@@ -696,7 +696,7 @@ function checkReportErrors() {
         document.getElementById('warning-gold-negative').classList.add('d-none');
     }
     /* Check doubloons */
-    if (doubloonStartValue == 0 || doubloonEndValue == 0) { 
+    if (doubloonStartValue === '' || doubloonEndValue === '') { 
         document.getElementById('warning-doubloon-missing').classList.remove('d-none');
         errorCount++;
     }
@@ -887,10 +887,8 @@ function generateReport() {
     goldEndValue = goldEnd.value;
     totalGold = goldEndValue - goldStartValue;
     document.getElementById('total-gold-value').innerHTML = printNumber(totalGold);
-    document.getElementById('report-gold-start').innerHTML = printNumber(goldStartValue);
-    document.getElementById('report-gold-end').innerHTML = printNumber(goldEndValue);
-    document.getElementById('report-gold-start').innerHTML = printNumber(goldStartValue);
-    document.getElementById('report-gold-end').innerHTML = printNumber(goldEndValue);
+    //document.getElementById('report-gold-start').innerHTML = printNumber(goldStartValue);
+    //document.getElementById('report-gold-end').innerHTML = printNumber(goldEndValue);
     document.getElementById('report-total-gold-value').innerHTML = printNumber(totalGold);
     console.log('goldStartValue: ${goldStart}, goldEndValue: ${goldEnd}');
     // Populate Doubloons
@@ -902,8 +900,8 @@ function generateReport() {
     totalDoubloonGold = totalDoubloonCount * 25;
     document.getElementById('total-doubloon-count').innerHTML = printNumber(totalDoubloonCount);
     document.getElementById('total-doubloon-gold').innerHTML = printNumber(totalDoubloonGold);
-    document.getElementById('report-doubloon-start').innerHTML = printNumber(doubloonStartValue);
-    document.getElementById('report-doubloon-end').innerHTML = printNumber(doubloonEndValue);
+    //document.getElementById('report-doubloon-start').innerHTML = printNumber(doubloonStartValue);
+    //document.getElementById('report-doubloon-end').innerHTML = printNumber(doubloonEndValue);
     document.getElementById('report-doubloon-count').innerHTML = printNumber(totalDoubloonCount);
     document.getElementById('report-doubloon-gold').innerHTML = printNumber(totalDoubloonGold);
     console.log('doubloonStartValue: ${doubloonStart}, doubloonEndValue: ${doubloonEnd}');
