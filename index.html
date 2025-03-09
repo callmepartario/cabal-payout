@@ -31,10 +31,14 @@
         </div>
       </div>
     </div>
+    <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
+      <div><em>version 1.00b (updated 2025-03-09)</em></div>
+      <div>This tool is an independent production. Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</em></div>
+    </div>
     <hr>
     <form id="voyage">
       <h2 class="h3" id="section-faction">Faction</h2>
-      <label for="voyage-number" class="form-label">Assign a voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select the faction whose fleet will host the voyage:</label>
+      <label for="voyage-number" class="form-label">Assign a voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select your faction, whose fleet hosts the voyage:</label>
       <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-number">
       <ul class="list-inline mt-2">
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ac"><img src="images/faction-ac.webp" class="icon" alt="" aria-hidden="true">Ashen Creed</button></li>
@@ -45,11 +49,11 @@
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-lf"><img src="images/cabal.webp" class="icon" alt="" aria-hidden="true">Lord of the Fleets</button></li>
       </ul>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>For current voyage numbers for your faction, see <code>#criminal-enterprise</code></div>
+        <div>See <code>#criminal-enterprise</code> for current voyage numbers for your fleet.</div>
       </div>
       <hr>
       <h2 class="h3" id="section-ship">Ship</h2>
-      <label for="ship-name" class="form-label">Choose a faction ship's name, and the select the type of ship used to sail the voyage:</label>
+      <label for="ship-name" class="form-label">Choose ship name from your faction's fleeet, and the select the type of ship used on the voyage:</label>
       <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="ship-name">
       <ul class="list-inline mt-2">
           <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-sloop"><img src="images/ship-sloop.webp" class="icon" alt="" aria-hidden="true">Sloop</button></li>
@@ -57,7 +61,7 @@
           <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-galleon"><img src="images/ship-galleon.webp" class="icon" alt="" aria-hidden="true">Galleon</button></li>
       </ul>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>For eligible ship names for your faction, see <code>#captain-ships-of-the-cabal</code></div>
+        <div>See <code>#captain-ships-of-the-cabal</code> for ship names for your faction</div>
       </div>
       <hr>
       <h2 class="h3" id="section-job">Job Type</h2>
@@ -67,7 +71,7 @@
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-heist">Heist</button></li>
       </ul>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>Sloop voyages are always Errands. Errands pay out 5% of total plunder. Heists pay out 8%&mdash;see <code>#how-to-make-money</code></div>
+        <div>Errands pay 5% of total plunder. Heists pay 8%. Sloop voyages are always Errands.</div>
       </div>
       <hr>
       <h2 class="h3" id="section-plunder">Plunder</h2>
@@ -114,7 +118,7 @@
         </div>
       </div>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>Each gold is worth $1 in plunder. Each doubloon is worth $25. Gold and doubloon contribute to the voyage's total plunder.</div>
+        <div>Each gold is worth $1 in plunder. A doubloon is $25. Gold and doubloon contribute to total plunder.</div>
         <div>You can earn a bonus based on the total (applied automatically):</div>
         <ul class="mb-0">
           <li>Blackjack &mdash; Total plunder is $170,000&ndash;$210,000 &mdash; $3,000</li>
@@ -221,7 +225,7 @@
         </div>
       </div>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>You must be rank Smuggler to post Errands, and only Officers can post Heists&mdash;see <code>#ranks-and-promotion</code></div>
+        <div>See <code>#ranks-and-promotion</code> for promotion information. You must be rank Smuggler or higher to post an Errand. Officers can post Heists.</div>
       </div>
       <hr>
       <h2 class="h3" id="section-bonus">Bonus</h2>
@@ -252,7 +256,7 @@
                 <label class="form-check-label" for="bonus-full-house">Full House</label>
               </div>
             </th>
-            <td>Crewmates are members of two Cabal of Thieves factions.</td>
+            <td>All crewmates are members of exactly two Cabal of Thieves factions.</td>
             <td class="text-end">$2,000</td>
           </tr>
           <tr class="d-none" id="bonus-list-royal-flush">
@@ -301,7 +305,8 @@
         </tbody>
       </table>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>See <code>#pirate-emporium</code> to purchase a specialty rank for $10,000. These ranks display as icons on Discord names in chat. Voyages can't earn both Royal Flush and Straight Ship.</div>
+        <div>Visit the <code>#pirate-emporium</code> to purchase a specialty rank ($10,000). Specialty ranks display as an icon on your Discord name in chat.</div>
+        <div>Voyages can't earn both Royal Flush and Straight Ship.</div>
         <div>Dice pays $1,000 each Stowaway or Recruit crewmate on an errand, and $500 each on a heist.</div>
       </div>
     </form>
@@ -310,8 +315,8 @@
     <label for="voyage-summary" class="form-label">Describe the voyage:</label>
     <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-summary">
     <hr>
-    <h2 class="h3" id="section-report">Report Results</h2>
-    <button type="button" class="btn btn-primary mt-2 mb-3" id="generate-report">Generate Report</button>
+    <h2 class="h3" id="section-report">Voyage Report</h2>
+    <button type="button" class="btn btn-primary mt-2 mb-3" id="generate-report">Create Voyage Report</button>
     <div class="bg-errors border border-golden p-2 rounded-3 small mb-2 d-none" id="errors-true">
       <div><span id="report-error-count">0</span> errors detected:</div>
       <ol class="mb-0">
@@ -572,7 +577,6 @@
         <li class="list-inline-item mb-2"><a class="btn btn-dark" href="https://github.com/callmepartario/cabal-payout">Github</a></li>
         <li class="list-inline-item mb-2"><a class="btn btn-dark" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></li>
       </ul>
-      <div><em>version 1.00a &mdash; This tool is an independent production. Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</em></div>
     </div>
   </div>
   <script>
