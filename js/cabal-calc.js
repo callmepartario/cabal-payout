@@ -409,8 +409,8 @@ function checkBonusDice() {
         bonusDiceCrew = document.getElementById('bonus-dice-crew');
         bonusDiceCrewValue = bonusDiceCrew.value;
         bonusDiceAmount = bonusDiceCrewValue * bonusDiceValue;
-        document.getElementById("total-bonus-dice-amount").innerHTML = bonusDiceAmount;
-        document.getElementById("report-bonus-dice-amount").innerHTML = bonusDiceAmount;
+        document.getElementById("total-bonus-dice-amount").innerHTML = printNumber(bonusDiceAmount);
+        document.getElementById("report-bonus-dice-amount").innerHTML = printNumber(bonusDiceAmount);
         document.getElementById('total-bonus-dice').classList.remove('d-none');
         document.getElementById('report-bonus-dice').classList.remove('d-none');
     }
@@ -848,8 +848,6 @@ function checkReportErrors() {
         document.getElementById('warning-summary').classList.add('d-none');
     }
     /* Show errors or success */
-
-    /* Show errors or success */
     document.getElementById('report-error-count').innerHTML = errorCount;
     if (errorCount > 0) {
         document.getElementById('errors-true').classList.remove('d-none');
@@ -857,6 +855,7 @@ function checkReportErrors() {
     } else {
         document.getElementById('errors-true').classList.add('d-none');
         document.getElementById('errors-false').classList.remove('d-none');
+        document.getElementById('report-container').classList.remove('d-none');
     }
 };
 
@@ -866,7 +865,6 @@ function printNumber(x) {
 }
 
 function generateReport() {
-    document.getElementById('report-container').classList.remove('d-none');
     document.getElementById('section-report').scrollIntoView();
     // Populate Text
     voyageNumber = document.getElementById('voyage-number');
