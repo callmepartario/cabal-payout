@@ -113,6 +113,8 @@ let crewRolesSelected = 0;
 let crewRolesDice = 0;
 let crewRoleLevel = 0;
 
+let warning = false;
+
 document.getElementById('select-faction-ao').onclick = function() {selectFactionAO()};
 document.getElementById('select-faction-ac').onclick = function() {selectFactionAC()};
 document.getElementById('select-faction-kw').onclick = function() {selectFactionKW()};
@@ -863,6 +865,22 @@ function checkReportErrors() {
         document.getElementById('errors-true').classList.add('d-none');
         document.getElementById('errors-false').classList.remove('d-none');
         document.getElementById('report-container').classList.remove('d-none');
+    }
+    // Issue warnings
+    warning = false;
+    if (faction == 'LF') {
+        document.getElementById('warning-lf').classList.remove('d-none');
+        warning = true;
+    }
+    else {
+        document.getElementById('warning-lf').classList.add('d-none');
+    }
+    if (rankStowaway.checked == true) {
+        document.getElementById('warning-stowaway').classList.remove('d-none');
+        warning = true;
+    }
+    else {
+        document.getElementById('warning-stowaway').classList.add('d-none');
     }
 };
 
