@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-      <div><em>version 1.00b (updated 2025-03-09)</em></div>
+      <div><em>version 1.01a (updated 2025-03-10)</em></div>
       <div>This tool is an independent production. Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</em></div>
     </div>
     <hr>
@@ -67,11 +67,12 @@
       <h2 class="h3" id="section-job">Job Type</h2>
       <p>Select the job type.<p>
       <ul class="list-inline">
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-errand">Errand</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-heist">Heist</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-errand">Errand (5%)</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-heist">Heist (8%)</button></li>
       </ul>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>Errands pay 5% of total plunder. Heists pay 8%. Sloop voyages are always Errands.</div>
+        <div>You must be rank Smuggler or higher to post an Errand. Officers can post Heists.</div>
+        <div>Sloop voyages are always Errands.</div>
       </div>
       <hr>
       <h2 class="h3" id="section-plunder">Plunder</h2>
@@ -121,11 +122,6 @@
       </div>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
         <div>Each gold is worth $1 in plunder. A doubloon is $25. Gold and doubloon contribute to total plunder.</div>
-        <div>You can earn a bonus based on the total (applied automatically):</div>
-        <ul class="mb-0">
-          <li>Blackjack &mdash; Total plunder is $170,000&ndash;$210,000 &mdash; $3,000</li>
-          <li>Craps Table &mdash; Total plunder is $620,000 or more &mdash; $5,000</li>
-        </ul>
       </div>
       <hr>
       <h2 class="h3" id="section-crew">Crew</h2>
@@ -230,89 +226,86 @@
         </div>
       </div>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>See <code>#ranks-and-promotion</code> for promotion information. You must be rank Smuggler or higher to post an Errand. Officers can post Heists.</div>
+        <div>See <code>#ranks-and-promotion</code> for promotion information.</div>
       </div>
       <hr>
       <h2 class="h3" id="section-bonus">Bonus</h2>
-      <p>Available bonuses depend on ship, job type, and crew:</p>
-      <table class="table table-responsive-lg table-dark">
-        <thead>
-          <tr>
-            <th scope="col">Type</th>
-            <th scope="col">Prerequisites</th>
-            <th scope="col" class="text-end">Bonus</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="d-none" id="bonus-list-straight-ship">
-            <th scope="row">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="bonus-straight-ship">
-                <label class="form-check-label" for="bonus-straight-ship">Straight Ship</label>
-              </div>
-            </th>
-            <td>Each crewmate has a different specialty rank.</td>
-            <td class="text-end">$1,000</td>
-          </tr>
-          <tr class="d-none" id="bonus-list-full-house">
-            <th scope="row">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="bonus-full-house">
-                <label class="form-check-label" for="bonus-full-house">Full House</label>
-              </div>
-            </th>
-            <td>All crewmates are members of exactly two Cabal of Thieves factions.</td>
-            <td class="text-end">$2,000</td>
-          </tr>
-          <tr class="d-none" id="bonus-list-royal-flush">
-            <th scope="row">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="bonus-royal-flush">
-                <label class="form-check-label" for="bonus-royal-flush">Royal Flush</label>
-              </div>
-            </th>
-            <td>Each crewmate is a member of the same Cabal of Thieves faction, and each has a different specialty rank.</td>
-            <td class="text-end">$2,500</td>
-          </tr>
-          <tr class="d-none" id="bonus-list-united-deck">
-            <th scope="row">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="bonus-united-deck">
-                <label class="form-check-label" for="bonus-united-deck">United Deck</label>
-              </div>
-            </th>
-            <td>Each crewmate represents a different Cabal of Thieves faction.</td>
-            <td class="text-end">$2,500</td>
-          </tr>
-          <tr class="d-none" id="bonus-list-pai-gow">
-            <th scope="row">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="bonus-pai-gow">
-                <label class="form-check-label" for="bonus-pai-gow">Pai Gow</label>
-              </div>
-            </th>
-            <td>No crewmate has an officer rank.</td>
-            <td class="text-end">$3,000</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="bonus-dice">
-                <label class="form-check-label" for="bonus-dice">Dice</label>
-              </div>
-            </th>
-            <td>
-              <label for="bonus-dice-crew" class="form-label">Number of Stowaways and Recruits:</label>
-              <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="bonus-dice-crew">
-            </td>
-            <td class="text-end">$<span id="bonus-dice-value">1,000</span> <span class="d-block">each</span></td>
-          </tr>
-        </tbody>
-      </table>
+      <p>Available bonuses depend on ship, job type, and crew makeup.</p>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>Visit the <code>#pirate-emporium</code> to purchase a specialty rank ($10,000). Specialty ranks display as an icon on your Discord name in chat.</div>
-        <div>Voyages can't earn both Royal Flush and Straight Ship.</div>
-        <div>Dice pays $1,000 each novice on an errand, and $500 each on a heist.</div>
+        <div>These bonuses are applied automatically:</div>
+        <ul class="mb-0">
+          <li><strong>Pai Gow:</strong> Sail a brigantine or galleon with no officers aboard ($3,000)</li>
+          <li><strong>Blackjack:</strong> Total plunder is $170,000&ndash;$210,000 ($3,000)</li>
+          <li><strong>Craps Table:</strong> Total plunder is $620,000 or more ($5,000)</li>
+        </ul>
+      </div>
+      <div id="bonus-display" class="d-none">
+        <div id="bonus-list-dice" class="form-check d-none ps-0 mb-3">
+          <h4 class="h5">Dice Bonus</h4>
+          <label for="bonus-dice-crew" class="form-label">Number of novices (Stowaways and Recruits) aboard:</label>
+          <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="bonus-dice-crew">
+          <div class="small ed-tips border border-dark p-2 rounded-2 mt-3 mb-3">
+              <div>For each novice aboard, Dice pays $1,000 on an Errand, or $500 on a Heist.</div>
+          </div>
+        </div>
+        <div id="bonus-list-table" class="d-none">
+          <h4 class="h5">Other Bonuses</h4>
+          <table class="table table-responsive-lg table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Prerequisites</th>
+                <th scope="col" class="text-end">Bonus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="d-none" id="bonus-list-straight-ship">
+                <th scope="row">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="yes" id="bonus-straight-ship">
+                    <label class="form-check-label" for="bonus-straight-ship">Straight Ship</label>
+                  </div>
+                </th>
+                <td>Each crewmate has a different specialty rank.</td>
+                <td class="text-end">$1,000</td>
+              </tr>
+              <tr class="d-none" id="bonus-list-full-house">
+                <th scope="row">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="yes" id="bonus-full-house">
+                    <label class="form-check-label" for="bonus-full-house">Full House</label>
+                  </div>
+                </th>
+                <td>All crewmates are members of exactly two Cabal of Thieves factions.</td>
+                <td class="text-end">$2,000</td>
+              </tr>
+              <tr class="d-none" id="bonus-list-royal-flush">
+                <th scope="row">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="yes" id="bonus-royal-flush">
+                    <label class="form-check-label" for="bonus-royal-flush">Royal Flush</label>
+                  </div>
+                </th>
+                <td>Each crewmate is a member of the same Cabal of Thieves faction, and each has a different specialty rank.</td>
+                <td class="text-end">$2,500</td>
+              </tr>
+              <tr class="d-none" id="bonus-list-united-deck">
+                <th scope="row">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="yes" id="bonus-united-deck">
+                    <label class="form-check-label" for="bonus-united-deck">United Deck</label>
+                  </div>
+                </th>
+                <td>Each crewmate represents a different Cabal of Thieves faction.</td>
+                <td class="text-end">$2,500</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3" id="bonus-specialty-rank">
+            <div>Visit the <code>#pirate-emporium</code> to purchase a specialty rank ($10,000). Specialty ranks display as an icon on your Discord name in chat.</div>
+            <div>Voyages can't earn both Royal Flush and Straight Ship.</div>
+          </div>
+        </div>
       </div>
     </form>
     <hr>
@@ -321,7 +314,7 @@
     <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-summary">
     <hr>
     <h2 class="h3" id="section-report">Voyage Report</h2>
-    <button type="button" class="btn btn-primary mt-2 mb-3" id="generate-report">Create Voyage Report</button>
+    <button type="button" class="btn btn-primary btn mt-2 mb-3" id="generate-report">Create Report</button>
     <div class="bg-errors border border-golden p-2 rounded-3 small mb-2 d-none" id="errors-true">
       <div><span id="report-error-count">0</span> errors detected:</div>
       <ol class="mb-0">
@@ -332,25 +325,22 @@
         <li class="d-none" id="warning-job-type"><a href="#section-job">Missing job type</a></li>
         <li class="d-none" id="warning-roles"><a href="#section-crew">Too many crew ranks selected</a> for <a href="#section-ship">ship type</a></li>
         <li class="d-none" id="warning-roles-errand"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Errand</a> (requires Smuggler or higher)</a></li>
-        <li class="d-none" id="warning-roles-heist"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Heist</a> (requires Boatswain or higher)</a></li>
+        <li class="d-none" id="warning-roles-heist"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Heist</a> (requires an Officer)</a></li>
         <li class="d-none" id="warning-gold-missing"><a href="#section-plunder">Missing gold amounts</a></li>
         <li class="d-none" id="warning-gold-negative"><a href="#section-plunder">Negative gold earned</a></li>
         <li class="d-none" id="warning-doubloon-missing"><a href="#section-plunder">Missing doubloon amounts</a></li>
         <li class="d-none" id="warning-doubloon-negative"><a href="#section-plunder">Negative doubloons earned</a></li>
-        <li class="d-none" id="warning-bonus-pai-gow-select"><a href="#section-crew">No officers in crew</a>, but <a href="#section-bonus">Pai Gow bonus</a> not selected</li>
-        <li class="d-none" id="warning-bonus-pai-gow-rank"><a href="#section-bonus">Pai Gow</a> requires no <a href="#section-crew">Officer crewmates</a></li>
-        <li class="d-none" id="warning-bonus-dice-select"><a href="#section-crew">Novice in crew</a>, but not enough <a href="#section-bonus">Dice bonus</a></li>
         <li class="d-none" id="warning-bonus-dice-math">Invalid <a href="#section-bonus">Dice bonus</a> for <a href="#section-ship">ship type</a> or <a href="#section-crew">crew ranks</a></li>
         <li class="d-none" id="warning-summary"><a href="#section-summary">Missing summary</a></li>
       </ol>
     </div>
+    <div id="errors-false" class="bg-success border-border-success p-2 rounded-3 small mb-2 d-none">
+      <div>Report successful. No errors detected.</div>
+    </div>
+    <div id="report-rerun" class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none">
+      <div>Pressing the button again updates this report with any changes.</div>
+    </div>
     <div class="d-none" id="report-container">
-      <div class="bg-success border-border-success p-2 rounded-3 small mb-2" id="errors-false">
-        <div>Report successful. No errors detected.</div>
-      </div>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>Pressing the button again updates this report with any changes.</div>
-      </div>
       <h3 class="h5">Total</h3>
       <table class="table table-responsive-lg table-dark">
         <thead>
@@ -545,9 +535,8 @@
         <div>1 &times; </div>
         <div>&nbsp;</div>
         <div>## :TreasureHunter: Plunder</div>
-        <!-- ok to omit starting/ending gold/doubloon amounts from discord reports -->
-        <div>:coingold: **Gold:** <!--$<span id="report-gold-start">&mdash;</span> :arrow_right: $<span id="report-gold-end">&mdash;</span>--> $<span id="report-total-gold-value">&mdash;</span></div>
-        <div>:coindoubloon: **Doubloons:** <!--<span id="report-doubloon-start">&mdash;</span> :arrow_right: <span id="report-doubloon-end">&mdash;</span>--> <span id="report-doubloon-count">&mdash;</span>, +$<span id="report-doubloon-gold">&mdash;</span></div>
+        <div>:coingold: **Gold:** $<span id="report-total-gold-value">&mdash;</span></div>
+        <div>:coindoubloon: **Doubloons:** <span id="report-doubloon-count">&mdash;</span>, $<span id="report-doubloon-gold">&mdash;</span></div>
         <div>:TreasureHunter: **Total:** <span id="report-plunder">&mdash;</span></div>
         <div class="d-none" id="report-bonus-straight-ship">:game_die: **Straight Ship:** $1,000</div>
         <div class="d-none" id="report-bonus-full-house">:game_die: **Full House:** $2,000</div>
