@@ -23,8 +23,10 @@ h1 {
 
 .border-golden { border-color: #facc8e !important; }
 
+th { white-space: nowrap; }
+
 code, .copyblock { color: #facc8e; }
 
-img.icon { width: 1.5rem; margin-right: 0.5rem; }
+img.icon { width: 1.5em; margin-right: 0.5rem; }
 
 w-100 { width: 100%; }

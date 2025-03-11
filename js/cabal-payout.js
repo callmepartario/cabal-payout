@@ -36,10 +36,9 @@ let bonusPaiGowAmount = 0;
 let bonusBlackjackAmount = 0;
 let bonusCrapsTableAmount = 0;
 
-let bonusEligibleDice = false;
-let bonusEligibleOther = false;
-let bonusDiceCrew = 0;
-let bonusDiceCrewValue = 0;
+let bonusEligible = false;
+
+let bonusDiceCount = 0;
 let bonusDiceValue = 0;
 let bonusDiceAmount = 0;
 
@@ -54,65 +53,70 @@ let totalJobPay = 0;
 let totalBonus = 0;
 let totalFactionVault = 0;
 
-let rankStowaway = 0;
+let crewName1 = '';
+let crewName1Value = '';
+let crewRank1 = '';
+let crewRank1Value = '';
+let crewName2 = '';
+let crewName2Value = '';
+let crewRank2 = '';
+let crewRank2Value = '';
+let crewName3 = '';
+let crewName3Value = '';
+let crewRank3 = '';
+let crewRank3Value = '';
+let crewName4 = '';
+let crewName4Value = '';
+let crewRank4 = '';
+let crewRank4Value = '';
+let crewStowawayPresent = false;
+let crewRankLevel = 0;
 
-let rankRecruit = 0;
-let rankRecruitRate = 0.05;
-let rankRecruitAmount = 0;
 
-let rankRumRunner = 0;
-let rankRumRunnerRate = 0.10;
-let rankRumRunnerAmount = 0;
+let activity1 = '';
+let activity1Value = ''
+let activity1Qty = 0;
+let activity1QtyValue = 0;
+let activity2 = '';
+let activity2Value = ''
+let activity2Qty = 0;
+let activity2QtyValue = 0;
+let activity3 = '';
+let activity3Value = ''
+let activity3Qty = 0;
+let activity3QtyValue = 0;
+let activity4 = '';
+let activity4Value = ''
+let activity4Qty = 0;
+let activity4QtyValue = 0;
+let activity5 = '';
+let activity5Value = ''
+let activity5Qty = 0;
+let activity5QtyValue = 0;
+let activity6 = '';
+let activity6Value = ''
+let activity6Qty = 0;
+let activity6QtyValue = 0;
+let activity7 = '';
+let activity7Value = ''
+let activity7Qty = 0;
+let activity7QtyValue = 0;
+let activity8 = '';
+let activity8Value = ''
+let activity8Qty = 0;
+let activity8QtyValue = 0;
+let activity9 = '';
+let activity9Value = ''
+let activity9Qty = 0;
+let activity9QtyValue = 0;
+let activity10 = '';
+let activity10Value = ''
+let activity10Qty = 0;
+let activity10QtyValue = 0;
 
-let rankCrateSmuggler = 0;
-let rankCrateSmugglerRate = 0.15;
-let rankCrateSmugglerAmount = 0;
-
-let rankSmuggler = 0;
-let rankSmugglerRate = 0.20;
-let rankSmugglerAmount = 0;
-
-let rankFlintlockDealer = 0;
-let rankFlintlockDealerRate = 0.25;
-let rankFlintlockDealerAmount = 0;
-
-let rankDoubloonShark = 0;
-let rankDoubloonSharkRate = 0.30;
-let rankDoubloonSharkAmount = 0;
-
-let rankBoatswain = 0;
-let rankBoatswainRate = 0.35;
-let rankBoatswainAmount = 0;
-
-let rankPowderMonkey = 0;
-let rankPowderMonkeyRate = 0.40;
-let rankPowderMonkeyAmount = 0;
-
-let rankQuartermaster = 0;
-let rankQuartermasterRate = 0.45;
-let rankQuartermasterAmount = 0;
-
-let rankFirstMate = 0;
-let rankFirstMateRate = 0.45;
-let rankFirstMateAmount = 0;
-
-let rankCabalCaptain = 0;
-let rankCabalCaptainRate = 0.50;
-let rankCabalCaptainAmount = 0;
-
-let rankCabalBoss = 0;
-let rankCabalBossRate = 0.55;
-let rankCabalBossAmount = 0;
-
-let rankCabalLeader = 0;
-let rankCabalLeaderRate = 0.60;
-let rankCabalLeaderAmount = 0;
+let activityRows = 1;
 
 let errorCount = 0;
-let crewRolesSelected = 0;
-let crewRolesDice = 0;
-let crewRoleLevel = 0;
-
 let warning = false;
 
 document.getElementById('select-faction-ao').onclick = function() {selectFactionAO()};
@@ -129,8 +133,8 @@ document.getElementById('select-ship-galleon').onclick = function() {selectShipG
 document.getElementById('select-job-errand').onclick = function() {selectJobErrand()};
 document.getElementById('select-job-heist').onclick = function() {selectJobHeist()};
 
-document.getElementById('rank-stowaway').onclick = function() {checkBonusEligibility()};
-document.getElementById('rank-r').onclick = function() {checkBonusEligibility()};
+document.getElementById('activity-add').onclick = function() {activityAdd()};
+document.getElementById('activity-remove').onclick = function() {activityRemove()};
 
 document.getElementById('generate-report').onclick = function() {generateReport()};
 
@@ -251,6 +255,10 @@ function selectShipSloop() {
     document.getElementById('select-ship-sloop').classList.add('btn-primary');
     shipType = 2;
     shipTypeEmoji = ':shipSloop1:';
+    document.getElementById('crew-3-name').classList.add('d-none');
+    document.getElementById('crew-3-rank').classList.add('d-none');
+    document.getElementById('crew-4-name').classList.add('d-none');
+    document.getElementById('crew-4-rank').classList.add('d-none');
     selectJobErrand()
     checkBonusEligibility()
 };
@@ -258,6 +266,10 @@ function selectShipBrigantine() {
     deselectShip();
     document.getElementById('select-ship-brigantine').classList.remove('btn-secondary');
     document.getElementById('select-ship-brigantine').classList.add('btn-primary');
+    document.getElementById('crew-3-name').classList.remove('d-none');
+    document.getElementById('crew-3-rank').classList.remove('d-none');
+    document.getElementById('crew-4-name').classList.add('d-none');
+    document.getElementById('crew-4-rank').classList.add('d-none');
     shipType = 3;
     shipTypeEmoji = ':shipBrigantine1:';
     checkBonusEligibility()
@@ -266,6 +278,10 @@ function selectShipGalleon() {
     deselectShip();
     document.getElementById('select-ship-galleon').classList.remove('btn-secondary');
     document.getElementById('select-ship-galleon').classList.add('btn-primary');
+    document.getElementById('crew-3-name').classList.remove('d-none');
+    document.getElementById('crew-3-rank').classList.remove('d-none');
+    document.getElementById('crew-4-name').classList.remove('d-none');
+    document.getElementById('crew-4-rank').classList.remove('d-none');
     shipType = 4;
     shipTypeEmoji = ':emoji_100:';
     checkBonusEligibility()
@@ -288,9 +304,7 @@ function selectJobErrand() {
     document.getElementById('select-job-errand').classList.add('btn-primary');
     jobType = 'Errand';
     jobRate = 0.05;
-    bonusDiceValue = 1000;
     checkBonusEligibility();
-    reportJobType();
 };
 function selectJobHeist() {
     if (shipType > 2) {
@@ -299,66 +313,150 @@ function selectJobHeist() {
         document.getElementById('select-job-heist').classList.add('btn-primary');
         jobType = 'Heist';
         jobRate = 0.08;
-        bonusDiceValue = 500;
         checkBonusEligibility();
-        reportJobType();
     }
+};
+
+/* Add or remove activity rows */
+function activityAdd() {
+    activityRows++;
+    document.getElementById('activity-'+ activityRows).classList.remove('d-none');
+};
+
+function activityRemove() {
+    document.getElementById('activity-'+ activityRows).classList.add('d-none');
+    activityRows--;
+};
+
+function checkActivityRow(x) {
+    if (activityRows > (x - 1)) {
+
+
+        document.getElementById('report-activity-' + x).classList.remove('d-none');
+        document.getElementById('report-activity-' + x + '-qty').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('report-activity-' + x).classList.add('d-none');
+        document.getElementById('report-activity-' + x + '-qty').classList.add('d-none');
+    }
+};
+
+function checkActivityLog() {
+    checkActivityRow(1);
+    checkActivityRow(2);
+    checkActivityRow(3);
+    checkActivityRow(4);
+    checkActivityRow(5);
+    checkActivityRow(6);
+    checkActivityRow(7);
+    checkActivityRow(8);
+    checkActivityRow(9);
+    checkActivityRow(10);
+    // row 1
+    activity1 = document.getElementById('activity-1-type');
+    activity1Qty = document.getElementById('activity-1-qty');
+    activity1Value = activity1.value;
+    activity1QtyValue = activity1Qty.value;
+    document.getElementById('report-activity-1-type').innerHTML = activity1Value;
+    document.getElementById('report-activity-1-qty').innerHTML = activity1QtyValue;
+    // row 2
+    activity2 = document.getElementById('activity-2-type');
+    activity2Qty = document.getElementById('activity-2-qty');
+    activity2Value = activity2.value;
+    activity2QtyValue = activity2Qty.value;
+    document.getElementById('report-activity-2-type').innerHTML = activity2Value;
+    document.getElementById('report-activity-2-qty').innerHTML = activity2QtyValue;
+    // row 3
+    activity3 = document.getElementById('activity-3-type');
+    activity3Qty = document.getElementById('activity-3-qty');
+    activity3Value = activity3.value;
+    activity3QtyValue = activity3Qty.value;
+    document.getElementById('report-activity-3-type').innerHTML = activity3Value;
+    document.getElementById('report-activity-3-qty').innerHTML = activity3QtyValue;
+    // row 4
+    activity4 = document.getElementById('activity-4-type');
+    activity4Qty = document.getElementById('activity-4-qty');
+    activity4Value = activity4.value;
+    activity4QtyValue = activity4Qty.value;
+    document.getElementById('report-activity-4-type').innerHTML = activity4Value;
+    document.getElementById('report-activity-4-qty').innerHTML = activity4QtyValue;
+    // row 5
+    activity5 = document.getElementById('activity-5-type');
+    activity5Qty = document.getElementById('activity-5-qty');
+    activity5Value = activity5.value;
+    activity5QtyValue = activity5Qty.value;
+    document.getElementById('report-activity-5-type').innerHTML = activity5Value;
+    document.getElementById('report-activity-5-qty').innerHTML = activity5QtyValue;
+    // row 6
+    activity6 = document.getElementById('activity-6-type');
+    activity6Qty = document.getElementById('activity-6-qty');
+    activity6Value = activity6.value;
+    activity6QtyValue = activity6Qty.value;
+    document.getElementById('report-activity-6-type').innerHTML = activity6Value;
+    document.getElementById('report-activity-6-qty').innerHTML = activity6QtyValue;
+    // row 7
+    activity7 = document.getElementById('activity-7-type');
+    activity7Qty = document.getElementById('activity-7-qty');
+    activity7Value = activity7.value;
+    activity7QtyValue = activity7Qty.value;
+    document.getElementById('report-activity-7-type').innerHTML = activity7Value;
+    document.getElementById('report-activity-7-qty').innerHTML = activity7QtyValue;
+    // row 8
+    activity8 = document.getElementById('activity-8-type');
+    activity8Qty = document.getElementById('activity-8-qty');
+    activity8Value = activity8.value;
+    activity8QtyValue = activity8Qty.value;
+    document.getElementById('report-activity-8-type').innerHTML = activity8Value;
+    document.getElementById('report-activity-8-qty').innerHTML = activity8QtyValue;
+    // row 9
+    activity9 = document.getElementById('activity-9-type');
+    activity9Qty = document.getElementById('activity-9-qty');
+    activity9Value = activity9.value;
+    activity9QtyValue = activity9Qty.value;
+    document.getElementById('report-activity-9-type').innerHTML = activity9Value;
+    document.getElementById('report-activity-9-qty').innerHTML = activity9QtyValue;
+    // row 10
+    activity10 = document.getElementById('activity-10-type');
+    activity10Qty = document.getElementById('activity-10-qty');
+    activity10Value = activity10.value;
+    activity10QtyValue = activity10Qty.value;
+    document.getElementById('report-activity-10-type').innerHTML = activity10Value;
+    document.getElementById('report-activity-10-qty').innerHTML = activity10QtyValue;
 };
 
 /* Check Bonus Eligibility */
 function checkBonusEligibility() {
-    // dice: check rank selections for novices
-    rankStowaway = document.getElementById("rank-stowaway");
-    rankRecruit = document.getElementById("rank-r");
-    if (rankStowaway.checked == true) {
-        bonusEligibleDice = true;
-    }
-    else if (rankRecruit.checked == true) {
-        bonusEligibleDice = true;
-    }
-    else { 
-        bonusEligibleDice = false;
-    }
-    // dice: show or hide dice fields
-    if (bonusEligibleDice == true) {
-        document.getElementById('bonus-list-dice').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('bonus-list-dice').classList.add('d-none');
-    }
-    // other bonuses
     document.getElementById('bonus-list-straight-ship').classList.add('d-none');
     document.getElementById('bonus-list-full-house').classList.add('d-none');
     document.getElementById('bonus-list-royal-flush').classList.add('d-none');
     document.getElementById('bonus-list-united-deck').classList.add('d-none');
+    document.getElementById('bonus-ship-size').classList.add('d-none');
+    document.getElementById('bonus-ship-size-sloop').classList.add('d-none');
     document.getElementById('bonus-specialty-rank').classList.add('d-none');
     if (shipType <=2) {
-        bonusEligibleOther = false;
+        bonusEligible = false;
+        document.getElementById('bonus-ship-size').classList.remove('d-none');
+        document.getElementById('bonus-ship-size-sloop').classList.remove('d-none');
     }
     if (shipType >= 3) {
         document.getElementById('bonus-list-united-deck').classList.remove('d-none');
-        bonusEligibleOther = true;
+        bonusEligible = true;
+        document.getElementById('bonus-ship-size').classList.remove('d-none');
     }
     if (shipType == 4) {
         document.getElementById('bonus-list-straight-ship').classList.remove('d-none');
         document.getElementById('bonus-list-full-house').classList.remove('d-none');
         document.getElementById('bonus-list-royal-flush').classList.remove('d-none');
+        bonusEligible = true;
+        document.getElementById('bonus-ship-size').classList.add('d-none');
         document.getElementById('bonus-specialty-rank').classList.remove('d-none');
-        bonusEligibleOther = true;
     }
     // other: show or hide table
-    if (bonusEligibleOther == true) {
+    if (bonusEligible == true) {
         document.getElementById('bonus-list-table').classList.remove('d-none');
     }
     else {
         document.getElementById('bonus-list-table').classList.add('d-none');
-    }
-    // show or hide bonus section entirely if no bonus eligible
-    if (bonusEligibleDice == false && bonusEligibleOther == false) {
-        document.getElementById('bonus-display').classList.add('d-none');
-    }
-    else {
-        document.getElementById('bonus-display').classList.remove('d-none');
     }
 };
 
@@ -427,27 +525,21 @@ function checkBonusUnitedDeck() {
         }
     }
 };
-function checkBonusPaiGow() {
-    checkCrewRoleLevel();
-    if (crewRoleLevel < 8 && shipType >= 3 && jobType == 'Errand') {
-        bonusPaiGowAmount = 3000;
-        document.getElementById('total-bonus-pai-gow').classList.remove('d-none');
-        document.getElementById('report-bonus-pai-gow').classList.remove('d-none');
-    }
-    else {
-        bonusPaiGowAmount = 0;
-        document.getElementById('total-bonus-pai-gow').classList.add('d-none');
-        document.getElementById('report-bonus-pai-gow').classList.add('d-none');
-    }
-};
+// automatic bonuses based on crew rank
 function checkBonusDice() {
-    if (bonusEligibleDice == true) {
-        bonusDiceCrew = document.getElementById('bonus-dice-crew');
-        bonusDiceCrewValue = bonusDiceCrew.value;
-        bonusDiceAmount = bonusDiceCrewValue * bonusDiceValue;
-        document.getElementById("total-bonus-dice-amount").innerHTML = printNumber(bonusDiceAmount);
-        document.getElementById("report-bonus-dice-amount").innerHTML = printNumber(bonusDiceAmount);
+    if (bonusDiceCount > 0) {
+        if (jobType == 'Errand') { 
+            bonusDiceValue = 1000;
+        }
+        else if (jobType == 'Heist') {
+            bonusDiceValue = 500;
+        }
+        bonusDiceAmount = bonusDiceCount * bonusDiceValue;
+        document.getElementById('total-bonus-dice-count').innerHTML = bonusDiceCount;
+        document.getElementById('total-bonus-dice-amount').innerHTML = printNumber(bonusDiceAmount);
         document.getElementById('total-bonus-dice').classList.remove('d-none');
+        document.getElementById('report-bonus-dice-count').innerHTML = bonusDiceCount;
+        document.getElementById('report-bonus-dice-amount').innerHTML = printNumber(bonusDiceAmount);
         document.getElementById('report-bonus-dice').classList.remove('d-none');
     }
     else {
@@ -456,6 +548,20 @@ function checkBonusDice() {
         document.getElementById('report-bonus-dice').classList.add('d-none');
     }
 };
+function checkBonusPaiGow() {
+    if (shipType >= 3 && crewRankLevel < 8) {
+        bonusPaiGowAmount = 3000;
+        document.getElementById('total-bonus-pai-gow').classList.remove('d-none');
+        document.getElementById('report-bonus-pai-gow').classList.remove('d-none');
+
+    }
+    else {
+        bonusPaiGowAmount = 0;
+        document.getElementById('total-bonus-pai-gow').classList.add('d-none');
+        document.getElementById('report-bonus-pai-gow').classList.add('d-none');
+    }
+};
+// automatic bonuses based on plunder total
 function checkBonusBlackjack() {
     if (totalGold >= 170000) {
         if (totalGold <= 210000) {
@@ -487,256 +593,181 @@ function checkBonusTotal() {
 }
 
 /* Determine Crew Cut */
+// check crew for minimum rank
+function checkCrewRankVerbose(rank) {
+    if (rank == '1') { return 'Stowaway';}
+    if (rank == '2') { return 'Recruit';}
+    if (rank == '3') { return 'Rum Runner';}
+    if (rank == '4') { return 'Crate Smuggler';}
+    if (rank == '5') { return 'Smuggler';}
+    if (rank == '6') { return 'Flintlock Dealer';}
+    if (rank == '7') { return 'Doubloon Shark';}
+    if (rank == '8') { return 'Boatswain';}
+    if (rank == '9') { return 'Powder Monkey';}
+    if (rank == '10') { return 'Quartermaster';}
+    if (rank == '11') { return 'First Mate';}
+    if (rank == '12') { return 'Cabal Captain';}
+    if (rank == '13') { return 'Cabal Boss';}
+    if (rank == '14') { return 'Cabal Leader';}
+};
+function checkCrewRankAbbr(rank) {
+    if (rank == '1') { return 'Stowaway';}
+    if (rank == '2') { return 'R';}
+    if (rank == '3') { return 'RR';}
+    if (rank == '4') { return 'CS';}
+    if (rank == '5') { return 'S';}
+    if (rank == '6') { return 'FD';}
+    if (rank == '7') { return 'DS';}
+    if (rank == '8') { return 'BS';}
+    if (rank == '9') { return 'PM';}
+    if (rank == '10') { return 'QM';}
+    if (rank == '11') { return '1M';}
+    if (rank == '12') { return 'CC';}
+    if (rank == '13') { return 'CB';}
+    if (rank == '14') { return 'CL';}
+};
+// check crew for rate
+function checkCrewRate(rank) {
+    if (rank == '1') { return 0.00;}
+    if (rank == '2') { return 0.05;}
+    if (rank == '3') { return 0.10;}
+    if (rank == '4') { return 0.15;}
+    if (rank == '5') { return 0.20;}
+    if (rank == '6') { return 0.25;}
+    if (rank == '7') { return 0.30;}
+    if (rank == '8') { return 0.35;}
+    if (rank == '9') { return 0.40;}
+    if (rank == '10') { return 0.45;}
+    if (rank == '11') { return 0.45;}
+    if (rank == '12') { return 0.50;}
+    if (rank == '13') { return 0.55;}
+    if (rank == '14') { return 0.60;}
+};
+function checkCrewRanks() {
+    // reset
+    crewRankLevel = 0;
+    bonusDiceCount = 0;
+    crewStowawayPresent = false;
+    // crew 1
+    crewRank1 = document.getElementById('crewmate-1-rank');
+    if (crewRankLevel < crewRank1.value) {
+        crewRankLevel = crewRank1.value;
+    }
+    if (crewRank1.value < 3) {
+        bonusDiceCount++;
+    }
+    if (crewRank1.value == '1') {
+        crewStowawayPresent = true;
+    }
+    // crew 2
+    crewRank2 = document.getElementById('crewmate-2-rank');
+    if (crewRankLevel < crewRank2.value) {
+        crewRankLevel = crewRank2.value;
+    }
+    if (crewRank2.value < 3) {
+        bonusDiceCount++;
+    }
+    if (crewRank2.value == '1') {
+        crewStowawayPresent = true;
+    }
+    // crew 3
+    if (shipType >= 3) {
+        crewRank3 = document.getElementById('crewmate-3-rank');
+        if (crewRankLevel < crewRank3.value) {
+            crewRankLevel = crewRank3.value;
+        }
+        if (crewRank3.value < 3) {
+            bonusDiceCount++;
+        }
+        if (crewRank3.value == '1') {
+            crewStowawayPresent = true;
+        }
+    }
+    // crew 4
+    if (shipType == 4) {
+        crewRank4 = document.getElementById('crewmate-4-rank');
+        if (crewRankLevel < crewRank4.value) {
+            crewRankLevel = crewRank4.value;
+        }
+        if (crewRank4.value < 3) {
+            bonusDiceCount++;
+        }
+        if (crewRank4.value == '1') {
+            crewStowawayPresent = true;
+        }
+    }
+};
 function checkCrewCut() {
-    // Stowaway
-    rankStowaway = document.getElementById("rank-stowaway");
-    if (rankStowaway.checked == true) {
-        document.getElementById('total-rank-stowaway').classList.remove('d-none');
-        document.getElementById('report-rank-stowaway').classList.remove('d-none');
+    //crew 1
+    crewName1 = document.getElementById('crewmate-1-name');
+    crewName1Value = crewName1.value;
+    crewRank1 = document.getElementById('crewmate-1-rank');
+    crewRank1Value = crewRank1.value;
+    document.getElementById('total-crew-name-1').innerHTML = crewName1Value;
+    document.getElementById('total-crew-rank-1').innerHTML = checkCrewRankVerbose(crewRank1Value);
+    document.getElementById('total-crew-cut-1').innerHTML = Math.round(checkCrewRate(crewRank1Value) * 100);
+    document.getElementById('total-crew-amount-1').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value)));
+    document.getElementById('report-crew-name-1').innerHTML = crewName1Value;
+    document.getElementById('report-crew-rank-1').innerHTML = checkCrewRankAbbr(crewRank1.value);
+    document.getElementById('report-crew-1-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value)));
+    //crew 1
+    crewName2 = document.getElementById('crewmate-2-name');
+    crewName2Value = crewName2.value;
+    crewRank2 = document.getElementById('crewmate-2-rank');
+    crewRank2Value = crewRank2.value;
+    document.getElementById('total-crew-name-2').innerHTML = crewName2Value;
+    document.getElementById('total-crew-rank-2').innerHTML = checkCrewRankVerbose(crewRank2Value);
+    document.getElementById('total-crew-cut-2').innerHTML = Math.round(checkCrewRate(crewRank2Value) * 100);
+    document.getElementById('total-crew-amount-2').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank2Value)));
+    document.getElementById('report-crew-name-2').innerHTML = crewName2Value;
+    document.getElementById('report-crew-rank-2').innerHTML = checkCrewRankAbbr(crewRank2.value);
+    document.getElementById('report-crew-2-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank2Value)));
+    //crew 3
+    if (shipType >= 3) {//crew 1
+        crewName3 = document.getElementById('crewmate-3-name');
+        crewName3Value = crewName3.value;
+        crewRank3 = document.getElementById('crewmate-3-rank');
+        crewRank3Value = crewRank3.value;
+        document.getElementById('total-crew-name-3').innerHTML = crewName3Value;
+        document.getElementById('total-crew-rank-3').innerHTML = checkCrewRankVerbose(crewRank3Value);
+        document.getElementById('total-crew-cut-3').innerHTML = Math.round(checkCrewRate(crewRank3Value) * 100);
+        document.getElementById('total-crew-amount-3').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank3Value)));
+        document.getElementById('report-crew-name-3').innerHTML = crewName3Value;
+        document.getElementById('report-crew-rank-3').innerHTML = checkCrewRankAbbr(crewRank3.value);
+        document.getElementById('report-crew-3-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank3Value)));
+        document.getElementById('total-crew-3').classList.remove('d-none');
+        document.getElementById('report-crew-3').classList.remove('d-none');
     }
     else {
-        document.getElementById('total-rank-stowaway').classList.add('d-none');
-        document.getElementById('report-rank-stowaway').classList.add('d-none');
+        document.getElementById('total-crew-3').classList.add('d-none');
+        document.getElementById('report-crew-3').classList.add('d-none');
     }
-    // Recruit
-    rankRecruit = document.getElementById("rank-r");
-    rankRecruitAmount = Math.round(totalFactionVault * rankRecruitRate);
-    document.getElementById('total-rank-amount-r').innerHTML = printNumber(rankRecruitAmount);
-    document.getElementById('report-rank-amount-r').innerHTML = printNumber(rankRecruitAmount);
-    if (rankRecruit.checked == true) {
-        document.getElementById('total-rank-r').classList.remove('d-none');
-        document.getElementById('report-rank-r').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-r').classList.add('d-none');
-        document.getElementById('report-rank-r').classList.add('d-none');
-    }
-    // Rum Runner
-    rankRumRunner = document.getElementById("rank-rr");
-    rankRumRunnerAmount = Math.round(totalFactionVault * rankRumRunnerRate);
-    document.getElementById('total-rank-amount-rr').innerHTML = printNumber(rankRumRunnerAmount);
-    document.getElementById('report-rank-amount-rr').innerHTML = printNumber(rankRumRunnerAmount);
-    if (rankRumRunner.checked == true) {
-        document.getElementById('total-rank-rr').classList.remove('d-none');
-        document.getElementById('report-rank-rr').classList.remove('d-none');
+    //crew 4
+    if (shipType == 4) {//crew 1
+        crewName4 = document.getElementById('crewmate-4-name');
+        crewName4Value = crewName4.value;
+        crewRank4 = document.getElementById('crewmate-4-rank');
+        crewRank4Value = crewRank4.value;
+        document.getElementById('total-crew-name-4').innerHTML = crewName4Value;
+        document.getElementById('total-crew-rank-4').innerHTML = checkCrewRankVerbose(crewRank4Value);
+        document.getElementById('total-crew-cut-4').innerHTML = Math.round(checkCrewRate(crewRank4Value) * 100);
+        document.getElementById('total-crew-amount-4').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank4Value)));
+        document.getElementById('report-crew-name-4').innerHTML = crewName4Value;
+        document.getElementById('report-crew-rank-4').innerHTML = checkCrewRankAbbr(crewRank4.value);
+        document.getElementById('report-crew-4-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank4Value)));
+        document.getElementById('total-crew-4').classList.remove('d-none');
+        document.getElementById('report-crew-4').classList.remove('d-none');
     }
     else {
-        document.getElementById('total-rank-rr').classList.add('d-none');
-        document.getElementById('report-rank-rr').classList.add('d-none');
-    }
-    // Crate Smuggler
-    rankCrateSmuggler = document.getElementById("rank-cs");
-    rankCrateSmugglerAmount = Math.round(totalFactionVault * rankCrateSmugglerRate);
-    document.getElementById('total-rank-amount-cs').innerHTML = printNumber(rankCrateSmugglerAmount);
-    document.getElementById('report-rank-amount-cs').innerHTML = printNumber(rankCrateSmugglerAmount);
-    if (rankCrateSmuggler.checked == true) {
-        document.getElementById('total-rank-cs').classList.remove('d-none');
-        document.getElementById('report-rank-cs').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-cs').classList.add('d-none');
-        document.getElementById('report-rank-cs').classList.add('d-none');
-    }
-    // Smuggler
-    rankSmuggler = document.getElementById("rank-s");
-    rankSmugglerAmount = Math.round(totalFactionVault * rankSmugglerRate);
-    document.getElementById('total-rank-amount-s').innerHTML = printNumber(rankSmugglerAmount);
-    document.getElementById('report-rank-amount-s').innerHTML = printNumber(rankSmugglerAmount);
-    if (rankSmuggler.checked == true) {
-        document.getElementById('total-rank-s').classList.remove('d-none');
-        document.getElementById('report-rank-s').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-s').classList.add('d-none');
-        document.getElementById('report-rank-s').classList.add('d-none');
-    }
-    // Flintlock Dealer
-    rankFlintlockDealer = document.getElementById("rank-fd");
-    rankFlintlockDealerAmount = Math.round(totalFactionVault * rankFlintlockDealerRate);
-    document.getElementById('total-rank-amount-fd').innerHTML = printNumber(rankFlintlockDealerAmount);
-    document.getElementById('report-rank-amount-fd').innerHTML = printNumber(rankFlintlockDealerAmount);
-    if (rankFlintlockDealer.checked == true) {
-        document.getElementById('total-rank-fd').classList.remove('d-none');
-        document.getElementById('report-rank-fd').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-fd').classList.add('d-none');
-        document.getElementById('report-rank-fd').classList.add('d-none');
-    }
-    // Doubloon Shark
-    rankDoubloonShark = document.getElementById("rank-ds");
-    rankDoubloonSharkAmount = Math.round(totalFactionVault * rankDoubloonSharkRate);
-    document.getElementById('total-rank-amount-ds').innerHTML = printNumber(rankDoubloonSharkAmount);
-    document.getElementById('report-rank-amount-ds').innerHTML = printNumber(rankDoubloonSharkAmount);
-    if (rankDoubloonShark.checked == true) {
-        document.getElementById('total-rank-ds').classList.remove('d-none');
-        document.getElementById('report-rank-ds').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-ds').classList.add('d-none');
-        document.getElementById('report-rank-ds').classList.add('d-none');
-    }
-    // Boatswain
-    rankBoatswain = document.getElementById("rank-bs");
-    rankBoatswainAmount = Math.round(totalFactionVault * rankBoatswainRate);
-    document.getElementById('total-rank-amount-bs').innerHTML = printNumber(rankBoatswainAmount);
-    document.getElementById('report-rank-amount-bs').innerHTML = printNumber(rankBoatswainAmount);
-    if (rankBoatswain.checked == true) {
-        document.getElementById('total-rank-bs').classList.remove('d-none');
-        document.getElementById('report-rank-bs').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-bs').classList.add('d-none');
-        document.getElementById('report-rank-bs').classList.add('d-none');
-    }
-    // Powder Monkey
-    rankPowderMonkey = document.getElementById("rank-pm");
-    rankPowderMonkeyAmount = Math.round(totalFactionVault * rankPowderMonkeyRate);
-    document.getElementById('total-rank-amount-pm').innerHTML = printNumber(rankPowderMonkeyAmount);
-    document.getElementById('report-rank-amount-pm').innerHTML = printNumber(rankPowderMonkeyAmount);
-    if (rankPowderMonkey.checked == true) {
-        document.getElementById('total-rank-pm').classList.remove('d-none');
-        document.getElementById('report-rank-pm').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-pm').classList.add('d-none');
-        document.getElementById('report-rank-pm').classList.add('d-none');
-    }
-    // Quartermaster
-    rankQuartermaster = document.getElementById("rank-qm");
-    rankQuartermasterAmount = Math.round(totalFactionVault * rankQuartermasterRate);
-    document.getElementById('total-rank-amount-qm').innerHTML = printNumber(rankQuartermasterAmount);
-    document.getElementById('report-rank-amount-qm').innerHTML = printNumber(rankQuartermasterAmount);
-    if (rankQuartermaster.checked == true) {
-        document.getElementById('total-rank-qm').classList.remove('d-none');
-        document.getElementById('report-rank-qm').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-qm').classList.add('d-none');
-        document.getElementById('report-rank-qm').classList.add('d-none');
-    }
-    // First Mate
-    rankFirstMate = document.getElementById("rank-1m");
-    rankFirstMateAmount = Math.round(totalFactionVault * rankFirstMateRate);
-    document.getElementById('total-rank-amount-1m').innerHTML = printNumber(rankFirstMateAmount);
-    document.getElementById('report-rank-amount-1m').innerHTML = printNumber(rankFirstMateAmount);
-    if (rankFirstMate.checked == true) {
-        document.getElementById('total-rank-1m').classList.remove('d-none');
-        document.getElementById('report-rank-1m').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-1m').classList.add('d-none');
-        document.getElementById('report-rank-1m').classList.add('d-none');
-    }
-    // Cabal Captain
-    rankCabalCaptain = document.getElementById("rank-cc");
-    rankCabalCaptainAmount = Math.round(totalFactionVault * rankCabalCaptainRate);
-    document.getElementById('total-rank-amount-cc').innerHTML = printNumber(rankCabalCaptainAmount);
-    document.getElementById('report-rank-amount-cc').innerHTML = printNumber(rankCabalCaptainAmount);
-    if (rankCabalCaptain.checked == true) {
-        document.getElementById('total-rank-cc').classList.remove('d-none');
-        document.getElementById('report-rank-cc').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-cc').classList.add('d-none');
-        document.getElementById('report-rank-cc').classList.add('d-none');
-    }
-    // Cabal Boss
-    rankCabalBoss = document.getElementById("rank-cb");
-    rankCabalBossAmount = Math.round(totalFactionVault * rankCabalBossRate);
-    document.getElementById('total-rank-amount-cb').innerHTML = printNumber(rankCabalBossAmount);
-    document.getElementById('report-rank-amount-cb').innerHTML = printNumber(rankCabalBossAmount);
-    if (rankCabalBoss.checked == true) {
-        document.getElementById('total-rank-cb').classList.remove('d-none');
-        document.getElementById('report-rank-cb').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-cb').classList.add('d-none');
-        document.getElementById('report-rank-cb').classList.add('d-none');
-    }
-    // Cabal Leader
-    rankCabalLeader = document.getElementById("rank-cl");
-    rankCabalLeaderAmount = Math.round(totalFactionVault * rankCabalLeaderRate);
-    document.getElementById('total-rank-amount-cl').innerHTML = printNumber(rankCabalLeaderAmount);
-    document.getElementById('report-rank-amount-cl').innerHTML = printNumber(rankCabalLeaderAmount);
-    if (rankCabalLeader.checked == true) {
-        document.getElementById('total-rank-cl').classList.remove('d-none');
-        document.getElementById('report-rank-cl').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('total-rank-cl').classList.add('d-none');
-        document.getElementById('report-rank-cl').classList.add('d-none');
+        document.getElementById('total-crew-4').classList.add('d-none');
+        document.getElementById('report-crew-4').classList.add('d-none');
     }
 };
 
-function checkCrewRoleLevel() {
-    if (rankStowaway.checked == true) {
-        crewRolesSelected++;
-        crewRolesDice++;
-        crewRoleLevel = 1;
-    }
-    if (rankRecruit.checked == true) {
-        crewRolesSelected++;
-        crewRolesDice++;
-        crewRoleLevel = 2;
-    }
-    if (rankRumRunner.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 3;
-    }
-    if (rankCrateSmuggler.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 4;
-    }
-    if (rankSmuggler.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 5;
-    }
-    if (rankFlintlockDealer.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 6;
-    }
-    if (rankDoubloonShark.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 7;
-    }
-    /* Check officer selections */
-    if (rankBoatswain.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 8;
-    }
-    if (rankPowderMonkey.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 9;
-    }
-    if (rankQuartermaster.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 10;
-    }
-    if (rankFirstMate.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 11;
-    }
-    if (rankCabalCaptain.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 12;
-    }
-    if (rankCabalBoss.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 13;
-    }
-    if (rankCabalLeader.checked == true) {
-        crewRolesSelected++;
-        crewRoleLevel = 14;
-    }
-}
-
+/* Error check */
 function checkReportErrors() {
     /* reset */
     errorCount = 0;
-    crewRolesSelected = 0;
-    crewRolesDice = 0;
-    crewRoleLevel = 0;
     /* Check voyage number */
     if (voyageNumberValue == '') { 
         document.getElementById('warning-voyage-number').classList.remove('d-none');
@@ -807,43 +838,20 @@ function checkReportErrors() {
     else { 
         document.getElementById('warning-doubloon-negative').classList.add('d-none');
     }
-    /* Check crew roles */
-    checkCrewRoleLevel();
-    // too many roles selected
-    if (shipType > '0' && crewRolesSelected > shipType) { 
-        document.getElementById('warning-roles').classList.remove('d-none');
-        errorCount++;
-    } else {
-        document.getElementById('warning-roles').classList.add('d-none');
-    }
-    // errand minimum rank
-    if (jobType == 'Errand' && crewRoleLevel < 5) {
-        document.getElementById('warning-roles-errand').classList.remove('d-none');
-        errorCount++;
-    } else {
-        document.getElementById('warning-roles-errand').classList.add('d-none');
-    }
-    // heist minimum rank
-    if (jobType == 'Heist' && crewRoleLevel < 8) {
-        document.getElementById('warning-roles-heist').classList.remove('d-none');
+    /* Check crew ranks vs job types */
+    if ((jobType == 'Errand' && crewRankLevel < 5) || (jobType == 'Heist' && crewRankLevel < 8)) {
+        document.getElementById('warning-rank').classList.remove('d-none');
         errorCount++;
     }
     else {
-        document.getElementById('warning-roles-heist').classList.add('d-none');
+        document.getElementById('warning-rank').classList.add('d-none');
     }
-    /* Check bonus: Dice */
-    if (bonusEligibleDice == true && shipType > 0) {
-        if (bonusDiceCrewValue <= crewRolesDice - 1) {
-            document.getElementById('warning-bonus-dice-math').classList.remove('d-none');
-            errorCount++;
-        }
-        else if (shipType - crewRolesSelected + crewRolesDice <= bonusDiceCrewValue - 1) {
-            document.getElementById('warning-bonus-dice-math').classList.remove('d-none');
-            errorCount++;
-        }
-        else {
-           document.getElementById('warning-bonus-dice-math').classList.add('d-none');
-        }
+    /* Check crew ranks vs job types */
+    if (crewStowawayPresent == true) {
+        document.getElementById('warning-stowaway').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('warning-stowaway').classList.add('d-none');
     }
     /* Check summary */
     if (voyageSummaryValue == '') { 
@@ -875,13 +883,6 @@ function checkReportErrors() {
     else {
         document.getElementById('warning-lf').classList.add('d-none');
     }
-    if (rankStowaway.checked == true) {
-        document.getElementById('warning-stowaway').classList.remove('d-none');
-        warning = true;
-    }
-    else {
-        document.getElementById('warning-stowaway').classList.add('d-none');
-    }
 };
 
 /* Generate Report */
@@ -904,7 +905,7 @@ function generateReport() {
     document.getElementById('report-ship-name').innerHTML = shipNameValue;
     document.getElementById('report-job-type').innerHTML = jobType;
     document.getElementById('report-voyage-summary').innerHTML = voyageSummaryValue;
-    console.log('voyageNumberValue: ${voyageNumber}, voyageSummaryValue: ${voyageSummary}, shipNameValue: ${shipName}')
+    checkActivityLog();
     // Populate Gold
     goldStart = document.getElementById('gold-start');    
     goldStartValue = goldStart.value;
@@ -913,7 +914,6 @@ function generateReport() {
     totalGold = goldEndValue - goldStartValue;
     document.getElementById('total-gold-value').innerHTML = printNumber(totalGold);
     document.getElementById('report-total-gold-value').innerHTML = printNumber(totalGold);
-    console.log('goldStartValue: ${goldStart}, goldEndValue: ${goldEnd}');
     // Populate Doubloons
     doubloonStart = document.getElementById('doubloon-start');    
     doubloonStartValue = doubloonStart.value;
@@ -925,7 +925,6 @@ function generateReport() {
     document.getElementById('total-doubloon-gold').innerHTML = printNumber(totalDoubloonGold);
     document.getElementById('report-doubloon-count').innerHTML = printNumber(totalDoubloonCount);
     document.getElementById('report-doubloon-gold').innerHTML = printNumber(totalDoubloonGold);
-    console.log('doubloonStartValue: ${doubloonStart}, doubloonEndValue: ${doubloonEnd}');
     // Populate Total
     totalPlunder = totalGold + totalDoubloonGold;
     totalJobPay = Math.round(totalPlunder * jobRate);
@@ -934,12 +933,13 @@ function generateReport() {
     document.getElementById('total-job-type').innerHTML = printNumber(jobType);
     document.getElementById('total-job-rate').innerHTML = '(' + jobRate * 100 + '%)';
     document.getElementById('total-job-pay').innerHTML = printNumber(totalJobPay);
+    checkCrewRanks();
+    checkBonusDice();
+    checkBonusPaiGow();
     checkBonusStraightShip();
     checkBonusFullHouse();
     checkBonusRoyalFlush();
     checkBonusUnitedDeck();
-    checkBonusPaiGow();
-    checkBonusDice();
     checkBonusBlackjack();
     checkBonusCrapsTable();
     checkBonusTotal();

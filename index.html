@@ -32,14 +32,14 @@
       </div>
     </div>
     <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-      <div><em>version 1.01b (updated 2025-03-10)</em></div>
+      <div><em>version 1.02a (updated 2025-03-11)</em></div>
       <div>This tool is an independent production. Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <hr>
     <form id="voyage">
       <h2 class="h3" id="section-faction">Faction</h2>
-      <label for="voyage-number" class="form-label">Assign a voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select your faction:</label>
-      <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-number">
+      <p>Assign a voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select your faction:</p>
+      <input type="text" placeholder="Voyage Number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-number">
       <ul class="list-inline mt-2">
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ac"><img src="images/faction-ac.webp" class="icon" alt="" aria-hidden="true">Ashen Creed</button></li>
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ao"><img src="images/faction-ao.webp" class="icon" alt="" aria-hidden="true">Ancient Order of Chaos</button></li>
@@ -53,8 +53,8 @@
       </div>
       <hr>
       <h2 class="h3" id="section-ship">Ship</h2>
-      <label for="ship-name" class="form-label">Choose a ship, and the select the type of ship used on the voyage:</label>
-      <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="ship-name">
+      <p>Choose a ship, and the select the type of ship used on the voyage:</p>
+      <input type="text" placeholder="Ship Name" class="form-control d-inline-block bg-dark text-white border border-secondary" id="ship-name">
       <ul class="list-inline mt-2">
           <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-sloop"><img src="images/ship-sloop.webp" class="icon" alt="" aria-hidden="true">Sloop</button></li>
           <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-brigantine"><img src="images/ship-brigantine.webp" class="icon" alt="" aria-hidden="true">Brigantine</button></li>
@@ -62,254 +62,312 @@
       </ul>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
         <div>See <code>#captain-ships-of-the-cabal</code> for your faction's ships.</div>
+        <div>Sloop voyages are always Errands.</div>
       </div>
       <hr>
       <h2 class="h3" id="section-job">Job Type</h2>
-      <p>Select the job type:<p>
+      <p class="mb-2">Select the job type:</p>
       <ul class="list-inline">
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-errand">Errand (5%)</button></li>
         <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-heist">Heist (8%)</button></li>
       </ul>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>Smugglers and higher can post Errands. Officers can post Heists. Sloop voyages are always Errands.</div>
+        <div>You must be rank Smuggler or higher to post an Errand.</div>
+        <div>You must be rank Boastwain or higher to post a Heist.</div>
         <div>See <code>#how-to-make-money</code> for details.</div>
       </div>
       <hr>
-      <h2 class="h3" id="section-plunder">Plunder</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <h4 class="h5"><img src="images/currency-gold.webp" alt="Gold" class="d-inline-block icon">Gold</h4>
-          <div class="d-table w-100 mb-3">
-            <div class="d-table-row">
-              <div class="d-table-cell">
-                <label for="gold-start" class="form-label">Start:</label>
-              </div>
-              <div class="d-table-cell">
-                <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="gold-start">
-              </div>
-            </div>
-            <div class="d-table-row">
-              <div class="d-table-cell">
-                <label for="gold-start" class="form-label">End:</label>
-              </div>
-              <div class="d-table-cell">
-                <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="gold-end">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <h4 class="h5"><img src="images/currency-doubloon.webp" alt="Doubloons" class="d-inline-block icon">Doubloons</h4>
-          <div class="d-table w-100 mb-3">
-            <div class="d-table-row">
-              <div class="d-table-cell">
-                <label for="doubloon-start" class="form-label">Start:</label>
-              </div>
-              <div class="d-table-cell">
-                <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="doubloon-start">
-              </div>
-            </div>
-            <div class="d-table-row">
-              <div class="d-table-cell">
-                <label for="doubloon-start" class="form-label">End:</label>
-              </div>
-              <div class="d-table-cell">
-                <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="doubloon-end">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-        <div>Each gold is worth $1 in plunder. A doubloon is $25.</div>
-      </div>
-      <hr>
       <h2 class="h3" id="section-crew">Crew</h2>
-      <p>Select all ranks represented by the crew:</p>
-      <div class="row">
-        <div class="col">
-          <h4 class="h5">Novice Ranks</h4>
-          <ul class="list-unstyled">
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-stowaway">
-                <label class="form-check-label" for="rank-stowaway">Stowaway</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-r">
-                <label class="form-check-label" for="rank-r">Recruit</label>
-              </div>
-            </li>
-          </ul>
-          <h4 class="h5">Sailor Ranks</h4>
-          <ul class="list-unstyled">
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-rr">
-                <label class="form-check-label" for="rank-rr">Rum Runner</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-cs">
-                <label class="form-check-label" for="rank-cs">Crate Smuggler</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-s">
-                <label class="form-check-label" for="rank-s">Smuggler</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-fd">
-                <label class="form-check-label" for="rank-fd">Flintlock Dealer</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-ds">
-                <label class="form-check-label" for="rank-ds">Doubloon Shark</label>
-              </div>
-            </li>
-          </ul>
+      <p>Enter the names and ranks of the crew:</p>
+      <div>
+        <div class="row">
+          <div class="col-md-6" id="crew-1-name">
+            <input placeholder="Crewmate 1" type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="crewmate-1-name">
+          </div>
+          <div class="col-md-6" id="crew-1-rank">
+            <select class="form-select d-inline-block bg-dark text-white border border-secondary mb-3" name="crewmate-1-rank" id="crewmate-1-rank">
+              <option value="1">Stowaway</option>
+              <option value="2">Recruit</option>
+              <option value="3">Rum Runner</option>
+              <option value="4">Crate Smuggler</option>
+              <option value="5">Smuggler</option>
+              <option value="6">Flintlock Dealer</option>
+              <option value="7">Doubloon Shark</option>
+              <option value="8">Boatswain</option>
+              <option value="9">Powder Monkey</option>
+              <option value="10">Quartermaster</option>
+              <option value="11">First Mate</option>
+              <option value="12">Cabal Captain</option>
+              <option value="13">Cabal Boss</option>
+              <option value="14">Cabal Leader</option>
+            </select>
+          </div>
         </div>
-        <div class="col">
-          <h4 class="h5">Officer Ranks</h4>
-          <ul class="list-unstyled">
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-bs">
-                <label class="form-check-label" for="rank-bs">Boatswain</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-pm">
-                <label class="form-check-label" for="rank-pm">Powder Monkey</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-qm">
-                <label class="form-check-label" for="rank-qm">Quartermaster</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-1m">
-                <label class="form-check-label" for="rank-1m">First Mate</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-cc">
-                <label class="form-check-label" for="rank-cc">Cabal Captain</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-cb">
-                <label class="form-check-label" for="rank-cb">Cabal Boss</label>
-              </div>
-            </li>
-            <li class="mt-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="rank-cl">
-                <label class="form-check-label" for="rank-cl">Cabal Leader</label>
-              </div>
-            </li>
-          </ul>
+        <div class="row">
+          <div class="col-md-6" id="crew-2-name">
+            <input placeholder="Crewmate 2" type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="crewmate-2-name">
+          </div>
+          <div class="col-md-6" id="crew-2-rank">
+            <select class="form-select d-inline-block bg-dark text-white border border-secondary mb-3" name="crewmate-2-rank" id="crewmate-2-rank">
+              <option value="1">Stowaway</option>
+              <option value="2">Recruit</option>
+              <option value="3">Rum Runner</option>
+              <option value="4">Crate Smuggler</option>
+              <option value="5">Smuggler</option>
+              <option value="6">Flintlock Dealer</option>
+              <option value="7">Doubloon Shark</option>
+              <option value="8">Boatswain</option>
+              <option value="9">Powder Monkey</option>
+              <option value="10">Quartermaster</option>
+              <option value="11">First Mate</option>
+              <option value="12">Cabal Captain</option>
+              <option value="13">Cabal Boss</option>
+              <option value="14">Cabal Leader</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 d-none" id="crew-3-name">
+            <input placeholder="Crewmate 3" type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="crewmate-3-name">
+          </div>
+          <div class="col-md-6 d-none" id="crew-3-rank">
+            <select class="form-select d-inline-block bg-dark text-white border border-secondary mb-3" name="crewmate-3-rank" id="crewmate-3-rank">
+              <option value="1">Stowaway</option>
+              <option value="2">Recruit</option>
+              <option value="3">Rum Runner</option>
+              <option value="4">Crate Smuggler</option>
+              <option value="5">Smuggler</option>
+              <option value="6">Flintlock Dealer</option>
+              <option value="7">Doubloon Shark</option>
+              <option value="8">Boatswain</option>
+              <option value="9">Powder Monkey</option>
+              <option value="10">Quartermaster</option>
+              <option value="11">First Mate</option>
+              <option value="12">Cabal Captain</option>
+              <option value="13">Cabal Boss</option>
+              <option value="14">Cabal Leader</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 d-none" id="crew-4-name">
+            <input placeholder="Crewmate 4" type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="crewmate-4-name">
+          </div>
+          <div class="col-md-6 d-none" id="crew-4-rank">
+            <select class="form-select d-inline-block bg-dark text-white border border-secondary mb-3" name="crewmate-4-rank" id="crewmate-4-rank">
+              <option value="1">Stowaway</option>
+              <option value="2">Recruit</option>
+              <option value="3">Rum Runner</option>
+              <option value="4">Crate Smuggler</option>
+              <option value="5">Smuggler</option>
+              <option value="6">Flintlock Dealer</option>
+              <option value="7">Doubloon Shark</option>
+              <option value="8">Boatswain</option>
+              <option value="9">Powder Monkey</option>
+              <option value="10">Quartermaster</option>
+              <option value="11">First Mate</option>
+              <option value="12">Cabal Captain</option>
+              <option value="13">Cabal Boss</option>
+              <option value="14">Cabal Leader</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
+        <div>Use crewmate gamertags so Discord autocompletes them&mdash;for example, &ldquo;OldGus&rdquo; autocompletes for &ldquo;OldGusClone&rdquo;.</div>
         <div>See <code>#ranks-and-promotion</code> for promotion information.</div>
       </div>
       <hr>
       <h2 class="h3" id="section-bonus">Bonus</h2>
-      <p>Available bonuses depend on ship, job type, and crew makeup.</p>
+      <div id="bonus-list-table" class="d-none">
+        <p>Check if the crew is eligible for bonus:</p>
+        <table class="table table-responsive-lg table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Type</th>
+              <th scope="col">Prerequisites</th>
+              <th scope="col" class="text-end">Bonus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="d-none" id="bonus-list-straight-ship">
+              <th scope="row">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="yes" id="bonus-straight-ship">
+                  <label class="form-check-label" for="bonus-straight-ship">Straight Ship</label>
+                </div>
+              </th>
+              <td>Each crewmate has a different specialty rank.</td>
+              <td class="text-end">$1,000</td>
+            </tr>
+            <tr class="d-none" id="bonus-list-full-house">
+              <th scope="row">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="yes" id="bonus-full-house">
+                  <label class="form-check-label" for="bonus-full-house">Full House</label>
+                </div>
+              </th>
+              <td>The crew represents exactly two Cabal of Thieves factions.</td>
+              <td class="text-end">$2,000</td>
+            </tr>
+            <tr class="d-none" id="bonus-list-royal-flush">
+              <th scope="row">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="yes" id="bonus-royal-flush">
+                  <label class="form-check-label" for="bonus-royal-flush">Royal Flush</label>
+                </div>
+              </th>
+              <td>Each crewmate is a member of the same Cabal of Thieves faction, and each has a different specialty rank.</td>
+              <td class="text-end">$2,500</td>
+            </tr>
+            <tr class="d-none" id="bonus-list-united-deck">
+              <th scope="row">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="yes" id="bonus-united-deck">
+                  <label class="form-check-label" for="bonus-united-deck">United Deck</label>
+                </div>
+              </th>
+              <td>Each crewmate represents a different Cabal of Thieves faction.</td>
+              <td class="text-end">$2,500</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
+        <div id="bonus-ship-size" class="d-none">Additional bonuses are available when sailing a <span id="bonus-ship-size-sloop">brigantine or</span> galleon.</div>
+        <div id="bonus-specialty-rank" class="d-none">
+          <div>Visit the <code>#pirate-emporium</code> to purchase a specialty rank ($10,000). Specialty ranks display as an icon on your Discord name in chat. A Royal Flush bonus supersedes a Straight Ship bonus.</div>
+        </div>
         <div>These bonuses are applied automatically:</div>
         <ul class="mb-0">
-          <li><strong>Pai Gow:</strong> Sail a brigantine or galleon with no officers aboard ($3,000)</li>
+          <li><strong>Dice:</strong> Stowaway or Recruit aboard ($1,000 each on an Errand, $500 each on a Heist)</li>
+          <li><strong>Pai Gow:</strong> While on a brigantine or galleon, all crewmates are rank Doubloon Shark or below ($3,000)</li>
           <li><strong>Blackjack:</strong> Total plunder is $170,000&ndash;$210,000 ($3,000)</li>
           <li><strong>Craps Table:</strong> Total plunder is $620,000 or more ($5,000)</li>
         </ul>
       </div>
-      <div id="bonus-display" class="d-none">
-        <div id="bonus-list-dice" class="form-check d-none ps-0 mb-3">
-          <h4 class="h5">Dice Bonus</h4>
-          <label for="bonus-dice-crew" class="form-label">Number of novices (Stowaways and Recruits) aboard:</label>
-          <input type="number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="bonus-dice-crew">
-          <div class="small ed-tips border border-dark p-2 rounded-2 mt-3 mb-3">
-              <div>For each novice aboard, Dice pays $1,000 on an Errand, or $500 on a Heist.</div>
-          </div>
-        </div>
-        <div id="bonus-list-table" class="d-none">
-          <h4 class="h5">Other Bonuses</h4>
-          <table class="table table-responsive-lg table-dark">
-            <thead>
-              <tr>
-                <th scope="col">Type</th>
-                <th scope="col">Prerequisites</th>
-                <th scope="col" class="text-end">Bonus</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="d-none" id="bonus-list-straight-ship">
-                <th scope="row">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="yes" id="bonus-straight-ship">
-                    <label class="form-check-label" for="bonus-straight-ship">Straight Ship</label>
-                  </div>
-                </th>
-                <td>Each crewmate has a different specialty rank.</td>
-                <td class="text-end">$1,000</td>
-              </tr>
-              <tr class="d-none" id="bonus-list-full-house">
-                <th scope="row">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="yes" id="bonus-full-house">
-                    <label class="form-check-label" for="bonus-full-house">Full House</label>
-                  </div>
-                </th>
-                <td>All crewmates are members of exactly two Cabal of Thieves factions.</td>
-                <td class="text-end">$2,000</td>
-              </tr>
-              <tr class="d-none" id="bonus-list-royal-flush">
-                <th scope="row">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="yes" id="bonus-royal-flush">
-                    <label class="form-check-label" for="bonus-royal-flush">Royal Flush</label>
-                  </div>
-                </th>
-                <td>Each crewmate is a member of the same Cabal of Thieves faction, and each has a different specialty rank.</td>
-                <td class="text-end">$2,500</td>
-              </tr>
-              <tr class="d-none" id="bonus-list-united-deck">
-                <th scope="row">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="yes" id="bonus-united-deck">
-                    <label class="form-check-label" for="bonus-united-deck">United Deck</label>
-                  </div>
-                </th>
-                <td>Each crewmate represents a different Cabal of Thieves faction.</td>
-                <td class="text-end">$2,500</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3" id="bonus-specialty-rank">
-            <div>Visit the <code>#pirate-emporium</code> to purchase a specialty rank ($10,000). Specialty ranks display as an icon on your Discord name in chat.</div>
-            <div>Voyages can't earn both Royal Flush and Straight Ship.</div>
-          </div>
-        </div>
-      </div>
     </form>
     <hr>
-    <h2 class="h3" id="section-summary">Summary</h2>
+    <h2 class="h3" id="section-activity">Log</h2>
+    <p>Record up to ten activities, and how many times you completed each:</p>
+    <div class="row" id="activity-1">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-1-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-1-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-2">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 2" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-2-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-2-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-3">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 3" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-3-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-3-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-4">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 4" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-4-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-4-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-5">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 5" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-5-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-5-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-6">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 6" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-6-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-6-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-7">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 7" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-7-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-7-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-8">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 8" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-8-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-8-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-9">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 9" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-9-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-9-qty">
+      </div>
+    </div>
+    <div class="row d-none" id="activity-10">
+      <div class="col-9">
+        <input type="text" placeholder="Activity 10" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-10-type">
+      </div>
+      <div class="col-3">
+        <input type="number" value="1" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="activity-10-qty">
+      </div>
+    </div>
+    <ul class="list-inline mt-2">
+      <li class="list-inline-item"><button class="btn btn-primary" id="activity-add">Add Row</button></li>
+      <li class="list-inline-item"><button class="btn btn-primary" id="activity-remove">Remove Row</button></li>
+    </ul>
+    <hr>
+    <h2 class="h3" id="section-plunder">Plunder</h2>
+    <p>Note your starting and ending gold and doubloon amounts:</p>
+    <div class="row">
+      <div class="col-1">
+        <img src="images/currency-gold.webp" alt="Gold" aria-hidden="true" class="icon h3">
+      </div>
+      <div class="col-11 col-md-5">
+        <input type="number" placeholder="Starting Gold" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="gold-start">
+      </div>
+      <div class="col-1">
+        <img src="images/currency-gold.webp" alt="Gold" aria-hidden="true" class="icon h3">
+      </div>
+      <div class="col-11 col-md-5">
+        <input type="number" placeholder="Ending Gold" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="gold-end">
+      </div>
+      <div class="col-1">
+        <img src="images/currency-doubloon.webp" alt="Doubloon" aria-hidden="true" class="icon h3">
+      </div>
+      <div class="col-11 col-md-5">
+        <input type="number" placeholder="Starting Doubloons" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="doubloon-start">
+      </div>
+      <div class="col-1">
+        <img src="images/currency-doubloon.webp" alt="Doubloon" aria-hidden="true" class="icon h3">
+      </div>
+      <div class="col-11 col-md-5">
+        <input type="number" placeholder="Ending Doubloons" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="doubloon-end">
+      </div>
+    </div>
+    <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
+      <div>Each gold is worth $1 in plunder. A doubloon is $25.</div>
+    </div>
+    <hr>
+    <h2 class="section-summary">Summary</h2>
     <label for="voyage-summary" class="form-label">Describe the voyage:</label>
     <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-summary">
     <hr>
@@ -323,14 +381,11 @@
         <li class="d-none" id="warning-ship-name"><a href="#section-ship">Missing ship name</a></li>
         <li class="d-none" id="warning-ship-type"><a href="#section-ship">Missing ship type</a></li>
         <li class="d-none" id="warning-job-type"><a href="#section-job">Missing job type</a></li>
-        <li class="d-none" id="warning-roles"><a href="#section-crew">Too many crew ranks selected</a> for <a href="#section-ship">ship type</a></li>
-        <li class="d-none" id="warning-roles-errand"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Errand</a> (requires Smuggler or higher)</li>
-        <li class="d-none" id="warning-roles-heist"><a href="#section-crew">Insufficient crew rank</a> for <a href="#section-job">Heist</a> (requires an Officer)</li>
+        <li class="d-none" id="warning-rank"><a href="#section-crew">Insufficient crew rank</a> for a <a href="#section-job">job type</a></li>
         <li class="d-none" id="warning-gold-missing"><a href="#section-plunder">Missing gold amounts</a></li>
         <li class="d-none" id="warning-gold-negative"><a href="#section-plunder">Negative gold earned</a></li>
         <li class="d-none" id="warning-doubloon-missing"><a href="#section-plunder">Missing doubloon amounts</a></li>
         <li class="d-none" id="warning-doubloon-negative"><a href="#section-plunder">Negative doubloons earned</a></li>
-        <li class="d-none" id="warning-bonus-dice-math">Invalid <a href="#section-bonus">Dice bonus</a> for <a href="#section-ship">ship type</a> or <a href="#section-crew">crew ranks</a></li>
         <li class="d-none" id="warning-summary"><a href="#section-summary">Missing summary</a></li>
       </ol>
     </div>
@@ -407,7 +462,7 @@
           </tr>
           <tr class="d-none" id="total-bonus-dice">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Dice</th>
-            <td class="text-end">+$<span id="total-bonus-dice-amount">&mdash;</span></td>
+            <td class="text-end">(<span id="total-bonus-dice-count">&mdash;</span>), +$<span id="total-bonus-dice-amount">&mdash;</span></td>
           </tr>
           <tr id="total-vault">
             <th scope="row"><span class="float-start" id="faction-icon"></span><span id="total-faction">Crew Cut</span></th>
@@ -422,100 +477,40 @@
       <table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
+            <th scope="col">Crewmate</th>
             <th scope="col">Rank</th>
-            <th scope="col" class="text-center">Abbr.</th>
             <th scope="col" class="text-end">Cut</th>
             <th scope="col" class="text-end">Plunder</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="d-none" id="total-rank-stowaway">
-            <th scope="row">Stowaway</th>
-            <td class="text-center">&mdash;</td>
-            <td class="text-end">&mdash;</td>
-            <td class="text-end">$&mdash;</td>
+          <tr id="total-crew-1">
+            <th scope="row"><span id="total-crew-name-1">&mdash;</span></th>
+            <td><span id="total-crew-rank-1">&mdash;</span></td>
+            <td class="text-end"><span id="total-crew-cut-1">&mdash;</span>%</td>
+            <td class="text-end">$<span id="total-crew-amount-1">&mdash;</span></td>
           </tr>
-          <tr class="d-none" id="total-rank-r">
-            <th scope="row">Recruit</th>
-            <td class="text-center">(R)</td>
-            <td class="text-end">5%</td>
-            <td class="text-end">$<span id="total-rank-amount-r">&mdash;</span></td>
+          <tr id="total-crew-2">
+            <th scope="row"><span id="total-crew-name-2">&mdash;</span></th>
+            <td><span id="total-crew-rank-2">&mdash;</span></td>
+            <td class="text-end"><span id="total-crew-cut-2">&mdash;</span>%</td>
+            <td class="text-end">$<span id="total-crew-amount-2">&mdash;</span></td>
           </tr>
-          <tr class="d-none" id="total-rank-rr">
-            <th scope="row">Rum Runner</th>
-            <td class="text-center">(RR)</td>
-            <td class="text-end">10%</td>
-            <td class="text-end">$<span id="total-rank-amount-rr">&mdash;</span></td>
+          <tr class="d-none" id="total-crew-3">
+            <th scope="row"><span id="total-crew-name-3">&mdash;</span></th>
+            <td><span id="total-crew-rank-3">&mdash;</span></td>
+            <td class="text-end"><span id="total-crew-cut-3">&mdash;</span>%</td>
+            <td class="text-end">$<span id="total-crew-amount-3">&mdash;</span></td>
           </tr>
-          <tr class="d-none" id="total-rank-cs">
-            <th scope="row">Crate Smuggler</th>
-            <td class="text-center">(CS)</td>
-            <td class="text-end">15%</td>
-            <td class="text-end">$<span id="total-rank-amount-cs">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-s">
-            <th scope="row">Smuggler</th>
-            <td class="text-center">(S)</td>
-            <td class="text-end">20%</td>
-            <td class="text-end">$<span id="total-rank-amount-s">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-fd">
-            <th scope="row">Flintlock Dealer</th>
-            <td class="text-center">(FD)</td>
-            <td class="text-end">25%</td>
-            <td class="text-end">$<span id="total-rank-amount-fd">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-ds">
-            <th scope="row">Doubloon Shark</th>
-            <td class="text-center">(DS)</td>
-            <td class="text-end">30%</td>
-            <td class="text-end">$<span id="total-rank-amount-ds">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-bs">
-            <th scope="row">Boatswain</th>
-            <td class="text-center">(BS)</td>
-            <td class="text-end">35%</td>
-            <td class="text-end">$<span id="total-rank-amount-bs">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-pm">
-            <th scope="row">Powder Monkey</th>
-            <td class="text-center">(PM)</td>
-            <td class="text-end">40%</td>
-            <td class="text-end">$<span id="total-rank-amount-pm">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-qm">
-            <th scope="row">Quartermaster</th>
-            <td class="text-center">(QM)</td>
-            <td class="text-end">45%</td>
-            <td class="text-end">$<span id="total-rank-amount-qm">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-1m">
-            <th scope="row">First Mate</th>
-            <td class="text-center">(1M)</td>
-            <td class="text-end">45%</td>
-            <td class="text-end">$<span id="total-rank-amount-1m">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-cc">
-            <th scope="row">Cabal Captain</th>
-            <td class="text-center">(CC)</td>
-            <td class="text-end">50%</td>
-            <td class="text-end">$<span id="total-rank-amount-cc">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-cb">
-            <th scope="row">Cabal Boss</th>
-            <td class="text-center">(CB)</td>
-            <td class="text-end">55%</td>
-            <td class="text-end">$<span id="total-rank-amount-cb">&mdash;</span></td>
-          </tr>
-          <tr class="d-none" id="total-rank-cl">
-            <th scope="row">Cabal Leader</th>
-            <td class="text-center">(CL)</td>
-            <td class="text-end">60%</td>
-            <td class="text-end">$<span id="total-rank-amount-cl">&mdash;</span></td>
+          <tr class="d-none" id="total-crew-4">
+            <th scope="row"><span id="total-crew-name-4">&mdash;</span></th>
+            <td><span id="total-crew-rank-4">&mdash;</span></td>
+            <td class="text-end"><span id="total-crew-cut-4">&mdash;</span>%</td>
+            <td class="text-end">$<span id="total-crew-amount-4">&mdash;</span></td>
           </tr>
         </tbody>
       </table>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3" id="warning-stowaway">
+      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="warning-stowaway">
         <div>Stowaways don't earn income. In order to be reach rank Recruit, the Stowaway must be listed on two voyages, and one of the following:</div>
         <ul class="mb-0">
           <li>Sailed on voyages totaling $500,000</li>
@@ -531,41 +526,36 @@
         <div>**Report:** <span id="report-voyage-summary">&mdash;</span></div>
         <div>&nbsp;</div>
         <div>## :feather: Log</div>
-        <div>1 &times; </div>
-        <div>1 &times; </div>
-        <div>1 &times; </div>
-        <div>1 &times; </div>
-        <div>1 &times; </div>
+        <div class="d-none" id="report-activity-1"><span id="report-activity-1-qty">&mdash;</span> &times; <span id="report-activity-1-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-2"><span id="report-activity-2-qty">&mdash;</span> &times; <span id="report-activity-2-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-3"><span id="report-activity-3-qty">&mdash;</span> &times; <span id="report-activity-3-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-4"><span id="report-activity-4-qty">&mdash;</span> &times; <span id="report-activity-4-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-5"><span id="report-activity-5-qty">&mdash;</span> &times; <span id="report-activity-5-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-6"><span id="report-activity-6-qty">&mdash;</span> &times; <span id="report-activity-6-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-7"><span id="report-activity-7-qty">&mdash;</span> &times; <span id="report-activity-7-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-8"><span id="report-activity-8-qty">&mdash;</span> &times; <span id="report-activity-8-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-9"><span id="report-activity-9-qty">&mdash;</span> &times; <span id="report-activity-9-type">&mdash;</span></div>
+        <div class="d-none" id="report-activity-10"><span id="report-activity-10-qty">&mdash;</span> &times; <span id="report-activity-10-type">&mdash;</span></div>
         <div>&nbsp;</div>
         <div>## :TreasureHunter: Plunder</div>
         <div>:coingold: **Gold:** $<span id="report-total-gold-value">&mdash;</span></div>
         <div>:coindoubloon: **Doubloons:** <span id="report-doubloon-count">&mdash;</span>, $<span id="report-doubloon-gold">&mdash;</span></div>
         <div>:TreasureHunter: **Total:** <span id="report-plunder">&mdash;</span></div>
+        <div class="d-none" id="report-bonus-dice">:game_die: **Dice:** (<span id="report-bonus-dice-count">&mdash;</span>), $<span id="report-bonus-dice-amount">&mdash;</span></div>
+        <div class="d-none" id="report-bonus-pai-gow">:game_die: **Pai Gow:** $3,000</div>
         <div class="d-none" id="report-bonus-straight-ship">:game_die: **Straight Ship:** $1,000</div>
         <div class="d-none" id="report-bonus-full-house">:game_die: **Full House:** $2,000</div>
         <div class="d-none" id="report-bonus-royal-flush">:game_die: **Royal Flush:** $2,000</div>
         <div class="d-none" id="report-bonus-united-deck">:game_die: **United Deck:** $2,500</div>
-        <div class="d-none" id="report-bonus-pai-gow">:game_die: **Pai Gow:** $3,000</div>
         <div class="d-none" id="report-bonus-blackjack">:game_die: **Blackjack:** $3,000</div>
         <div class="d-none" id="report-bonus-craps-table">:game_die: **Craps Table:** $5,000</div>
-        <div class="d-none" id="report-bonus-dice">:game_die: **Dice:** $<span id="report-bonus-dice-amount"></span></div>
         <div>&nbsp;</div>
         <div>## <span id="report-ship-type">&mdash;</span> Crew</div>
         <div><span id="report-faction-icon">:cabal:</span> <span id="report-faction-vault">Crew Cut</span> $<span id="report-faction-vault-amount">&mdash;</span></div>
-        <div class="d-none" id="report-rank-stowaway">@ (Stowaway) (Achievements)</div>
-        <div class="d-none" id="report-rank-r">@ (R) $<span id="report-rank-amount-r">&mdash;</span></div>
-        <div class="d-none" id="report-rank-rr">@ (RR) $<span id="report-rank-amount-rr">&mdash;</span></div>
-        <div class="d-none" id="report-rank-cs">@ (CS) $<span id="report-rank-amount-cs">&mdash;</span></div>
-        <div class="d-none" id="report-rank-s">@ (S) $<span id="report-rank-amount-s">&mdash;</span></div>
-        <div class="d-none" id="report-rank-fd">@ (FD) $<span id="report-rank-amount-fd">&mdash;</span></div>
-        <div class="d-none" id="report-rank-ds">@ (DS) $<span id="report-rank-amount-ds">&mdash;</span></div>
-        <div class="d-none" id="report-rank-bs">@ (BS) $<span id="report-rank-amount-bs">&mdash;</span></div>
-        <div class="d-none" id="report-rank-pm">@ (PM) $<span id="report-rank-amount-pm">&mdash;</span></div>
-        <div class="d-none" id="report-rank-qm">@ (QM) $<span id="report-rank-amount-qm">&mdash;</span></div>
-        <div class="d-none" id="report-rank-1m">@ (1M) $<span id="report-rank-amount-1m">&mdash;</span></div>
-        <div class="d-none" id="report-rank-cc">@ (CC) $<span id="report-rank-amount-cc">&mdash;</span></div>
-        <div class="d-none" id="report-rank-cb">@ (CB) $<span id="report-rank-amount-cb">&mdash;</span></div>
-        <div class="d-none" id="report-rank-cl">@ (CL) $<span id="report-rank-amount-cl">&mdash;</span></div>
+        <div id="report-crew-1">@<span id="report-crew-name-1"></span> (<span id="report-crew-rank-1"></span>) ($<span id="report-crew-1-amount">&mdash;</span>)</div>
+        <div id="report-crew-2">@<span id="report-crew-name-2"></span> (<span id="report-crew-rank-2"></span>) ($<span id="report-crew-2-amount">&mdash;</span>)</div>
+        <div class="d-none" id="report-crew-3">@<span id="report-crew-name-3"></span> (<span id="report-crew-rank-3"></span>) ($<span id="report-crew-3-amount">&mdash;</span>)</div>
+        <div class="d-none" id="report-crew-4">@<span id="report-crew-name-4"></span> (<span id="report-crew-rank-4"></span>) ($<span id="report-crew-4-amount">&mdash;</span>)</div>
       </div>
     </div>
     <hr>
