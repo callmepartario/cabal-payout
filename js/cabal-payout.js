@@ -368,12 +368,16 @@ function selectJobHeist() {
 
 /* Add or remove crew rows */
 function crewAdd() {
-    crewSupplement++;
-    crewShow();
+    if (shipType >= 2) {
+        crewSupplement++;
+        crewShow();
+    }
 };
 function crewRemove() {
-    crewSupplement--;
-    crewShow();
+    if (shipType >= 2) {
+        crewSupplement--;
+        crewShow();
+    }
 };
 function crewShow() {
     // contstrain variables based on selections
