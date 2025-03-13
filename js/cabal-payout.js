@@ -493,7 +493,7 @@ function activityRemove() {
     }
 };
 function checkActivityRow(x) {
-    if (activityRows > (x)) {
+    if (activityRows >= (x)) {
         document.getElementById('report-activity-' + x).classList.remove('d-none');
         document.getElementById('report-activity-' + x + '-qty').classList.remove('d-none');
     }
@@ -1399,13 +1399,13 @@ function checkReportErrors() {
         else {
             document.getElementById('warning-participation').classList.add('d-none');
         }
-        /* Check for stowaways to to explain payout */
-        if (crewStowawayPresent == true) {
-            document.getElementById('warning-stowaway').classList.remove('d-none');
-        }
-        else {
-            document.getElementById('warning-stowaway').classList.add('d-none');
-        }
+    }
+    /* Check for stowaway presence and explain $0 payout */
+    if (crewStowawayPresent == true) {
+        document.getElementById('warning-stowaway').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('warning-stowaway').classList.add('d-none');
     }
     /* Check summary */
     if (voyageSummaryValue == '') { 
