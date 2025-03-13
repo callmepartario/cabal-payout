@@ -1339,6 +1339,14 @@ function checkReportErrors() {
     }
     else { 
         document.getElementById('warning-job-type').classList.add('d-none');
+        /* Check crew ranks vs job types */
+        if ((jobType == 'Errand' && crewRankLevel < 5) || (jobType == 'Heist' && crewRankLevel < 8)) {
+            document.getElementById('warning-rank').classList.remove('d-none');
+            errorCount++;
+        }
+        else {
+            document.getElementById('warning-rank').classList.add('d-none');
+        }
     }
     /* Check gold */
     if (goldStartValue === '' || goldEndValue === '') { 
@@ -1370,21 +1378,6 @@ function checkReportErrors() {
     else { 
         document.getElementById('warning-doubloon-negative').classList.add('d-none');
     }
-    /* Check crew ranks vs job types */
-    if ((jobType == 'Errand' && crewRankLevel < 5) || (jobType == 'Heist' && crewRankLevel < 8)) {
-        document.getElementById('warning-rank').classList.remove('d-none');
-        errorCount++;
-    }
-    else {
-        document.getElementById('warning-rank').classList.add('d-none');
-    }
-    /* Check for stowaways to to explain payout */
-    if (crewStowawayPresent == true) {
-        document.getElementById('warning-stowaway').classList.remove('d-none');
-    }
-    else {
-        document.getElementById('warning-stowaway').classList.add('d-none');
-    }
     /* Check for proper participation percentages on supplemented crews */
     if (crewSupplement > 0) {
         // crew participation is 1-100%
@@ -1405,6 +1398,13 @@ function checkReportErrors() {
         }
         else {
             document.getElementById('warning-participation').classList.add('d-none');
+        }
+        /* Check for stowaways to to explain payout */
+        if (crewStowawayPresent == true) {
+            document.getElementById('warning-stowaway').classList.remove('d-none');
+        }
+        else {
+            document.getElementById('warning-stowaway').classList.add('d-none');
         }
     }
     /* Check summary */
