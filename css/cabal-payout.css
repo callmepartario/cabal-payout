@@ -7,7 +7,18 @@ body {
 a { color: #facc8e; }
 a:hover { color: #fca832; }
 .bg-black { background-color: #181818; }
-.ed-tips { color: #aaa; background-color: #314954; }
+.ed-tips { 
+    color: #aaa; 
+    background-color: #314954; 
+    font-family: "Shantell Sans", cursive;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "BNCE" 0,
+        "INFM" 0,
+        "SPAC" 0;
+}
 
 .cabal-logo { margin-top: 1rem; margin-left: 1rem; max-width: 100px; }
 

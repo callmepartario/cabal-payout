@@ -174,6 +174,8 @@ let activityRows = 0;
 let errorCount = 0;
 let warning = false;
 
+let helpToggle = false;
+
 document.getElementById('select-faction-ao').onclick = function() {selectFactionAO()};
 document.getElementById('select-faction-ac').onclick = function() {selectFactionAC()};
 document.getElementById('select-faction-kw').onclick = function() {selectFactionKW()};
@@ -197,6 +199,34 @@ document.getElementById('activity-remove').onclick = function() {activityRemove(
 document.getElementById('generate-report').onclick = function() {generateReport()};
 
 document.getElementById("voyage").addEventListener("load", checkBonusEligibility());
+
+document.getElementById("toggle-help").onclick = function() {toggleHelp()};
+
+/* Toggle help */
+function toggleHelp() {
+    if (helpToggle == false) {
+        document.getElementById('help-faction').classList.remove('d-none');
+        document.getElementById('help-ship').classList.remove('d-none');
+        document.getElementById('help-job').classList.remove('d-none');
+        document.getElementById('help-crew').classList.remove('d-none');
+        document.getElementById('help-bonus').classList.remove('d-none');
+        document.getElementById('help-activity').classList.remove('d-none');
+        document.getElementById('help-plunder').classList.remove('d-none');
+        document.getElementById('help-summary').classList.remove('d-none');
+        helpToggle = true;
+    }
+    else {
+        document.getElementById('help-faction').classList.add('d-none');
+        document.getElementById('help-ship').classList.add('d-none');
+        document.getElementById('help-job').classList.add('d-none');
+        document.getElementById('help-crew').classList.add('d-none');
+        document.getElementById('help-bonus').classList.add('d-none');
+        document.getElementById('help-activity').classList.add('d-none');
+        document.getElementById('help-plunder').classList.add('d-none');
+        document.getElementById('help-summary').classList.add('d-none');
+        helpToggle = false;
+    }
+};
 
 /* Select Faction */
 function deselectFaction() {
