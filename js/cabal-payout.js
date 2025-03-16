@@ -1458,6 +1458,7 @@ function generateReport() {
     document.getElementById('report-ship-type').innerHTML = shipTypeEmoji;
     document.getElementById('report-ship-name').innerHTML = shipNameValue;
     document.getElementById('report-job-type').innerHTML = jobType;
+    document.getElementById('report-job-rate').innerHTML = jobRate * 100;
     document.getElementById('report-voyage-summary').innerHTML = voyageSummaryValue;
     checkActivityLog();
     // Populate Gold
@@ -1486,7 +1487,7 @@ function generateReport() {
     document.getElementById('report-plunder').innerHTML = printNumber(totalPlunder);
     document.getElementById('total-job-type').innerHTML = printNumber(jobType);
     document.getElementById('total-job-rate').innerHTML = '(' + jobRate * 100 + '%)';
-    document.getElementById('total-job-pay').innerHTML = printNumber(totalJobPay);
+    document.getElementById('total-job-rate').innerHTML = '(' + jobRate * 100 + '%)';
     // Populate Faction Vault Cut
     totalFactionVault = Math.round(totalJobPay) + totalBonus;
     document.getElementById('faction-icon').innerHTML = factionIcon;

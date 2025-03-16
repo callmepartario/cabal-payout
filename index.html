@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-      <div><em>version 1.03f (updated 2025-03-15)</em></div>
+      <div><em>version 1.03g (updated 2025-03-16)</em></div>
       <div>This tool is an independent production. Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <hr>
@@ -577,7 +577,7 @@
       <div>Pressing the button again updates this report with any changes.</div>
     </div>
     <div class="d-none" id="report-container">
-      <h3 class="h5">Total</h3>
+      <h3>Total</h3>
       <table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
@@ -600,7 +600,7 @@
           </tr>
         </tbody>
       </table>
-      <h3 class="h5">Faction Cut</h3>
+      <h3>Faction Cut</h3>
       <table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
@@ -613,13 +613,17 @@
             <th scope="row"><img src="images/currency-vault.webp" aria-hidden="true" alt="" class="float-start icon"><span id="total-job-type">Job Type</span></th>
             <td class="text-end"><span id="total-job-rate">&mdash;%</span>, +$<span id="total-job-pay">&mdash;</span></td>
           </tr>
-          <tr class="d-none" id="total-bonus-straight-ship">
-            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Straight Ship</th>
-            <td class="text-end">+$1,000</td>
+          <tr class="d-none" id="total-bonus-craps-table">
+            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Craps Table</th>
+            <td class="text-end">+$5,000</td>
           </tr>
-          <tr class="d-none" id="total-bonus-full-house">
-            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Full House</th>
-            <td class="text-end">+$2,000</td>
+          <tr class="d-none" id="total-bonus-blackjack">
+            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Blackjack</th>
+            <td class="text-end">+$3,000</td>
+          </tr>
+          <tr class="d-none" id="total-bonus-pai-gow">
+            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Pai Gow</th>
+            <td class="text-end">+$3,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-royal-flush">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Royal Flush</th>
@@ -629,17 +633,13 @@
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">United Deck</th>
             <td class="text-end">+$2,500</td>
           </tr>
-          <tr class="d-none" id="total-bonus-pai-gow">
-            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Pai Gow</th>
-            <td class="text-end">+$3,000</td>
+          <tr class="d-none" id="total-bonus-full-house">
+            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Full House</th>
+            <td class="text-end">+$2,000</td>
           </tr>
-          <tr class="d-none" id="total-bonus-blackjack">
-            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Blackjack</th>
-            <td class="text-end">+$3,000</td>
-          </tr>
-          <tr class="d-none" id="total-bonus-craps-table">
-            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Craps Table</th>
-            <td class="text-end">+$5,000</td>
+          <tr class="d-none" id="total-bonus-straight-ship">
+            <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Straight Ship</th>
+            <td class="text-end">+$1,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-dice">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Dice</th>
@@ -654,7 +654,7 @@
       <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3" id="warning-lf">
         <div>The Lord of the Fleets doesn't maintain a vault.</div>
       </div>
-      <h3 class="h5">Crew Cut</h3>
+      <h3>Crew Cut</h3>
       <table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
@@ -739,7 +739,7 @@
       <div class="border border-dark p-3 rounded-3 mt-3 copyblock font-monospace ed-tips small" id="copy-report">
         <div># <span id="report-voyage-number">&mdash;</span> Voyage of @<span id="report-faction-name">&mdash;</span></div>
         <div>**Ship:** <span id="report-ship-name">&mdash;</span></div>
-        <div>**Job Type:** <span id="report-job-type">&mdash;</span></div>
+        <div>**Job Type:** <span id="report-job-type">&mdash;</span> (<span id="report-job-rate">&mdash;</span>%)</div>
         <div>**Report:** <span id="report-voyage-summary">&mdash;</span></div>
         <div>&nbsp;</div>
         <div>## :feather: Log</div>
@@ -759,14 +759,14 @@
         <div>:coingold: **Gold:** $<span id="report-total-gold-value">&mdash;</span></div>
         <div>:coindoubloon: **Doubloons:** (<span id="report-doubloon-count">&mdash;</span>), $<span id="report-doubloon-gold">&mdash;</span></div>
         <div>:TreasureHunter: **Total:** $<span id="report-plunder">&mdash;</span></div>
-        <div class="d-none" id="report-bonus-dice">:game_die: **Dice:** (<span id="report-bonus-dice-count">&mdash;</span>), $<span id="report-bonus-dice-amount">&mdash;</span></div>
+        <div class="d-none" id="report-bonus-craps-table">:game_die: **Craps Table:** $5,000</div>
+        <div class="d-none" id="report-bonus-blackjack">:game_die: **Blackjack:** $3,000</div>
         <div class="d-none" id="report-bonus-pai-gow">:game_die: **Pai Gow:** $3,000</div>
-        <div class="d-none" id="report-bonus-straight-ship">:game_die: **Straight Ship:** $1,000</div>
+        <div class="d-none" id="report-bonus-united-deck">:game_die: **United Deck:** $2,500</div>
         <div class="d-none" id="report-bonus-full-house">:game_die: **Full House:** $2,000</div>
         <div class="d-none" id="report-bonus-royal-flush">:game_die: **Royal Flush:** $2,000</div>
-        <div class="d-none" id="report-bonus-united-deck">:game_die: **United Deck:** $2,500</div>
-        <div class="d-none" id="report-bonus-blackjack">:game_die: **Blackjack:** $3,000</div>
-        <div class="d-none" id="report-bonus-craps-table">:game_die: **Craps Table:** $5,000</div>
+        <div class="d-none" id="report-bonus-straight-ship">:game_die: **Straight Ship:** $1,000</div>
+        <div class="d-none" id="report-bonus-dice">:game_die: **Dice:** (<span id="report-bonus-dice-count">&mdash;</span>), $<span id="report-bonus-dice-amount">&mdash;</span></div>
         <div>&nbsp;</div>
         <div>## <span id="report-ship-type">&mdash;</span> Crew</div>
         <div><span id="report-faction-icon">:cabal:</span> <span id="report-faction-vault">Crew Cut</span> $<span id="report-faction-vault-amount">&mdash;</span></div>
