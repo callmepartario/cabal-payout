@@ -214,6 +214,8 @@ function toggleHelp() {
         document.getElementById('help-plunder').classList.remove('d-none');
         document.getElementById('help-summary').classList.remove('d-none');
         helpToggle = true;
+        document.getElementById("toggle-help").classList.remove('btn-dark');
+        document.getElementById("toggle-help").classList.add('btn-primary');
     }
     else {
         document.getElementById('help-faction').classList.add('d-none');
@@ -225,6 +227,8 @@ function toggleHelp() {
         document.getElementById('help-plunder').classList.add('d-none');
         document.getElementById('help-summary').classList.add('d-none');
         helpToggle = false;
+        document.getElementById("toggle-help").classList.remove('btn-primary');
+        document.getElementById("toggle-help").classList.add('btn-dark');
     }
 };
 
