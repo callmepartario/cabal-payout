@@ -214,8 +214,8 @@ function toggleHelp() {
         document.getElementById('help-plunder').classList.remove('d-none');
         document.getElementById('help-summary').classList.remove('d-none');
         helpToggle = true;
-        document.getElementById("toggle-help").classList.remove('btn-dark');
-        document.getElementById("toggle-help").classList.add('btn-primary');
+        document.getElementById("toggle-help").classList.remove('btn-muted');
+        document.getElementById("toggle-help").classList.add('btn-selected');
     }
     else {
         document.getElementById('help-faction').classList.add('d-none');
@@ -227,43 +227,43 @@ function toggleHelp() {
         document.getElementById('help-plunder').classList.add('d-none');
         document.getElementById('help-summary').classList.add('d-none');
         helpToggle = false;
-        document.getElementById("toggle-help").classList.remove('btn-primary');
-        document.getElementById("toggle-help").classList.add('btn-dark');
+        document.getElementById("toggle-help").classList.remove('btn-selected');
+        document.getElementById("toggle-help").classList.add('btn-muted');
     }
 };
 
 /* Select Faction */
 function deselectFaction() {
     document.getElementById('total-vault').classList.remove('d-none');
-    if (document.getElementById('select-faction-ao').classList.contains('btn-primary')) {
-        document.getElementById('select-faction-ao').classList.remove('btn-primary');
-        document.getElementById('select-faction-ao').classList.add('btn-secondary');
+    if (document.getElementById('select-faction-ao').classList.contains('btn-selected')) {
+        document.getElementById('select-faction-ao').classList.remove('btn-selected');
+        document.getElementById('select-faction-ao').classList.add('btn-muted');
     }
-    if (document.getElementById('select-faction-ac').classList.contains('btn-primary')) {
-        document.getElementById('select-faction-ac').classList.remove('btn-primary');
-        document.getElementById('select-faction-ac').classList.add('btn-secondary');
+    if (document.getElementById('select-faction-ac').classList.contains('btn-selected')) {
+        document.getElementById('select-faction-ac').classList.remove('btn-selected');
+        document.getElementById('select-faction-ac').classList.add('btn-muted');
     }
-    if (document.getElementById('select-faction-kw').classList.contains('btn-primary')) {
-        document.getElementById('select-faction-kw').classList.remove('btn-primary');
-        document.getElementById('select-faction-kw').classList.add('btn-secondary');
+    if (document.getElementById('select-faction-kw').classList.contains('btn-selected')) {
+        document.getElementById('select-faction-kw').classList.remove('btn-selected');
+        document.getElementById('select-faction-kw').classList.add('btn-muted');
     }
-    if (document.getElementById('select-faction-ns').classList.contains('btn-primary')) {
-        document.getElementById('select-faction-ns').classList.remove('btn-primary');
-        document.getElementById('select-faction-ns').classList.add('btn-secondary');
+    if (document.getElementById('select-faction-ns').classList.contains('btn-selected')) {
+        document.getElementById('select-faction-ns').classList.remove('btn-selected');
+        document.getElementById('select-faction-ns').classList.add('btn-muted');
     }
-    if (document.getElementById('select-faction-mg').classList.contains('btn-primary')) {
-        document.getElementById('select-faction-mg').classList.remove('btn-primary');
-        document.getElementById('select-faction-mg').classList.add('btn-secondary');
+    if (document.getElementById('select-faction-mg').classList.contains('btn-selected')) {
+        document.getElementById('select-faction-mg').classList.remove('btn-selected');
+        document.getElementById('select-faction-mg').classList.add('btn-muted');
     }
-    if (document.getElementById('select-faction-lf').classList.contains('btn-primary')) {
-        document.getElementById('select-faction-lf').classList.remove('btn-primary');
-        document.getElementById('select-faction-lf').classList.add('btn-secondary');
+    if (document.getElementById('select-faction-lf').classList.contains('btn-selected')) {
+        document.getElementById('select-faction-lf').classList.remove('btn-selected');
+        document.getElementById('select-faction-lf').classList.add('btn-muted');
     }
 }
 function selectFactionAO() {
     deselectFaction();
-    document.getElementById('select-faction-ao').classList.remove('btn-secondary');
-    document.getElementById('select-faction-ao').classList.add('btn-primary');
+    document.getElementById('select-faction-ao').classList.remove('btn-muted');
+    document.getElementById('select-faction-ao').classList.add('btn-selected');
     faction = 'AO';
     factionFleet = 'The Ancient Armada';
     factionIcon = "<img src='images/faction-ao.webp' aria-hidden='true' alt='' class='icon'>";
@@ -273,8 +273,8 @@ function selectFactionAO() {
 };
 function selectFactionAC() {
     deselectFaction();
-    document.getElementById('select-faction-ac').classList.remove('btn-secondary');
-    document.getElementById('select-faction-ac').classList.add('btn-primary');
+    document.getElementById('select-faction-ac').classList.remove('btn-muted');
+    document.getElementById('select-faction-ac').classList.add('btn-selected');
     faction = 'AC';
     factionFleet = "The Devil's Fleet";
     factionIcon = "<img src='images/faction-ac.webp' aria-hidden='true' alt='' class='icon'>";
@@ -284,8 +284,8 @@ function selectFactionAC() {
 };
 function selectFactionKW() {
     deselectFaction();
-    document.getElementById('select-faction-kw').classList.remove('btn-secondary');
-    document.getElementById('select-faction-kw').classList.add('btn-primary');
+    document.getElementById('select-faction-kw').classList.remove('btn-muted');
+    document.getElementById('select-faction-kw').classList.add('btn-selected');
     faction = 'KW';
     factionFleet = 'The Convoy of the Wilds';
     factionIcon = "<img src='images/faction-kw.webp' aria-hidden='true' alt='' class='icon'>";
@@ -295,8 +295,8 @@ function selectFactionKW() {
 };
 function selectFactionNS() {
     deselectFaction();
-    document.getElementById('select-faction-ns').classList.remove('btn-secondary');
-    document.getElementById('select-faction-ns').classList.add('btn-primary');
+    document.getElementById('select-faction-ns').classList.remove('btn-muted');
+    document.getElementById('select-faction-ns').classList.add('btn-selected');
     faction = 'NS';
     factionFleet = "The Norsemen's Storm Fleet";
     factionIcon = "<img src='images/faction-ns.webp' aria-hidden='true' alt='' class='icon'>";
@@ -306,8 +306,8 @@ function selectFactionNS() {
 };
 function selectFactionMG() {
     deselectFaction();
-    document.getElementById('select-faction-mg').classList.remove('btn-secondary');
-    document.getElementById('select-faction-mg').classList.add('btn-primary');
+    document.getElementById('select-faction-mg').classList.remove('btn-muted');
+    document.getElementById('select-faction-mg').classList.add('btn-selected');
     faction = 'MG';
     factionIcon = "<img src='images/faction-mg.webp' aria-hidden='true' alt='' class='icon'>";
     factionIconReport = ":marauders:";
@@ -317,8 +317,8 @@ function selectFactionMG() {
 };
 function selectFactionLF() {
     deselectFaction();
-    document.getElementById('select-faction-lf').classList.remove('btn-secondary');
-    document.getElementById('select-faction-lf').classList.add('btn-primary');
+    document.getElementById('select-faction-lf').classList.remove('btn-muted');
+    document.getElementById('select-faction-lf').classList.add('btn-selected');
     faction = 'LF';
     factionIcon = "<img src='images/cabal.webp' aria-hidden='true' alt='' class='icon'>";
     factionIconReport = ":cabal:";
@@ -328,23 +328,23 @@ function selectFactionLF() {
 
 /* Select Ship Size */
 function deselectShip() {
-    if (document.getElementById('select-ship-sloop').classList.contains('btn-primary')) {
-        document.getElementById('select-ship-sloop').classList.remove('btn-primary');
-        document.getElementById('select-ship-sloop').classList.add('btn-secondary');
+    if (document.getElementById('select-ship-sloop').classList.contains('btn-selected')) {
+        document.getElementById('select-ship-sloop').classList.remove('btn-selected');
+        document.getElementById('select-ship-sloop').classList.add('btn-muted');
     }
-    if (document.getElementById('select-ship-brigantine').classList.contains('btn-primary')) {
-        document.getElementById('select-ship-brigantine').classList.remove('btn-primary');
-        document.getElementById('select-ship-brigantine').classList.add('btn-secondary');
+    if (document.getElementById('select-ship-brigantine').classList.contains('btn-selected')) {
+        document.getElementById('select-ship-brigantine').classList.remove('btn-selected');
+        document.getElementById('select-ship-brigantine').classList.add('btn-muted');
     }
-    if (document.getElementById('select-ship-galleon').classList.contains('btn-primary')) {
-        document.getElementById('select-ship-galleon').classList.remove('btn-primary');
-        document.getElementById('select-ship-galleon').classList.add('btn-secondary');
+    if (document.getElementById('select-ship-galleon').classList.contains('btn-selected')) {
+        document.getElementById('select-ship-galleon').classList.remove('btn-selected');
+        document.getElementById('select-ship-galleon').classList.add('btn-muted');
     }
 }
 function selectShipSloop() {
     deselectShip();
-    document.getElementById('select-ship-sloop').classList.remove('btn-secondary');
-    document.getElementById('select-ship-sloop').classList.add('btn-primary');
+    document.getElementById('select-ship-sloop').classList.remove('btn-muted');
+    document.getElementById('select-ship-sloop').classList.add('btn-selected');
     shipType = 2;
     shipTypeEmoji = ':shipSloop1:';
     selectJobErrand();
@@ -353,8 +353,8 @@ function selectShipSloop() {
 };
 function selectShipBrigantine() {
     deselectShip();
-    document.getElementById('select-ship-brigantine').classList.remove('btn-secondary');
-    document.getElementById('select-ship-brigantine').classList.add('btn-primary');
+    document.getElementById('select-ship-brigantine').classList.remove('btn-muted');
+    document.getElementById('select-ship-brigantine').classList.add('btn-selected');
     shipType = 3;
     shipTypeEmoji = ':shipBrigantine1:';
     crewShow();
@@ -362,8 +362,8 @@ function selectShipBrigantine() {
 };
 function selectShipGalleon() {
     deselectShip();
-    document.getElementById('select-ship-galleon').classList.remove('btn-secondary');
-    document.getElementById('select-ship-galleon').classList.add('btn-primary');
+    document.getElementById('select-ship-galleon').classList.remove('btn-muted');
+    document.getElementById('select-ship-galleon').classList.add('btn-selected');
     shipType = 4;
     shipTypeEmoji = ':emoji_100:';
     crewShow();
@@ -372,19 +372,19 @@ function selectShipGalleon() {
 
 /* Select Job */
 function deselectJob() {
-    if (document.getElementById('select-job-errand').classList.contains('btn-primary')) {
-        document.getElementById('select-job-errand').classList.remove('btn-primary');
-        document.getElementById('select-job-errand').classList.add('btn-secondary');
+    if (document.getElementById('select-job-errand').classList.contains('btn-selected')) {
+        document.getElementById('select-job-errand').classList.remove('btn-selected');
+        document.getElementById('select-job-errand').classList.add('btn-muted');
     }
-    if (document.getElementById('select-job-heist').classList.contains('btn-primary')) {
-        document.getElementById('select-job-heist').classList.remove('btn-primary');
-        document.getElementById('select-job-heist').classList.add('btn-secondary');
+    if (document.getElementById('select-job-heist').classList.contains('btn-selected')) {
+        document.getElementById('select-job-heist').classList.remove('btn-selected');
+        document.getElementById('select-job-heist').classList.add('btn-muted');
     }
 }
 function selectJobErrand() {
     deselectJob();
-    document.getElementById('select-job-errand').classList.remove('btn-secondary');
-    document.getElementById('select-job-errand').classList.add('btn-primary');
+    document.getElementById('select-job-errand').classList.remove('btn-muted');
+    document.getElementById('select-job-errand').classList.add('btn-selected');
     jobType = 'Errand';
     jobRate = 0.05;
     checkBonusEligibility();
@@ -392,8 +392,8 @@ function selectJobErrand() {
 function selectJobHeist() {
     if (shipType > 2) {
         deselectJob();
-        document.getElementById('select-job-heist').classList.remove('btn-secondary');
-        document.getElementById('select-job-heist').classList.add('btn-primary');
+        document.getElementById('select-job-heist').classList.remove('btn-muted');
+        document.getElementById('select-job-heist').classList.add('btn-selected');
         jobType = 'Heist';
         jobRate = 0.08;
         checkBonusEligibility();
@@ -1321,20 +1321,11 @@ function checkCrewCut() {
 
 /* Error check */
 function checkReportErrors() {
-    checkCrewRanks();
-    checkBonusDice();
-    checkBonusPaiGow();
-    checkBonusStraightShip();
-    checkBonusFullHouse();
-    checkBonusRoyalFlush();
-    checkBonusUnitedDeck();
-    checkBonusBlackjack();
-    checkBonusCrapsTable();
-    checkBonusTotal();
-    checkCrewCut();
     /* reset */
     errorCount = 0;
     /* Check voyage number */
+    voyageNumber = document.getElementById('voyage-number');
+    voyageNumberValue = voyageNumber.value;
     if (voyageNumberValue == '') { 
         document.getElementById('warning-voyage-number').classList.remove('d-none');
         errorCount++;
@@ -1351,6 +1342,8 @@ function checkReportErrors() {
         document.getElementById('warning-faction').classList.add('d-none');
     }
     /* Check ship name */
+    shipName = document.getElementById('ship-name');
+    shipNameValue = shipName.value;    
     if (shipNameValue == '') { 
         document.getElementById('warning-ship-name').classList.remove('d-none');
         errorCount++;
@@ -1374,6 +1367,7 @@ function checkReportErrors() {
     else { 
         document.getElementById('warning-job-type').classList.add('d-none');
         /* Check crew ranks vs job types */
+        checkCrewRanks();
         if ((jobType == 'Errand' && crewRankLevel < 5) || (jobType == 'Heist' && crewRankLevel < 8)) {
             document.getElementById('warning-rank').classList.remove('d-none');
             errorCount++;
@@ -1383,6 +1377,10 @@ function checkReportErrors() {
         }
     }
     /* Check gold */
+    goldStart = document.getElementById('gold-start');    
+    goldStartValue = goldStart.value;
+    goldEnd = document.getElementById('gold-end');    
+    goldEndValue = goldEnd.value;
     if (goldStartValue === '' || goldEndValue === '') { 
         document.getElementById('warning-gold-missing').classList.remove('d-none');
         errorCount++;
@@ -1395,9 +1393,14 @@ function checkReportErrors() {
         errorCount++;
     }
     else { 
+        totalGold = goldEndValue - goldStartValue;
         document.getElementById('warning-gold-negative').classList.add('d-none');
     }
     /* Check doubloons */
+    doubloonStart = document.getElementById('doubloon-start');    
+    doubloonStartValue = doubloonStart.value;
+    doubloonEnd = document.getElementById('doubloon-end');
+    doubloonEndValue = doubloonEnd.value;
     if (doubloonStartValue === '' || doubloonEndValue === '') { 
         document.getElementById('warning-doubloon-missing').classList.remove('d-none');
         errorCount++;
@@ -1410,11 +1413,13 @@ function checkReportErrors() {
         errorCount++;
     }
     else { 
+        totalDoubloonCount = (doubloonEndValue - doubloonStartValue);
+        totalDoubloonGold = totalDoubloonCount * 25;    
         document.getElementById('warning-doubloon-negative').classList.add('d-none');
     }
-    /* Check for proper participation percentages on supplemented crews */
+    /* Check for participation totals */
     if (crewSupplement > 0) {
-        // crew participation is 1-100%
+        // all crew participate between 1-100%
         if ((shipType + crewSupplement >= 1 && crewPercent1Value < 1) || (shipType + crewSupplement >= 1 && crewPercent1Value > 100) || (shipType + crewSupplement >= 2 && crewPercent2Value < 1) || (shipType + crewSupplement >= 2 && crewPercent2Value > 100) || (shipType + crewSupplement >= 3 && crewPercent3Value < 1) || (shipType + crewSupplement >= 3 && crewPercent3Value > 100) || (shipType + crewSupplement >= 4 && crewPercent4Value < 1) || (shipType + crewSupplement >= 4 && crewPercent4Value > 100) || (shipType + crewSupplement >= 5 && crewPercent5Value < 1) || (shipType + crewSupplement >= 5 && crewPercent5Value > 100) || (shipType + crewSupplement >= 6 && crewPercent6Value < 1) || (shipType + crewSupplement >= 6 && crewPercent6Value > 100) || (shipType + crewSupplement >= 7 && crewPercent7Value < 1) || (shipType + crewSupplement >= 7 && crewPercent7Value > 100) || (shipType + crewSupplement >= 8 && crewPercent8Value < 1) || (shipType + crewSupplement >= 8 && crewPercent8Value > 100) || (shipType + crewSupplement >= 9 && crewPercent9Value < 1) || (shipType + crewSupplement >= 9 && crewPercent9Value > 100) || (shipType + crewSupplement >= 10 && crewPercent10Value < 1) || (shipType + crewSupplement >= 10 && crewPercent10Value > 100)) {
             document.getElementById('warning-participation-percentage').classList.remove('d-none');
             errorCount++;
@@ -1434,6 +1439,16 @@ function checkReportErrors() {
             document.getElementById('warning-participation').classList.add('d-none');
         }
     }
+    /* Check for bonuses */
+    checkBonusDice();
+    checkBonusPaiGow();
+    checkBonusStraightShip();
+    checkBonusFullHouse();
+    checkBonusRoyalFlush();
+    checkBonusUnitedDeck();
+    checkBonusBlackjack();
+    checkBonusCrapsTable();
+    checkBonusTotal();
     /* Check for stowaway presence and explain $0 payout */
     if (crewStowawayPresent == true) {
         document.getElementById('warning-stowaway').classList.remove('d-none');
@@ -1442,6 +1457,8 @@ function checkReportErrors() {
         document.getElementById('warning-stowaway').classList.add('d-none');
     }
     /* Check summary */
+    voyageSummary = document.getElementById('voyage-summary');
+    voyageSummaryValue = voyageSummary.value;    
     if (voyageSummaryValue == '') { 
         document.getElementById('warning-summary').classList.remove('d-none');
         errorCount++;
@@ -1470,6 +1487,11 @@ function checkReportErrors() {
     }
     else {
         document.getElementById('warning-lf').classList.add('d-none');
+        // Create totals
+        totalPlunder = totalGold + totalDoubloonGold;
+        totalJobPay = Math.round(totalPlunder * jobRate);
+        totalFactionVault = totalJobPay + totalBonus;
+        checkCrewCut();
     }
 };
 
@@ -1479,14 +1501,11 @@ function printNumber(x) {
 }
 
 function generateReport() {
+    // check for Errors
+    checkReportErrors();
+    // Scroll to success or failure
     document.getElementById('section-report').scrollIntoView();
     // Populate Text
-    voyageNumber = document.getElementById('voyage-number');
-    voyageNumberValue = voyageNumber.value;
-    voyageSummary = document.getElementById('voyage-summary');
-    voyageSummaryValue = voyageSummary.value;
-    shipName = document.getElementById('ship-name');
-    shipNameValue = shipName.value;
     document.getElementById('report-faction-name').innerHTML = factionFleet;
     document.getElementById('report-voyage-number').innerHTML = voyageNumberValue;
     document.getElementById('report-ship-type').innerHTML = shipTypeEmoji;
@@ -1494,42 +1513,27 @@ function generateReport() {
     document.getElementById('report-job-type').innerHTML = jobType;
     document.getElementById('report-job-rate').innerHTML = jobRate * 100;
     document.getElementById('report-voyage-summary').innerHTML = voyageSummaryValue;
+    // Populate Activity Log
     checkActivityLog();
     // Populate Gold
-    goldStart = document.getElementById('gold-start');    
-    goldStartValue = goldStart.value;
-    goldEnd = document.getElementById('gold-end');    
-    goldEndValue = goldEnd.value;
-    totalGold = goldEndValue - goldStartValue;
     document.getElementById('total-gold-value').innerHTML = printNumber(totalGold);
     document.getElementById('report-total-gold-value').innerHTML = printNumber(totalGold);
     // Populate Doubloons
-    doubloonStart = document.getElementById('doubloon-start');    
-    doubloonStartValue = doubloonStart.value;
-    doubloonEnd = document.getElementById('doubloon-end');
-    doubloonEndValue = doubloonEnd.value;
-    totalDoubloonCount = (doubloonEndValue - doubloonStartValue);
-    totalDoubloonGold = totalDoubloonCount * 25;
     document.getElementById('total-doubloon-count').innerHTML = printNumber(totalDoubloonCount);
     document.getElementById('total-doubloon-gold').innerHTML = printNumber(totalDoubloonGold);
     document.getElementById('report-doubloon-count').innerHTML = printNumber(totalDoubloonCount);
     document.getElementById('report-doubloon-gold').innerHTML = printNumber(totalDoubloonGold);
-    // Populate Total
-    totalPlunder = totalGold + totalDoubloonGold;
-    totalJobPay = Math.round(totalPlunder * jobRate);
+    // Populate Totals
     document.getElementById('total-plunder').innerHTML = printNumber(totalPlunder);
     document.getElementById('report-plunder').innerHTML = printNumber(totalPlunder);
     document.getElementById('total-job-type').innerHTML = printNumber(jobType);
     document.getElementById('total-job-rate').innerHTML = '(' + jobRate * 100 + '%)';
-    document.getElementById('total-job-rate').innerHTML = '(' + jobRate * 100 + '%)';
+    document.getElementById('total-job-pay').innerHTML = printNumber(totalJobPay);
     // Populate Faction Vault Cut
-    totalFactionVault = Math.round(totalJobPay) + totalBonus;
     document.getElementById('faction-icon').innerHTML = factionIcon;
     document.getElementById('total-faction').innerHTML = factionVault;
     document.getElementById('total-faction-vault').innerHTML = printNumber(totalFactionVault);
     document.getElementById('report-faction-icon').innerHTML = factionIconReport;
     document.getElementById('report-faction-vault').innerHTML = factionVaultAccount;
     document.getElementById('report-faction-vault-amount').innerHTML = printNumber(totalFactionVault);
-    // Check for Errors
-    checkReportErrors();
 };

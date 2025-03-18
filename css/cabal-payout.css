@@ -2,28 +2,12 @@ body {
     font-family: "Crimson Text", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1.1rem;
 }
 
-.small { font-size: 0.8rem; }
-
-a { color: #facc8e; }
+a, code { color: #facc8e; }
 a:hover { color: #fca832; }
-.bg-black { background-color: #181818; }
-.ed-tips { 
-    color: #aaa; 
-    background-color: #314954; 
-    font-family: "Shantell Sans", cursive;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    font-variation-settings:
-        "BNCE" 0,
-        "INFM" 0,
-        "SPAC" 0;
-}
 
-.cabal-logo { margin-top: 1rem; margin-left: 1rem; max-width: 100px; }
+.bg-black { background-color: #181818; }
 
 h1 {
     font-family: "Jim Nightshade";
@@ -36,35 +20,74 @@ h1 {
 }
 
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Jolly Lodger", system-ui;
+    font-family: "Mouse Memoirs";
     font-weight: 400;
     font-style: normal;
     text-transform: uppercase;
-    color: #a1bcc9;
+    color: #6cd6a2;
+    letter-spacing: 0.0375em;
 }
+
+h1 .h3 { color: #fff; }
 
 hr {
     height: 0px;
     border-radius: 2px;
-    color: #a1bcc9;
-    border: 2px solid #314954;
+    color: #6cd6a2;
+    border: 2px solid #6cd6a2;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-h1 .h3 { color: #fff; }
+.cabal-logo { margin-top: 1rem; margin-left: 1rem; max-width: 100px; }
 
-.btn-secondary { background-color: #292b2e; }
+.btn-selected {
+    color: #f5e9d5;
+    background-color: #7d3b2f;
+}
 
-.bg-errors { background-color: #500; }
+.btn-selected:hover {
+    color: #fff;
+    background-color: #924537;
+}
 
-.border-golden { border-color: #facc8e !important; }
+.btn-selected:focus {
+    box-shadow: 0 0 0 3px rgba(125, 59, 47, 0.5);
+}
 
-th { white-space: nowrap; }
+.btn-muted {
+    color: #f5e9d5;
+    background-color: #475559;
+}
 
-code, .copyblock { color: #facc8e; }
+.btn-muted:hover {
+    color: #fff;
+    background-color: #1d4b42;
+}
+
+.btn-muted:focus {
+    box-shadow: 0 0 0 3px rgba(29, 75, 66, 0.5);
+}
+
+.og-help { 
+    color: #9aa4ad; 
+    background-color: #222529; 
+}
+
+.og-error { 
+    background-image: linear-gradient(to bottom, #7d3b2f, #472b25);
+    border: 3px solid #facc8e;
+}
+
+.og-success {
+    background-color: #1d4b42;
+    border: 3px solid #6cd6a2;
+}
+
+.og-discord { 
+    color: #facc8e;
+    background-color: #1d4b42;
+}
 
 img.icon { width: 1.5em; margin-right: 0.5rem; }
-
-w-100 { width: 100%; }

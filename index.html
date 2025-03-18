@@ -9,7 +9,7 @@
 	<meta property="og:image" content="https://callmepartario.github.io/cabal-payout/images/cabal.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap&family=Jim+Nightshade&display=swap&family=Jolly+Lodger&display=swap&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap&family=Jim+Nightshade&display=swap&family=Mouse+Memoirs&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,13 +32,13 @@
       </div>
     </div>
     <ul class="list-inline mt-2 mb-0">
-      <li class="list-inline-item mb-2"><button type="button" class="btn btn-dark border border-secondary" id="toggle-help">Toggle Help</button></li>
-      <li class="list-inline-item mb-2"><a class="btn btn-dark border border-secondary" href="https://github.com/callmepartario/cabal-payout">Github</a></li>
-      <li class="list-inline-item mb-2"><a class="btn btn-dark border border-secondary" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></li>
+      <li class="list-inline-item mb-2"><button type="button" class="btn btn-muted" id="toggle-help">Toggle Help</button></li>
+      <li class="list-inline-item mb-2"><a class="btn btn-muted" href="https://github.com/callmepartario/cabal-payout">Github</a></li>
+      <li class="list-inline-item mb-2"><a class="btn btn-muted" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></li>
     </ul>
-    <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3">
-      <div><em>version 1.04c (2025-03-17)</em></div>
-      <div>This tool is an independent production. Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
+    <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3">
+      <div><em>v1.04c (2025-03-18)</em></div>
+      <div>This tool is an independent production, and is not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <hr>
     <form id="voyage">
@@ -46,14 +46,14 @@
       <p>Assign a voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select your faction:</p>
       <input type="text" placeholder="Voyage Number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-number">
       <ul class="list-inline mt-2">
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ac"><img src="images/faction-ac.webp" class="icon" alt="" aria-hidden="true">Ashen Creed</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ao"><img src="images/faction-ao.webp" class="icon" alt="" aria-hidden="true">Ancient Order of Chaos</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-kw"><img src="images/faction-kw.webp" class="icon" alt="" aria-hidden="true">Kinship of the Wilds</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-ns"><img src="images/faction-ns.webp" class="icon" alt="" aria-hidden="true">Norsemen of the Shores</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-mg"><img src="images/faction-mg.webp" class="icon" alt="" aria-hidden="true">Marauders of Golden Shores</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-faction-lf"><img src="images/cabal.webp" class="icon" alt="" aria-hidden="true">Lord of the Fleets</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-ac"><img src="images/faction-ac.webp" class="icon" alt="" aria-hidden="true">Ashen Creed</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-ao"><img src="images/faction-ao.webp" class="icon" alt="" aria-hidden="true">Ancient Order of Chaos</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-kw"><img src="images/faction-kw.webp" class="icon" alt="" aria-hidden="true">Kinship of the Wilds</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-ns"><img src="images/faction-ns.webp" class="icon" alt="" aria-hidden="true">Norsemen of the Shores</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-mg"><img src="images/faction-mg.webp" class="icon" alt="" aria-hidden="true">Marauders of Golden Shores</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-lf"><img src="images/cabal.webp" class="icon" alt="" aria-hidden="true">Lord of the Fleets</button></li>
       </ul>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="help-faction">
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-faction">
         <div>See <code>#criminal-enterprise</code> for current voyage numbers for your fleet.</div>
       </div>
       <hr>
@@ -61,22 +61,22 @@
       <p>Choose a ship, and the select the type of ship used on the voyage:</p>
       <input type="text" placeholder="Ship Name" class="form-control d-inline-block bg-dark text-white border border-secondary" id="ship-name">
       <ul class="list-inline mt-2">
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-sloop"><img src="images/ship-sloop.webp" class="icon" alt="" aria-hidden="true">Sloop</button></li>
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-brigantine"><img src="images/ship-brigantine.webp" class="icon" alt="" aria-hidden="true">Brigantine</button></li>
-          <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-ship-galleon"><img src="images/ship-galleon.webp" class="icon" alt="" aria-hidden="true">Galleon</button></li>
+          <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-ship-sloop"><img src="images/ship-sloop.webp" class="icon" alt="" aria-hidden="true">Sloop</button></li>
+          <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-ship-brigantine"><img src="images/ship-brigantine.webp" class="icon" alt="" aria-hidden="true">Brigantine</button></li>
+          <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-ship-galleon"><img src="images/ship-galleon.webp" class="icon" alt="" aria-hidden="true">Galleon</button></li>
       </ul>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="help-ship">
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-ship">
         <div>See <code>#captain-ships-of-the-cabal</code> for your faction's ships.</div>
-        <div>Sloop voyages are always Errands.</div>
       </div>
       <hr>
       <h2 id="section-job">Job Type</h2>
       <p class="mb-2">Select the job type:</p>
       <ul class="list-inline">
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-errand">Errand (5%)</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary mt-2" id="select-job-heist">Heist (8%)</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-job-errand">Errand (5%)</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-job-heist">Heist (8%)</button></li>
       </ul>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="help-job">
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-job">
+        <div>Sloop voyages are always Errands.</div>
         <div>You must be rank Smuggler or higher to post an Errand.</div>
         <div>You must be rank Boastwain or higher to post a Heist.</div>
         <div>See <code>#how-to-make-money</code> for details.</div>
@@ -347,10 +347,10 @@
         </div>
       </div>
       <ul class="list-inline mt-2">
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary" id="crew-add">Add Crew</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-secondary" id="crew-remove">Remove Crew</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted" id="crew-add">Add Crew</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted" id="crew-remove">Remove Crew</button></li>
       </ul>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="help-crew">
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-crew">
         <div>Use crewmate gamertags so Discord autocompletes them&mdash;for example, &ldquo;OldGus&rdquo; autocompletes for &ldquo;OldGusClone&rdquo;. You can assign crewmate names later if you prefer.</div>
         <div>See <code>#ranks-and-promotion</code> for promotion information.</div>
       </div>
@@ -410,7 +410,7 @@
           </tbody>
         </table>
       </div>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="help-bonus">
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-bonus">
         <div id="bonus-ship-size" class="d-none">Additional bonuses are available when sailing a <span id="bonus-ship-size-sloop">brigantine or</span> galleon.</div>
         <div id="bonus-specialty-rank" class="d-none">
           <div>Visit the <code>#pirate-emporium</code> to purchase a specialty rank ($10,000). Specialty ranks display as an icon on your Discord name in chat. A Royal Flush bonus supersedes a Straight Ship bonus.</div>
@@ -508,10 +508,10 @@
       </div>
     </div>
     <ul class="list-inline mt-2">
-      <li class="list-inline-item"><button type="button" class="btn btn-secondary" id="activity-add">Add Activity</button></li>
-      <li class="list-inline-item"><button type="button" class="btn btn-secondary" id="activity-remove">Remove Activity</button></li>
+      <li class="list-inline-item"><button type="button" class="btn btn-muted" id="activity-add">Add Activity</button></li>
+      <li class="list-inline-item"><button type="button" class="btn btn-muted" id="activity-remove">Remove Activity</button></li>
     </ul>
-    <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="help-activity">
+    <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-activity">
       <div>You can create your own activity log later if you prefer.</div>
     </div>
     <hr>
@@ -543,20 +543,20 @@
         <input type="number" placeholder="Ending Doubloons" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="doubloon-end">
       </div>
     </div>
-    <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="help-plunder">
+    <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-plunder">
       <div>Each gold is worth $1 in plunder. A doubloon is $25.</div>
     </div>
     <hr>
     <h2 class="section-summary">Voyage Summary</h2>
     <label for="voyage-summary" class="form-label">Describe the voyage:</label>
     <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="voyage-summary">
-    <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="help-summary">
+    <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-summary">
       <div>Be brief, but evocative. What was the goal? What was the vibe? Did anything exciting happen?</div>
     </div>
     <hr>
     <h2 id="section-report">Report Ledger</h2>
-    <button type="button" class="btn btn-primary btn mt-2 mb-3" id="generate-report">Create Report</button>
-    <div class="bg-errors border border-golden p-2 rounded-3 mb-2 d-none" id="errors-true">
+    <button type="button" class="btn btn-selected btn mt-2 mb-3" id="generate-report">Create Report</button>
+    <div class="og-error p-2 rounded-2 mb-2 d-none" id="errors-true">
       <div><span id="report-error-count">0</span> errors detected:</div>
       <ol class="mb-0">
         <li class="d-none" id="warning-voyage-number"><a href="#section-faction">Missing voyage number</a></li>
@@ -574,10 +574,10 @@
         <li class="d-none" id="warning-summary"><a href="#section-summary">Missing summary</a></li>
       </ol>
     </div>
-    <div id="errors-false" class="bg-success border-border-success p-2 rounded-3 small mb-2 d-none">
+    <div id="errors-false" class="og-success pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
       <div>Report successful. No errors detected.</div>
     </div>
-    <div id="report-rerun" class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none">
+    <div id="report-rerun" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
       <div>Press the Create Report button again to update with any changes.</div>
     </div>
     <div class="d-none" id="report-container">
@@ -655,7 +655,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3" id="warning-lf">
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3" id="warning-lf">
         <div>The Lord of the Fleets doesn't maintain a vault.</div>
       </div>
       <h3>Crew Cut</h3>
@@ -731,7 +731,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="small ed-tips border border-dark p-2 rounded-2 mt-1 mb-3 d-none" id="warning-stowaway">
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="warning-stowaway">
         <div>Stowaways don't earn income. In order to be reach rank Recruit, the Stowaway must be listed on two voyages, and one of the following:</div>
         <ul class="mb-0">
           <li>Sailed on voyages totaling $500,000</li>
@@ -739,8 +739,11 @@
         </ul>
         <div>If the stowaway has completed any of these criteria, note it in the report. See <code>#ranks-and-promotion</code> for more.</div>
       </div>
-      <p>Copy this report to the clipboard, then paste it into Discord to finish your activity log and link crewmate accounts:</p>
-      <div class="border border-dark p-3 rounded-3 mt-3 copyblock font-monospace ed-tips small" id="copy-report">
+      <h3>Discord Report</h3>
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3">
+        <p>Copy this report to the clipboard, then paste it into <code>#criminal-enterprise</code> to finish your activity log and link crewmate accounts:</p>
+      </div>
+      <div class="og-discord small pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 font-monospace" id="copy-report">
         <div># <span id="report-voyage-number">&mdash;</span> Voyage of @<span id="report-faction-name">&mdash;</span></div>
         <div>**Ship:** <span id="report-ship-name">&mdash;</span></div>
         <div>**Job Type:** <span id="report-job-type">&mdash;</span> (<span id="report-job-rate">&mdash;</span>%)</div>
