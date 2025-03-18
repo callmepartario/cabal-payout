@@ -5,6 +5,8 @@ body {
     font-style: normal;
 }
 .bg-black { background-color: #181818; }
+a { color: #facc8e; }
+a:hover { color: #fca832; }
 h1 {
     font-family: "Mouse Memoirs";
     font-weight: 400;
@@ -32,20 +34,17 @@ hr {
     margin-left: auto;
     margin-right: auto;
 }
-a { color: #facc8e; }
-a:hover { color: #fca832; }
-
-code, .og-discord {
-    color: #facc8e;
-    font-family: "Courier Prime", monospace;
-    font-weight: 400;  
-}
-
 /* images */
-.cabal-logo { margin-top: 1rem; margin-left: 1rem; max-width: 100px; }
-.icon { width: 1.5em; margin-right: 0.5rem; }
-
-/* buttons */
+.cabal-logo { 
+    margin-top: 1rem; 
+    margin-left: 1rem; 
+    max-width: 100px; 
+}
+.icon { 
+    width: 1.5em; 
+    margin-right: 0.5rem; 
+}
+/* buttons selected */
 .btn-selected {
     color: #f5e9d5;
     background-color: #7d3b2f;
@@ -57,6 +56,7 @@ code, .og-discord {
 .btn-selected:focus {
     box-shadow: 0 0 0 3px rgba(125, 59, 47, 0.5);
 }
+/* buttons unselected */
 .btn-muted {
     color: #f5e9d5;
     background-color: #475559;
@@ -68,15 +68,26 @@ code, .og-discord {
 .btn-muted:focus {
     box-shadow: 0 0 0 3px rgba(29, 75, 66, 0.5);
 }
-/* custom blocks */
+/* control th width of bonus table rows */
 .og-control {
-    width: 10em;
-    max-width: 10em;
+    width: 8.75em;
+    max-width: 8.75em;
 }
+/* tips */
 .og-help { 
     color: #9aa4ad; 
     background-color: #222529; 
 }
+/* discord channels and report text */
+code, .og-discord {
+    color: #facc8e;
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;  
+}
+.og-discord { 
+    background-color: #1d4b42;
+}
+/* errors and successes */
 .og-error { 
     background-image: linear-gradient(to bottom, #7d3b2f, #472b25);
     border: 3px solid #facc8e;
@@ -84,7 +95,4 @@ code, .og-discord {
 .og-success {
     background-color: #1d4b42;
     border: 3px solid #6cd6a2;
-}
-.og-discord { 
-    background-color: #1d4b42;
 }

@@ -37,13 +37,13 @@
       <li class="list-inline-item mb-2"><a class="btn btn-muted" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></li>
     </ul>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3">
-      <div><em>v1.05d (2025-03-18)</em></div>
-      <div>This tool is an independent production, and is not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
+      <div><em>v1.05e (2025-03-18)</em></div>
+      <div>Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <hr>
     <form id="voyage">
       <h2 id="section-faction">Fleet</h2>
-      <p>Record the voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select your faction:</p>
+      <p>Record the voyage number and select your faction:</p>
       <input type="text" placeholder="Voyage Number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-number">
       <ul class="list-inline mt-2">
         <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-ac"><img src="images/faction-ac.webp" class="icon" alt="" aria-hidden="true">Ashen Creed</button></li>
@@ -54,7 +54,7 @@
         <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-lf"><img src="images/cabal.webp" class="icon" alt="" aria-hidden="true">Lord of the Fleets</button></li>
       </ul>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-faction">
-        <div>See <code>#criminal-enterprise</code> for current voyage numbers for your fleet.</div>
+        <div>See <code>#criminal-enterprise</code> for your fleet's current voyage number&mdash;for example, &ldquo;151st&rdquo;.</div>
       </div>
       <hr>
       <h2 id="section-ship">Ship</h2>
@@ -66,28 +66,28 @@
           <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-ship-galleon"><img src="images/ship-galleon.webp" class="icon" alt="" aria-hidden="true">Galleon</button></li>
       </ul>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-ship">
-        <div>See <code>#captain-ships-of-the-cabal</code> for your faction's ships.</div>
+        <div>See <code>#captain-ships-of-the-cabal</code> for your fleet's ships.</div>
       </div>
       <hr>
       <h2 id="section-job">Job</h2>
-      <p class="mb-2">Select the job type:</p>
+      <p class="mb-2">Record the job type:</p>
       <ul class="list-inline">
         <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-job-errand">Errand (5%)</button></li>
         <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-job-heist">Heist (8%)</button></li>
       </ul>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-job">
-        <div>Sloop voyages are always Errands.</div>
-        <div>You must be rank Smuggler or higher to post an Errand.</div>
-        <div>You must be rank Boastwain or higher to post a Heist.</div>
+        <div id="help-job-sloop" class="d-none">Sloop voyages are always Errands.</div>
+        <div id="help-job-errand" class="d-none">You must be rank Smuggler to post an Errand.</div>
+        <div id="help-job-heist" class="d-none">You must be rank Boastwain to post a Heist.</div>
         <div>See <code>#how-to-make-money</code> for details.</div>
       </div>
       <hr>
       <h2 id="section-crew">Crew</h2>
-      <p>Record the names and ranks of crewmates. If employing additional crew, record a participation percentage for each:</p>
+      <p>Record your names and rank, and your crewmates' names and ranks. If employing additional crew, record participation percentages for each:</p>
       <div>
         <div class="row d-none" id="crew-1">
           <div class="col" id="crew-1-name">
-            <input placeholder="Crewmate 1" type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="crewmate-1-name">
+            <input placeholder="Crewmate 1 (You)" type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="crewmate-1-name">
           </div>
           <div class="col" id="crew-1-rank">
             <select class="form-select d-inline-block bg-dark text-white border border-secondary mb-3" name="crewmate-1-rank" id="crewmate-1-rank">
@@ -351,7 +351,7 @@
         <li class="list-inline-item"><button type="button" class="btn btn-muted" id="crew-remove">Remove Crew</button></li>
       </ul>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-crew">
-        <div>Use crewmate gamertags so Discord autocompletes them&mdash;for example, &ldquo;OldGus&rdquo; autocompletes for &ldquo;OldGusClone&rdquo;. You can assign crewmate names later if you prefer.</div>
+        <div>Use gamertags so Discord autocompletes them&mdash;for example, &ldquo;OldGus&rdquo; autocompletes for &ldquo;OldGusClone&rdquo;.</div>
         <div>See <code>#ranks-and-promotion</code> for more.</div>
       </div>
       <hr>
@@ -411,9 +411,12 @@
         </table>
       </div>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-bonus">
-        <div id="help-bonus-ship-size">Additional bonuses are available when sailing a <span id="help-bonus-ship-size-sloop">brigantine or</span> galleon.</div>
-        <div id="help-bonus-specialty-rank">Visit the <code>#pirate-emporium</code> to purchase a specialty rank  for $10,000. Specialty ranks display as an icon on your Discord name in chat. A Royal Flush bonus supersedes a Straight Ship bonus.</div>
-        <div>These bonuses are applied automatically to any voyage:</div>
+        <div id="help-bonus-ship-size">Additional bonuses are available on a <span id="help-bonus-ship-size-sloop">brigantine or</span> galleon.</div>
+        <div id="help-bonus-specialty-rank">
+          <div>Purchase one specialty rank from <code>#pirate-emporium</code> for $10,000, which displays on your Discord name.</div>
+          <div>A Royal Flush bonus supersedes a Straight Ship bonus.</div>
+        </div>
+        <div>These bonuses apply automatically:</div>
       </div>
       <div id="help-bonus-automatic" class="d-none">
         <table class="table table-responsive-lg table-dark">
@@ -427,8 +430,8 @@
           <tbody>
             <tr>
               <th scope="row">Dice</th>
-              <td>Stowaway or Recruit aboard.</td>
-              <td class="text-end">$1,000 each (Errand); $500 each (Heist)</td>
+              <td>Earned for each Stowaway or Recruit aboard.</td>
+              <td class="text-end">$1,000 (Errand); $500 (Heist)</td>
             </tr>
             <tr>
               <th scope="row">Pai Gow</th>
@@ -541,7 +544,7 @@
     </div>
     <hr>
     <h2 id="section-plunder">Plunder</h2>
-    <p>Record your gold and doubloon amounts at the start and end of the voyage:</p>
+    <p>Record your gold and doubloons at the start and end of the voyage:</p>
     <div class="row">
       <div class="col-1">
         <img src="images/currency-gold.webp" alt="Gold" aria-hidden="true" class="icon h3 pe-1">
@@ -569,14 +572,14 @@
       </div>
     </div>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-plunder">
-      <div>Each gold is worth $1 in plunder. A doubloon is $25.</div>
+      <div>Each gold is worth $1. A doubloon is worth $25.</div>
     </div>
     <hr>
     <h2 class="section-summary">Summary</h2>
     <label for="voyage-summary" class="form-label">Describe the voyage:</label>
     <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="voyage-summary">
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-summary">
-      <div>Be brief, but evocative. What was the goal? What was the vibe? Did anything exciting happen?</div>
+      <div>Be brief, but evocative. What was the goal, or vibe? Did anything interesting happen?</div>
     </div>
     <hr>
     <h2 id="section-report">Report</h2>
@@ -589,7 +592,7 @@
         <li class="d-none" id="warning-ship-name"><a href="#section-ship">Missing ship name</a></li>
         <li class="d-none" id="warning-ship-type"><a href="#section-ship">Missing ship type</a></li>
         <li class="d-none" id="warning-job-type"><a href="#section-job">Missing job type</a></li>
-        <li class="d-none" id="warning-rank"><a href="#section-crew">Insufficient crew rank</a> for selected <a href="#section-job">job type</a></li>
+        <li class="d-none" id="warning-rank"><a href="#section-crew">Crewmate 1 has insufficient rank</a> for <a href="#section-job">job type</a></li>
         <li class="d-none" id="warning-participation-percentage"><a href="#section-crew">Invalid participation percentage (valid range is 1&ndash;100)</a></li>
         <li class="d-none" id="warning-participation"><a href="#section-crew">Invalid crew participation sum (<span id="crew-participation"></span>, expected <span id="crew-participation-total"></span>)</a></li>
         <li class="d-none" id="warning-gold-missing"><a href="#section-plunder">Missing gold amounts</a></li>

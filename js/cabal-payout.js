@@ -333,6 +333,7 @@ function selectFactionLF() {
 
 /* Select Ship Size */
 function deselectShip() {
+    document.getElementById('help-job-sloop').classList.add('d-none');
     if (document.getElementById('select-ship-sloop').classList.contains('btn-selected')) {
         document.getElementById('select-ship-sloop').classList.remove('btn-selected');
         document.getElementById('select-ship-sloop').classList.add('btn-muted');
@@ -355,6 +356,7 @@ function selectShipSloop() {
     selectJobErrand();
     crewShow();
     checkBonusEligibility();
+    document.getElementById('help-job-sloop').classList.remove('d-none');
 };
 function selectShipBrigantine() {
     deselectShip();
@@ -377,10 +379,12 @@ function selectShipGalleon() {
 
 /* Select Job */
 function deselectJob() {
+    document.getElementById('help-job-errand').classList.add('d-none');
     if (document.getElementById('select-job-errand').classList.contains('btn-selected')) {
         document.getElementById('select-job-errand').classList.remove('btn-selected');
         document.getElementById('select-job-errand').classList.add('btn-muted');
     }
+    document.getElementById('help-job-heist').classList.add('d-none');
     if (document.getElementById('select-job-heist').classList.contains('btn-selected')) {
         document.getElementById('select-job-heist').classList.remove('btn-selected');
         document.getElementById('select-job-heist').classList.add('btn-muted');
@@ -392,6 +396,7 @@ function selectJobErrand() {
     document.getElementById('select-job-errand').classList.add('btn-selected');
     jobType = 'Errand';
     jobRate = 0.05;
+    document.getElementById('help-job-errand').classList.remove('d-none');
     checkBonusEligibility();
 };
 function selectJobHeist() {
@@ -401,6 +406,7 @@ function selectJobHeist() {
         document.getElementById('select-job-heist').classList.add('btn-selected');
         jobType = 'Heist';
         jobRate = 0.08;
+        document.getElementById('help-job-heist').classList.remove('d-none');
         checkBonusEligibility();
     }
 };
@@ -1379,7 +1385,7 @@ function checkReportErrors() {
         document.getElementById('warning-job-type').classList.add('d-none');
         /* Check crew ranks vs job types */
         checkCrewRanks();
-        if ((jobType == 'Errand' && crewRankLevel < 5) || (jobType == 'Heist' && crewRankLevel < 8)) {
+        if ((jobType == 'Errand' && crewRank1Value < 5) || (jobType == 'Heist' && crewRank1Value < 8)) {
             document.getElementById('warning-rank').classList.remove('d-none');
             errorCount++;
         }
