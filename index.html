@@ -37,7 +37,7 @@
       <li class="list-inline-item mb-2"><a class="btn btn-muted" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></li>
     </ul>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3">
-      <div><em>v1.05f (2025-03-18)</em></div>
+      <div><em>v1.05g (2025-03-18)</em></div>
       <div>Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <hr>
@@ -217,7 +217,7 @@
           </div>
         </div>
         <div class="row d-none" id="crew-5">
-          <div class="col" d="crew-5-name">
+          <div class="col" id="crew-5-name">
             <input placeholder="Crewmate 5" type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="crewmate-5-name">
           </div>
           <div class="col" id="crew-5-rank">
@@ -447,20 +447,18 @@
         </table>
       </div>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-bonus">
-        <div id="help-bonus-ship-size">
-          <div class="d-table">
-            <div class="d-table-row">
-              <div class="d-table-cell">
-                <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+        <div class="d-table">
+          <div class="d-table-row">
+            <div class="d-table-cell">
+              <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+            </div>
+            <div class="d-table-cell">
+              <div id="help-bonus-ship-size">Additional bonuses are available on a <span id="help-bonus-ship-size-sloop">brigantine or</span> galleon.</div>
+              <div id="help-bonus-specialty-rank">
+                <div>Purchase one specialty rank from <code>#pirate-emporium</code> for $10,000, which displays on your Discord name.</div>
+                <div>A Royal Flush bonus supersedes a Straight Ship bonus.</div>
               </div>
-              <div class="d-table-cell">
-                <div>Additional bonuses are available on a <span id="help-bonus-ship-size-sloop">brigantine or</span> galleon.</div>
-                <div id="help-bonus-specialty-rank">
-                  <div>Purchase one specialty rank from <code>#pirate-emporium</code> for $10,000, which displays on your Discord name.</div>
-                  <div>A Royal Flush bonus supersedes a Straight Ship bonus.</div>
-                </div>
-                <div>These bonuses apply automatically:</div>
-              </div>
+              <div>These bonuses apply automatically:</div>
             </div>
           </div>
         </div>
@@ -587,15 +585,13 @@
       <li class="list-inline-item"><button type="button" class="btn btn-muted" id="activity-remove">Remove Activity</button></li>
     </ul>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-activity">
-      <div id="help-bonus-ship-size">
-        <div class="d-table">
-          <div class="d-table-row">
-            <div class="d-table-cell">
-              <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
-            </div>
-            <div class="d-table-cell">
-              <div>You can create your own activity log later if you prefer.</div>
-            </div>
+      <div class="d-table">
+        <div class="d-table-row">
+          <div class="d-table-cell">
+            <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+          </div>
+          <div class="d-table-cell">
+            <div>You can create your own activity log later if you prefer.</div>
           </div>
         </div>
       </div>
@@ -630,15 +626,13 @@
       </div>
     </div>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-plunder">
-      <div id="help-bonus-ship-size">
-        <div class="d-table">
-          <div class="d-table-row">
-            <div class="d-table-cell">
-              <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
-            </div>
-            <div class="d-table-cell">
-              <div>Each gold is worth $1. A doubloon is worth $25.</div>
-            </div>
+      <div class="d-table">
+        <div class="d-table-row">
+          <div class="d-table-cell">
+            <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+          </div>
+          <div class="d-table-cell">
+            <div>Each gold is worth $1. A doubloon is worth $25.</div>
           </div>
         </div>
       </div>
@@ -648,22 +642,22 @@
     <label for="voyage-summary" class="form-label">Describe the voyage:</label>
     <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="voyage-summary">
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-summary">
-      <div id="help-bonus-ship-size">
-        <div class="d-table">
-          <div class="d-table-row">
-            <div class="d-table-cell">
-              <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
-            </div>
-            <div class="d-table-cell">
-              <div>Be brief, but evocative. What was the goal, or vibe? Did anything interesting happen?</div>
-            </div>
+      <div class="d-table">
+        <div class="d-table-row">
+          <div class="d-table-cell">
+            <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+          </div>
+          <div class="d-table-cell">
+            <div>Be brief, but evocative. What was the goal, or vibe? Did anything interesting happen?</div>
           </div>
         </div>
       </div>
     </div>
     <hr>
     <h2 id="section-report">Report</h2>
-    <button type="button" class="btn btn-selected btn mt-2 mb-3" id="generate-report">Create Report</button>
+    <ul class="list-inline mt-2 mb-0">
+      <li class="list-inline-item mb-2"><button type="button" class="btn btn-selected" id="generate-report">Create Report</button></li>
+    </ul>
     <div class="og-error p-2 rounded-2 mb-2 d-none" id="errors-true">
       <div><span id="report-error-count">0</span> errors detected:</div>
       <ol class="mb-0">
@@ -685,16 +679,14 @@
     <div id="errors-false" class="og-success pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
       <div>Report successful. No errors detected.</div>
     </div>
-    <div id="report-rerun" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
-      <div id="help-bonus-ship-size">
-        <div class="d-table">
-          <div class="d-table-row">
-            <div class="d-table-cell">
-              <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
-            </div>
-            <div class="d-table-cell">
-              <div>Press Create Report again to update with changes.</div>
-            </div>
+    <div id="help-report" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
+      <div class="d-table">
+        <div class="d-table-row">
+          <div class="d-table-cell">
+            <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+          </div>
+          <div class="d-table-cell">
+            <div>Press Create Report again to update with changes.</div>
           </div>
         </div>
       </div>
@@ -774,8 +766,19 @@
           </tr>
         </tbody>
       </table>
-      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3" id="warning-lf">
-        <div>The Lord of the Fleets doesn't maintain a vault.</div>
+      <div id="help-lf" class="d-none">
+        <div id="warning-lf" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none">
+          <div class="d-table">
+            <div class="d-table-row">
+              <div class="d-table-cell">
+                <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+              </div>
+              <div class="d-table-cell">
+                <div>The Lord of the Fleets doesn't maintain a vault.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <h3>Crew Cut</h3>
       <table class="table table-responsive-lg table-dark">
@@ -850,8 +853,8 @@
           </tr>
         </tbody>
       </table>
-      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="warning-stowaway">
-        <div id="help-bonus-ship-size">
+      <div id="help-stowaway" class="d-none">
+        <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="warning-stowaway">
           <div class="d-table">
             <div class="d-table-row">
               <div class="d-table-cell">
@@ -871,15 +874,13 @@
       </div>
       <h3>Discord Report</h3>
       <div id="help-discord" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
-        <div id="help-bonus-ship-size">
-          <div class="d-table">
-            <div class="d-table-row">
-              <div class="d-table-cell">
-                <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
-              </div>
-              <div class="d-table-cell">
-                <div>Copy this report to the clipboard, then paste it into <code>#criminal-enterprise</code> to finish your activity log and link crewmate accounts:</div>
-              </div>
+        <div class="d-table">
+          <div class="d-table-row">
+            <div class="d-table-cell">
+              <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+            </div>
+            <div class="d-table-cell">
+              <div>Copy this report to the clipboard, then paste it into <code>#criminal-enterprise</code> to finish your activity log and link crewmate accounts:</div>
             </div>
           </div>
         </div>

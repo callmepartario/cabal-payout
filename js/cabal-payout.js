@@ -172,7 +172,6 @@ let activity10QtyValue = 0;
 let activityRows = 0;
 
 let errorCount = 0;
-let warning = false;
 
 let helpToggle = false;
 
@@ -214,6 +213,9 @@ function toggleHelp() {
         document.getElementById('help-activity').classList.remove('d-none');
         document.getElementById('help-plunder').classList.remove('d-none');
         document.getElementById('help-summary').classList.remove('d-none');
+        document.getElementById('help-lf').classList.remove('d-none');
+        document.getElementById('help-stowaway').classList.remove('d-none');
+        document.getElementById('help-report').classList.remove('d-none');
         document.getElementById('help-discord').classList.remove('d-none');
         helpToggle = true;
         document.getElementById("toggle-help").classList.remove('btn-muted');
@@ -229,6 +231,9 @@ function toggleHelp() {
         document.getElementById('help-activity').classList.add('d-none');
         document.getElementById('help-plunder').classList.add('d-none');
         document.getElementById('help-summary').classList.add('d-none');
+        document.getElementById('help-lf').classList.add('d-none');
+        document.getElementById('help-stowaway').classList.add('d-none');
+        document.getElementById('help-report').classList.add('d-none');
         document.getElementById('help-discord').classList.add('d-none');
         helpToggle = false;
         document.getElementById("toggle-help").classList.remove('btn-selected');
@@ -863,6 +868,7 @@ function checkCrewRanks() {
     // crew 1
     if (shipType + crewSupplement >= 1) {
         crewRank1 = document.getElementById('crewmate-1-rank');
+        crewRank1Value = crewRank1.value;
         if (crewRankLevel < crewRank1.value) {
             crewRankLevel = crewRank1.value;
         }
@@ -876,6 +882,7 @@ function checkCrewRanks() {
     // crew 2
     if (shipType + crewSupplement >= 2) {
         crewRank2 = document.getElementById('crewmate-2-rank');
+        crewRank2Value = crewRank2.value;
         if (crewRankLevel < crewRank2.value) {
             crewRankLevel = crewRank2.value;
         }
@@ -889,6 +896,7 @@ function checkCrewRanks() {
     // crew 3
     if (shipType + crewSupplement >= 3) {
         crewRank3 = document.getElementById('crewmate-3-rank');
+        crewRank3Value = crewRank3.value;
         if (crewRankLevel < crewRank3.value) {
             crewRankLevel = crewRank3.value;
         }
@@ -902,6 +910,7 @@ function checkCrewRanks() {
     // crew 4
     if (shipType + crewSupplement >= 4) {
         crewRank4 = document.getElementById('crewmate-4-rank');
+        crewRank4Value = crewRank4.value;
         if (crewRankLevel < crewRank4.value) {
             crewRankLevel = crewRank4.value;
         }
@@ -915,6 +924,7 @@ function checkCrewRanks() {
     // crew 5
     if (shipType + crewSupplement >= 5) {
         crewRank5 = document.getElementById('crewmate-5-rank');
+        crewRank5Value = crewRank5.value;
         if (crewRankLevel < crewRank5.value) {
             crewRankLevel = crewRank5.value;
         }
@@ -928,6 +938,7 @@ function checkCrewRanks() {
     // crew 6
     if (shipType + crewSupplement >= 6) {
         crewRank6 = document.getElementById('crewmate-6-rank');
+        crewRank6Value = crewRank6.value;
         if (crewRankLevel < crewRank6.value) {
             crewRankLevel = crewRank6.value;
         }
@@ -941,6 +952,7 @@ function checkCrewRanks() {
     // crew 7
     if (shipType + crewSupplement >= 7) {
         crewRank7 = document.getElementById('crewmate-7-rank');
+        crewRank7Value = crewRank7.value;
         if (crewRankLevel < crewRank7.value) {
             crewRankLevel = crewRank7.value;
         }
@@ -954,6 +966,7 @@ function checkCrewRanks() {
     // crew 8
     if (shipType + crewSupplement >= 8) {
         crewRank8 = document.getElementById('crewmate-8-rank');
+        crewRank8Value = crewRank8.value;
         if (crewRankLevel < crewRank8.value) {
             crewRankLevel = crewRank8.value;
         }
@@ -967,6 +980,7 @@ function checkCrewRanks() {
     // crew 9
     if (shipType + crewSupplement >= 9) {
         crewRank9 = document.getElementById('crewmate-9-rank');
+        crewRank9Value = crewRank9.value;
         if (crewRankLevel < crewRank9.value) {
             crewRankLevel = crewRank9.value;
         }
@@ -980,6 +994,7 @@ function checkCrewRanks() {
     // crew 10
     if (shipType + crewSupplement >= 10) {
         crewRank10 = document.getElementById('crewmate-10-rank');
+        crewRank10Value = crewRank10.value;
         if (crewRankLevel < crewRank10.value) {
             crewRankLevel = crewRank10.value;
         }
@@ -1398,6 +1413,7 @@ function checkReportErrors() {
     goldStartValue = goldStart.value;
     goldEnd = document.getElementById('gold-end');    
     goldEndValue = goldEnd.value;
+    // gold missing
     if (goldStartValue === '' || goldEndValue === '') { 
         document.getElementById('warning-gold-missing').classList.remove('d-none');
         errorCount++;
@@ -1405,6 +1421,7 @@ function checkReportErrors() {
     else { 
         document.getElementById('warning-gold-missing').classList.add('d-none');
     }
+    // gold negative
     if (totalGold < 0) { 
         document.getElementById('warning-gold-negative').classList.remove('d-none');
         errorCount++;
@@ -1418,6 +1435,7 @@ function checkReportErrors() {
     doubloonStartValue = doubloonStart.value;
     doubloonEnd = document.getElementById('doubloon-end');
     doubloonEndValue = doubloonEnd.value;
+    // doubloon missing
     if (doubloonStartValue === '' || doubloonEndValue === '') { 
         document.getElementById('warning-doubloon-missing').classList.remove('d-none');
         errorCount++;
@@ -1425,6 +1443,7 @@ function checkReportErrors() {
     else { 
         document.getElementById('warning-doubloon-missing').classList.add('d-none');
     }
+    // doubloon negative
     if (totalDoubloonCount < 0) { 
         document.getElementById('warning-doubloon-negative').classList.remove('d-none');
         errorCount++;
@@ -1484,7 +1503,6 @@ function checkReportErrors() {
         document.getElementById('warning-summary').classList.add('d-none');
     }
     /* Show errors or success */
-    document.getElementById('report-rerun').classList.remove('d-none');
     if (errorCount > 0) {
         document.getElementById('report-error-count').innerHTML = errorCount;
         document.getElementById('errors-true').classList.remove('d-none');
@@ -1497,19 +1515,17 @@ function checkReportErrors() {
         document.getElementById('report-container').classList.remove('d-none');
     }
     // Issue warnings
-    warning = false;
     if (faction == 'LF') {
         document.getElementById('warning-lf').classList.remove('d-none');
-        warning = true;
     }
     else {
         document.getElementById('warning-lf').classList.add('d-none');
-        // Create totals
-        totalPlunder = totalGold + totalDoubloonGold;
-        totalJobPay = Math.round(totalPlunder * jobRate);
-        totalFactionVault = totalJobPay + totalBonus;
-        checkCrewCut();
     }
+    // Create totals
+    totalPlunder = totalGold + totalDoubloonGold;
+    totalJobPay = Math.round(totalPlunder * jobRate);
+    totalFactionVault = totalJobPay + totalBonus;
+    checkCrewCut();
 };
 
 /* Generate Report */
