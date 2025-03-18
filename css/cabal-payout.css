@@ -1,24 +1,20 @@
+/* basics  */
 body { 
-    font-family: "Crimson Text", serif;
+    font-family: "Petrona";
     font-weight: 400;
     font-style: normal;
 }
-
-a, code { color: #facc8e; }
-a:hover { color: #fca832; }
-
 .bg-black { background-color: #181818; }
-
 h1 {
-    font-family: "Jim Nightshade";
+    font-family: "Mouse Memoirs";
     font-weight: 400;
     font-style: normal;
+    text-transform: uppercase;
     text-align: left;
     font-size: 3.5rem;
     line-height: 1;
     padding-top: 1rem;
 }
-
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Mouse Memoirs";
     font-weight: 400;
@@ -27,9 +23,6 @@ h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
     color: #6cd6a2;
     letter-spacing: 0.0375em;
 }
-
-h1 .h3 { color: #fff; }
-
 hr {
     height: 0px;
     border-radius: 2px;
@@ -39,60 +32,59 @@ hr {
     margin-left: auto;
     margin-right: auto;
 }
+a { color: #facc8e; }
+a:hover { color: #fca832; }
 
-.og-control {
-    width: 10em;
-    max-width: 10em;
+code, .og-discord {
+    color: #facc8e;
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;  
 }
 
+/* images */
 .cabal-logo { margin-top: 1rem; margin-left: 1rem; max-width: 100px; }
+.icon { width: 1.5em; margin-right: 0.5rem; }
 
+/* buttons */
 .btn-selected {
     color: #f5e9d5;
     background-color: #7d3b2f;
 }
-
 .btn-selected:hover {
     color: #fff;
     background-color: #924537;
 }
-
 .btn-selected:focus {
     box-shadow: 0 0 0 3px rgba(125, 59, 47, 0.5);
 }
-
 .btn-muted {
     color: #f5e9d5;
     background-color: #475559;
 }
-
 .btn-muted:hover {
     color: #fff;
     background-color: #1d4b42;
 }
-
 .btn-muted:focus {
     box-shadow: 0 0 0 3px rgba(29, 75, 66, 0.5);
 }
-
+/* custom blocks */
+.og-control {
+    width: 10em;
+    max-width: 10em;
+}
 .og-help { 
     color: #9aa4ad; 
     background-color: #222529; 
 }
-
 .og-error { 
     background-image: linear-gradient(to bottom, #7d3b2f, #472b25);
     border: 3px solid #facc8e;
 }
-
 .og-success {
     background-color: #1d4b42;
     border: 3px solid #6cd6a2;
 }
-
 .og-discord { 
-    color: #facc8e;
     background-color: #1d4b42;
 }
-
-img.icon { width: 1.5em; margin-right: 0.5rem; }

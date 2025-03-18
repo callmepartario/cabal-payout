@@ -9,7 +9,7 @@
 	<meta property="og:image" content="https://callmepartario.github.io/cabal-payout/images/cabal.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap&family=Jim+Nightshade&display=swap&family=Mouse+Memoirs&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Mouse+Memoirs&family=Petrona:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,12 +37,12 @@
       <li class="list-inline-item mb-2"><a class="btn btn-muted" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></li>
     </ul>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3">
-      <div><em>v1.05c (2025-03-18)</em></div>
+      <div><em>v1.05d (2025-03-18)</em></div>
       <div>This tool is an independent production, and is not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <hr>
     <form id="voyage">
-      <h2 id="section-faction">Faction & Fleet</h2>
+      <h2 id="section-faction">Fleet</h2>
       <p>Record the voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select your faction:</p>
       <input type="text" placeholder="Voyage Number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-number">
       <ul class="list-inline mt-2">
@@ -57,7 +57,7 @@
         <div>See <code>#criminal-enterprise</code> for current voyage numbers for your fleet.</div>
       </div>
       <hr>
-      <h2 id="section-ship">Ship & Name</h2>
+      <h2 id="section-ship">Ship</h2>
       <p>Choose a ship name, and the record the class of ship sailed on the voyage:</p>
       <input type="text" placeholder="Ship Name" class="form-control d-inline-block bg-dark text-white border border-secondary" id="ship-name">
       <ul class="list-inline mt-2">
@@ -69,7 +69,7 @@
         <div>See <code>#captain-ships-of-the-cabal</code> for your faction's ships.</div>
       </div>
       <hr>
-      <h2 id="section-job">Job Type</h2>
+      <h2 id="section-job">Job</h2>
       <p class="mb-2">Select the job type:</p>
       <ul class="list-inline">
         <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-job-errand">Errand (5%)</button></li>
@@ -82,7 +82,7 @@
         <div>See <code>#how-to-make-money</code> for details.</div>
       </div>
       <hr>
-      <h2 id="section-crew">Crew & Company</h2>
+      <h2 id="section-crew">Crew</h2>
       <p>Record the names and ranks of crewmates. If employing additional crew, record a participation percentage for each:</p>
       <div>
         <div class="row d-none" id="crew-1">
@@ -450,7 +450,7 @@
       </div>
     </form>
     <hr>
-    <h2 id="section-activity">Activity Log</h2>
+    <h2 id="section-activity">Activities</h2>
     <p>Record up to ten activities, and how many times you completed each:</p>
     <div class="row d-none" id="activity-1">
       <div class="col-9">
@@ -572,14 +572,14 @@
       <div>Each gold is worth $1 in plunder. A doubloon is $25.</div>
     </div>
     <hr>
-    <h2 class="section-summary">Voyage Summary</h2>
+    <h2 class="section-summary">Summary</h2>
     <label for="voyage-summary" class="form-label">Describe the voyage:</label>
     <input type="text" class="form-control d-inline-block bg-dark text-white border border-secondary mb-3" id="voyage-summary">
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-summary">
       <div>Be brief, but evocative. What was the goal? What was the vibe? Did anything exciting happen?</div>
     </div>
     <hr>
-    <h2 id="section-report">Report Ledger</h2>
+    <h2 id="section-report">Report</h2>
     <button type="button" class="btn btn-selected btn mt-2 mb-3" id="generate-report">Create Report</button>
     <div class="og-error p-2 rounded-2 mb-2 d-none" id="errors-true">
       <div><span id="report-error-count">0</span> errors detected:</div>
@@ -606,7 +606,7 @@
       <div>Press Create Report again to update with changes.</div>
     </div>
     <div class="d-none" id="report-container">
-      <h3>Total</h3>
+      <h3>Total Plunder</h3>
       <table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
@@ -765,8 +765,8 @@
         <div>If the stowaway has completed any of these criteria, note it in the report. See <code>#ranks-and-promotion</code> for more.</div>
       </div>
       <h3>Discord Report</h3>
-      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3">
-        <p>Copy this report to the clipboard, then paste it into <code>#criminal-enterprise</code> to finish your activity log and link crewmate accounts:</p>
+      <div id="help-discord" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
+        <div>Copy this report to the clipboard, then paste it into <code>#criminal-enterprise</code> to finish your activity log and link crewmate accounts:</div>
       </div>
       <div class="og-discord small pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 font-monospace" id="copy-report">
         <div># <span id="report-voyage-number">&mdash;</span> Voyage of @<span id="report-faction-name">&mdash;</span></div>
