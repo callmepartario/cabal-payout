@@ -210,6 +210,7 @@ function toggleHelp() {
         document.getElementById('help-job').classList.remove('d-none');
         document.getElementById('help-crew').classList.remove('d-none');
         document.getElementById('help-bonus').classList.remove('d-none');
+        document.getElementById('help-bonus-automatic').classList.remove('d-none');
         document.getElementById('help-activity').classList.remove('d-none');
         document.getElementById('help-plunder').classList.remove('d-none');
         document.getElementById('help-summary').classList.remove('d-none');
@@ -223,6 +224,7 @@ function toggleHelp() {
         document.getElementById('help-job').classList.add('d-none');
         document.getElementById('help-crew').classList.add('d-none');
         document.getElementById('help-bonus').classList.add('d-none');
+        document.getElementById('help-bonus-automatic').classList.add('d-none');
         document.getElementById('help-activity').classList.add('d-none');
         document.getElementById('help-plunder').classList.add('d-none');
         document.getElementById('help-summary').classList.add('d-none');
@@ -230,6 +232,7 @@ function toggleHelp() {
         document.getElementById("toggle-help").classList.remove('btn-selected');
         document.getElementById("toggle-help").classList.add('btn-muted');
     }
+    checkBonusEligibility()
 };
 
 /* Select Faction */
@@ -625,26 +628,32 @@ function checkBonusEligibility() {
     document.getElementById('bonus-list-full-house').classList.add('d-none');
     document.getElementById('bonus-list-royal-flush').classList.add('d-none');
     document.getElementById('bonus-list-united-deck').classList.add('d-none');
-    document.getElementById('bonus-ship-size').classList.add('d-none');
-    document.getElementById('bonus-ship-size-sloop').classList.add('d-none');
-    document.getElementById('bonus-specialty-rank').classList.add('d-none');
+    document.getElementById('help-bonus-ship-size').classList.add('d-none');
+    document.getElementById('help-bonus-ship-size-sloop').classList.add('d-none');
+    document.getElementById('help-bonus-specialty-rank').classList.add('d-none');
     if (shipType <=2) {
         bonusEligible = false;
-        document.getElementById('bonus-ship-size').classList.remove('d-none');
-        document.getElementById('bonus-ship-size-sloop').classList.remove('d-none');
+        if (helpToggle == true) {
+            document.getElementById('help-bonus-ship-size').classList.remove('d-none');
+            document.getElementById('help-bonus-ship-size-sloop').classList.remove('d-none');
+        }
     }
     if (shipType >= 3) {
         document.getElementById('bonus-list-united-deck').classList.remove('d-none');
         bonusEligible = true;
-        document.getElementById('bonus-ship-size').classList.remove('d-none');
+        if (helpToggle == true) {
+            document.getElementById('help-bonus-ship-size').classList.remove('d-none');
+        }
     }
     if (shipType == 4) {
         document.getElementById('bonus-list-straight-ship').classList.remove('d-none');
         document.getElementById('bonus-list-full-house').classList.remove('d-none');
         document.getElementById('bonus-list-royal-flush').classList.remove('d-none');
         bonusEligible = true;
-        document.getElementById('bonus-ship-size').classList.add('d-none');
-        document.getElementById('bonus-specialty-rank').classList.remove('d-none');
+        document.getElementById('help-bonus-ship-size').classList.add('d-none');
+        if (helpToggle == true) {
+            document.getElementById('help-bonus-specialty-rank').classList.remove('d-none');
+        }
     }
     // other: show or hide table
     if (bonusEligible == true) {
