@@ -40,6 +40,11 @@ hr {
     margin-right: auto;
 }
 
+.og-control {
+    width: 10em;
+    max-width: 10em;
+}
+
 .cabal-logo { margin-top: 1rem; margin-left: 1rem; max-width: 100px; }
 
 .btn-selected {

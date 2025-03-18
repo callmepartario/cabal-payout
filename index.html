@@ -37,13 +37,13 @@
       <li class="list-inline-item mb-2"><a class="btn btn-muted" href="https://ko-fi.com/oldgus">Old Gus' Kofi</a></li>
     </ul>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3">
-      <div><em>v1.04c (2025-03-18)</em></div>
+      <div><em>v1.05a (2025-03-18)</em></div>
       <div>This tool is an independent production, and is not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <hr>
     <form id="voyage">
       <h2 id="section-faction">Faction & Fleet</h2>
-      <p>Assign a voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select your faction:</p>
+      <p>Record the voyage number&mdash;for example, &ldquo;111th&rdquo;&mdash;and select your faction:</p>
       <input type="text" placeholder="Voyage Number" class="form-control d-inline-block bg-dark text-white border border-secondary" id="voyage-number">
       <ul class="list-inline mt-2">
         <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-faction-ac"><img src="images/faction-ac.webp" class="icon" alt="" aria-hidden="true">Ashen Creed</button></li>
@@ -58,7 +58,7 @@
       </div>
       <hr>
       <h2 id="section-ship">Ship & Name</h2>
-      <p>Choose a ship, and the select the type of ship used on the voyage:</p>
+      <p>Choose a ship name, and the record the class of ship sailed on the voyage:</p>
       <input type="text" placeholder="Ship Name" class="form-control d-inline-block bg-dark text-white border border-secondary" id="ship-name">
       <ul class="list-inline mt-2">
           <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="select-ship-sloop"><img src="images/ship-sloop.webp" class="icon" alt="" aria-hidden="true">Sloop</button></li>
@@ -83,7 +83,7 @@
       </div>
       <hr>
       <h2 id="section-crew">Crew & Company</h2>
-      <p>Enter the names and ranks of the crew. If adding supplemental crew, record a participation percentage for each:</p>
+      <p>Record the names and ranks of crewmates. If employing additional crew, record a participation percentage for each:</p>
       <div>
         <div class="row d-none" id="crew-1">
           <div class="col" id="crew-1-name">
@@ -361,7 +361,7 @@
         <table class="table table-responsive-lg table-dark">
           <thead>
             <tr>
-              <th scope="col">Type</th>
+              <th scope="col" class="og-control">Type</th>
               <th scope="col">Prerequisites</th>
               <th scope="col" class="text-end">Bonus</th>
             </tr>
@@ -410,18 +410,43 @@
           </tbody>
         </table>
       </div>
+      <p>These bonuses are applied automatically:</p>
+      <table class="table table-responsive-lg table-dark">
+        <thead>
+          <tr>
+            <th scope="col" class="og-control">Type</th>
+            <th scope="col">Prerequisites</th>
+            <th scope="col" class="text-end">Bonus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Dice</th>
+            <td>Stowaway or Recruit aboard.</td>
+            <td class="text-end">$1,000 each on an Errand, $500 each on a Heist</td>
+          </tr>
+          <tr>
+            <th scope="row">Pai Gow</th>
+            <td>While on a brigantine or galleon, all crewmates are rank Doubloon Shark or lower.</td>
+            <td class="text-end">$3,000</td>
+          </tr>
+          <tr>
+            <th scope="row">Blackjack</th>
+            <td>Total plunder is $170,000&ndash;$210,000.</td>
+            <td class="text-end">$3,000</td>
+          </tr>
+          <tr>
+            <th scope="row">Craps Table</th>
+            <td>Total plunder is $620,000 or higher.</td>
+            <td class="text-end">$5,000</td>
+          </tr>
+        </tbody>
+      </table>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-bonus">
         <div id="bonus-ship-size" class="d-none">Additional bonuses are available when sailing a <span id="bonus-ship-size-sloop">brigantine or</span> galleon.</div>
         <div id="bonus-specialty-rank" class="d-none">
           <div>Visit the <code>#pirate-emporium</code> to purchase a specialty rank ($10,000). Specialty ranks display as an icon on your Discord name in chat. A Royal Flush bonus supersedes a Straight Ship bonus.</div>
         </div>
-        <div>These bonuses are applied automatically:</div>
-        <ul class="mb-0">
-          <li><strong>Dice:</strong> Stowaway or Recruit aboard ($1,000 each on an Errand, $500 each on a Heist)</li>
-          <li><strong>Pai Gow:</strong> While on a brigantine or galleon, all crewmates are rank Doubloon Shark or below ($3,000)</li>
-          <li><strong>Blackjack:</strong> Total plunder is $170,000&ndash;$210,000 ($3,000)</li>
-          <li><strong>Craps Table:</strong> Total plunder is $620,000 or more ($5,000)</li>
-        </ul>
       </div>
     </form>
     <hr>
@@ -516,7 +541,7 @@
     </div>
     <hr>
     <h2 id="section-plunder">Plunder</h2>
-    <p>Note your starting and ending gold and doubloon amounts:</p>
+    <p>Record your gold and doubloon amounts at the start and end of the voyage:</p>
     <div class="row">
       <div class="col-1">
         <img src="images/currency-gold.webp" alt="Gold" aria-hidden="true" class="icon h3 pe-1">
@@ -578,7 +603,7 @@
       <div>Report successful. No errors detected.</div>
     </div>
     <div id="report-rerun" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
-      <div>Press the Create Report button again to update with any changes.</div>
+      <div>Press Create Report again to update with changes.</div>
     </div>
     <div class="d-none" id="report-container">
       <h3>Total</h3>
