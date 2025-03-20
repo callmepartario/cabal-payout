@@ -1,6 +1,16 @@
+/* fonts  */
+@font-face {
+    font-family: "Windlass";
+    src: url("../fonts/windlass.woff2") format('woff2');
+}
+@font-face {
+    font-family: "Brushtip Texe";
+    src: url("../fonts/brushtiptexe.woff2") format('woff2');
+}
+
 /* basics  */
 body { 
-    font-family: "Petrona";
+    font-family: "Windlass";
     font-weight: 400;
     font-style: normal;
 }
@@ -8,12 +18,12 @@ body {
 a { color: #facc8e; }
 a:hover { color: #fca832; }
 h1 {
-    font-family: "Mouse Memoirs";
+    font-family: "Brushtip Texe";
     font-weight: 400;
     font-style: normal;
-    text-transform: uppercase;
+    letter-spacing: 0.0375em;
     text-align: left;
-    font-size: 3.5rem;
+    font-size: 3rem;
     line-height: 1;
     padding-top: 1rem;
 }
