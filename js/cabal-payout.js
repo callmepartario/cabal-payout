@@ -1534,11 +1534,15 @@ function checkReportErrors() {
         document.getElementById('errors-true').classList.remove('d-none');
         document.getElementById('errors-false').classList.add('d-none');
         document.getElementById('report-container').classList.add('d-none');
+        document.getElementById('generate-report').classList.remove('btn-muted');
+        document.getElementById('generate-report').classList.add('btn-selected');
     }
     else {
         document.getElementById('errors-true').classList.add('d-none');
         document.getElementById('errors-false').classList.remove('d-none');
         document.getElementById('report-container').classList.remove('d-none');
+        document.getElementById('generate-report').classList.remove('btn-selected');
+        document.getElementById('generate-report').classList.add('btn-muted');
     }
     // Issue warnings
     if (faction == 'LF') {
