@@ -13,7 +13,13 @@ body {
     font-family: "Windlass";
     font-weight: 400;
     font-style: normal;
+    letter-spacing: 0.0375em;
 }
+
+button, .btn {
+    letter-spacing: 0.0375em;
+}
+
 .bg-black { background-color: #181818; }
 a { color: #facc8e; }
 a:hover { color: #fca832; }

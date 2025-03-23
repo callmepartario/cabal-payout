@@ -1112,7 +1112,7 @@ function checkCrewCut() {
     }
     else {
         // discard and set participation to full for unsupplemented crew
-        if (shipType >= 2) {
+        if (shipType >= 2 && crewSupplement == 0) {
             crewPercent1Value = 100;
             crewPercent2Value = 100;
         }
@@ -1120,13 +1120,13 @@ function checkCrewCut() {
             crewPercent1Value = 0;
             crewPercent2Value = 0;
         }
-        if (shipType >= 3) {
+        if (shipType >= 3 && crewSupplement == 0) {
             crewPercent3Value = 100;
         }
         else {
             crewPercent3Value = 0;
         }
-        if (shipType == 4) {
+        if (shipType == 4 && crewSupplement == 0) {
             crewPercent4Value = 100;
         }
         else {
@@ -1148,6 +1148,9 @@ function checkCrewCut() {
         document.getElementById('total-crew-percent-4').innerHTML = '';
         document.getElementById('report-crew-percent-4').innerHTML = '';
     }
+};
+
+function checkCrewPayout() {
     /* report and display each crewmember */
     //crew 1
     if (shipType + crewSupplement >= 1) {
@@ -1413,6 +1416,7 @@ function checkReportErrors() {
     goldStartValue = goldStart.value;
     goldEnd = document.getElementById('gold-end');    
     goldEndValue = goldEnd.value;
+    totalGold = goldEndValue - goldStartValue;
     // gold missing
     if (goldStartValue === '' || goldEndValue === '') { 
         document.getElementById('warning-gold-missing').classList.remove('d-none');
@@ -1427,7 +1431,6 @@ function checkReportErrors() {
         errorCount++;
     }
     else { 
-        totalGold = goldEndValue - goldStartValue;
         document.getElementById('warning-gold-negative').classList.add('d-none');
     }
     /* Check doubloons */
@@ -1454,9 +1457,32 @@ function checkReportErrors() {
         document.getElementById('warning-doubloon-negative').classList.add('d-none');
     }
     /* Check for participation totals */
+    checkCrewCut();
     if (crewSupplement > 0) {
         // all crew participate between 1-100%
-        if ((shipType + crewSupplement >= 1 && crewPercent1Value < 1) || (shipType + crewSupplement >= 1 && crewPercent1Value > 100) || (shipType + crewSupplement >= 2 && crewPercent2Value < 1) || (shipType + crewSupplement >= 2 && crewPercent2Value > 100) || (shipType + crewSupplement >= 3 && crewPercent3Value < 1) || (shipType + crewSupplement >= 3 && crewPercent3Value > 100) || (shipType + crewSupplement >= 4 && crewPercent4Value < 1) || (shipType + crewSupplement >= 4 && crewPercent4Value > 100) || (shipType + crewSupplement >= 5 && crewPercent5Value < 1) || (shipType + crewSupplement >= 5 && crewPercent5Value > 100) || (shipType + crewSupplement >= 6 && crewPercent6Value < 1) || (shipType + crewSupplement >= 6 && crewPercent6Value > 100) || (shipType + crewSupplement >= 7 && crewPercent7Value < 1) || (shipType + crewSupplement >= 7 && crewPercent7Value > 100) || (shipType + crewSupplement >= 8 && crewPercent8Value < 1) || (shipType + crewSupplement >= 8 && crewPercent8Value > 100) || (shipType + crewSupplement >= 9 && crewPercent9Value < 1) || (shipType + crewSupplement >= 9 && crewPercent9Value > 100) || (shipType + crewSupplement >= 10 && crewPercent10Value < 1) || (shipType + crewSupplement >= 10 && crewPercent10Value > 100)) {
+        if (
+               (shipType + crewSupplement >= 1 && crewPercent1Value < 1) 
+            || (shipType + crewSupplement >= 2 && crewPercent2Value < 1) 
+            || (shipType + crewSupplement >= 3 && crewPercent3Value < 1) 
+            || (shipType + crewSupplement >= 4 && crewPercent4Value < 1) 
+            || (shipType + crewSupplement >= 5 && crewPercent5Value < 1) 
+            || (shipType + crewSupplement >= 6 && crewPercent6Value < 1) 
+            || (shipType + crewSupplement >= 7 && crewPercent7Value < 1) 
+            || (shipType + crewSupplement >= 8 && crewPercent8Value < 1) 
+            || (shipType + crewSupplement >= 9 && crewPercent9Value < 1) 
+            || (shipType + crewSupplement >= 10 && crewPercent10Value < 1) 
+
+            || (shipType + crewSupplement >= 1 && crewPercent1Value > 100) 
+            || (shipType + crewSupplement >= 2 && crewPercent2Value > 100) 
+            || (shipType + crewSupplement >= 3 && crewPercent3Value > 100) 
+            || (shipType + crewSupplement >= 4 && crewPercent4Value > 100) 
+            || (shipType + crewSupplement >= 5 && crewPercent5Value > 100) 
+            || (shipType + crewSupplement >= 6 && crewPercent6Value > 100) 
+            || (shipType + crewSupplement >= 7 && crewPercent7Value > 100) 
+            || (shipType + crewSupplement >= 8 && crewPercent8Value > 100) 
+            || (shipType + crewSupplement >= 9 && crewPercent9Value > 100) 
+            || (shipType + crewSupplement >= 10 && crewPercent10Value > 100) 
+        ) {
             document.getElementById('warning-participation-percentage').classList.remove('d-none');
             errorCount++;
         }
@@ -1525,7 +1551,7 @@ function checkReportErrors() {
     totalPlunder = totalGold + totalDoubloonGold;
     totalJobPay = Math.round(totalPlunder * jobRate);
     totalFactionVault = totalJobPay + totalBonus;
-    checkCrewCut();
+    checkCrewPayout();
 };
 
 /* Generate Report */
