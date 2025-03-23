@@ -56,7 +56,7 @@
               <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
             </div>
             <div class="d-table-cell">
-              <div>See <code>#criminal-enterprise</code> for your fleet's current voyage number&mdash;for example, &ldquo;151st&rdquo;.</div>
+              <div>See <code>#criminal-enterprise</code> for your fleet's current voyage number&mdash;for example, &ldquo;143rd&rdquo;.</div>
             </div>
           </div>
         </div>
@@ -694,21 +694,29 @@
         <thead>
           <tr>
             <th scope="col">Earnings</th>
+            <th scope="col" class="text-end">Starting</th>
+            <th scope="col" class="text-end">Ending</th>
             <th scope="col" class="text-end">Plunder</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row"><img src="images/currency-gold.webp" aria-hidden="true" alt="" class="float-start icon">Gold</th>
+            <td class="text-end"><span id="starting-gold-value">&mdash;</span></td>
+            <td class="text-end"><span id="ending-gold-value">&mdash;</span></td>
             <td class="text-end">+$<span id="total-gold-value">&mdash;</span></td>
           </tr>
           <tr>
             <th scope="row"><img src="images/currency-doubloon.webp" aria-hidden="true" alt="" class="float-start icon">Doubloons</th>
+            <td class="text-end"><span id="starting-doubloon-value">&mdash;</span></td>
+            <td class="text-end"><span id="ending-doubloon-value">&mdash;</span></td>
             <td class="text-end">(<span id="total-doubloon-count">&mdash;</span>), +$<span id="total-doubloon-gold">&mdash;</span></td>
           </tr>
           <tr>
             <th scope="row"><img src="images/currency-total.webp" aria-hidden="true" alt="" class="float-start icon">Total</th>
-            <td class="text-end">$<span id="total-plunder">&mdash;</span></td>
+            <td class="text-end"><span>&mdash;</span></td>
+            <td class="text-end"><span>&mdash;</span></td>
+            <td class="text-end og-hl">$<span id="total-plunder">&mdash;</span></td>
           </tr>
         </tbody>
       </table>
@@ -717,49 +725,60 @@
         <thead>
           <tr>
             <th scope="col">Earnings</th>
+            <th scope="col">Notes</th>
             <th scope="col" class="text-end">Plunder</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row"><img src="images/currency-vault.webp" aria-hidden="true" alt="" class="float-start icon"><span id="total-job-type">Job Type</span></th>
-            <td class="text-end"><span id="total-job-rate">&mdash;%</span>, +$<span id="total-job-pay">&mdash;</span></td>
+            <td>Job rate is <span id="total-job-rate">&mdash;</span>% of total plunder.</td>
+            <td class="text-end">+$<span id="total-job-pay">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-bonus-craps-table">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Craps Table</th>
+            <td>Total plunder is $620,000 or higher.</td>
             <td class="text-end">+$5,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-blackjack">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Blackjack</th>
+            <td>Total plunder is $170,000&ndash;$210,000.</td>
             <td class="text-end">+$3,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-pai-gow">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Pai Gow</th>
+            <td>While on a brigantine or galleon, all crewmates are rank Doubloon Shark or lower.</td>
             <td class="text-end">+$3,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-royal-flush">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Royal Flush</th>
+            <td>Each crewmate is a member of the same Cabal of Thieves faction, and each has a different specialty rank.</td>
             <td class="text-end">+$2,500</td>
           </tr>
           <tr class="d-none" id="total-bonus-united-deck">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">United Deck</th>
+            <td>Each crewmate represents a different Cabal of Thieves faction.</td>
             <td class="text-end">+$2,500</td>
           </tr>
           <tr class="d-none" id="total-bonus-full-house">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Full House</th>
+            <td>The crew represents exactly two Cabal of Thieves factions.</td>
             <td class="text-end">+$2,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-straight-ship">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Straight Ship</th>
+            <td>Each crewmate has a different specialty rank.</td>
             <td class="text-end">+$1,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-dice">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Dice</th>
+            <td>Earn $<span id="total-bonus-dice-rate">&mdash;</span> for each Stowaway or Recruit aboard.</td>
             <td class="text-end">(<span id="total-bonus-dice-count">&mdash;</span>), +$<span id="total-bonus-dice-amount">&mdash;</span></td>
           </tr>
           <tr id="total-vault">
             <th scope="row"><span class="float-start" id="faction-icon"></span><span id="total-faction">Crew Cut</span></th>
-            <td class="text-end">$<span id="total-faction-vault">&mdash;</span></td>
+            <td>Crew cut is a percentage of this total.</td>
+            <td class="text-end og-hl">$<span id="total-faction-vault">&mdash;</span></td>
           </tr>
         </tbody>
       </table>
@@ -792,61 +811,61 @@
             <th scope="row"><span id="total-crew-name-1">&mdash;</span></th>
             <td><span id="total-crew-rank-1">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-1">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-1"></span>$<span id="total-crew-amount-1">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-1"></span>$<span id="total-crew-amount-1">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-2">
             <th scope="row"><span id="total-crew-name-2">&mdash;</span></th>
             <td><span id="total-crew-rank-2">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-2">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-2"></span>$<span id="total-crew-amount-2">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-2"></span>$<span id="total-crew-amount-2">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-3">
             <th scope="row"><span id="total-crew-name-3">&mdash;</span></th>
             <td><span id="total-crew-rank-3">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-3">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-3"></span>$<span id="total-crew-amount-3">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-3"></span>$<span id="total-crew-amount-3">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-4">
             <th scope="row"><span id="total-crew-name-4">&mdash;</span></th>
             <td><span id="total-crew-rank-4">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-4">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-4"></span>$<span id="total-crew-amount-4">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-4"></span>$<span id="total-crew-amount-4">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-5">
             <th scope="row"><span id="total-crew-name-5">&mdash;</span></th>
             <td><span id="total-crew-rank-5">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-5">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-5"></span>$<span id="total-crew-amount-5">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-5"></span>$<span id="total-crew-amount-5">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-6">
             <th scope="row"><span id="total-crew-name-6">&mdash;</span></th>
             <td><span id="total-crew-rank-6">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-6">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-6"></span>$<span id="total-crew-amount-6">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-6"></span>$<span id="total-crew-amount-6">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-7">
             <th scope="row"><span id="total-crew-name-7">&mdash;</span></th>
             <td><span id="total-crew-rank-7">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-7">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-7"></span>$<span id="total-crew-amount-7">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-7"></span>$<span id="total-crew-amount-7">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-8">
             <th scope="row"><span id="total-crew-name-8">&mdash;</span></th>
             <td><span id="total-crew-rank-8">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-8">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-8"></span>$<span id="total-crew-amount-8">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-8"></span>$<span id="total-crew-amount-8">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-9">
             <th scope="row"><span id="total-crew-name-9">&mdash;</span></th>
             <td><span id="total-crew-rank-9">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-9">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-9"></span>$<span id="total-crew-amount-9">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-9"></span>$<span id="total-crew-amount-9">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-crew-10">
             <th scope="row"><span id="total-crew-name-10">&mdash;</span></th>
             <td><span id="total-crew-rank-10">&mdash;</span></td>
             <td class="text-end"><span id="total-crew-cut-10">&mdash;</span>%</td>
-            <td class="text-end"><span id="total-crew-percent-10"></span>$<span id="total-crew-amount-10">&mdash;</span></td>
+            <td class="text-end og-hl"><span id="total-crew-percent-10"></span>$<span id="total-crew-amount-10">&mdash;</span></td>
           </tr>
         </tbody>
       </table>
@@ -930,7 +949,7 @@
     </div>
     <hr>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2">
-      <div>v1.06c (2025-03-22) &mdash; Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
+      <div>v1.06d (2025-03-23) &mdash; Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <div class="mb-3"></div>
   </div>

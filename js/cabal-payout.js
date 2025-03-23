@@ -752,6 +752,7 @@ function checkBonusDice() {
             bonusDiceValue = 500;
         }
         bonusDiceAmount = bonusDiceCount * bonusDiceValue;
+        document.getElementById('total-bonus-dice-rate').innerHTML = printNumber(bonusDiceValue);
         document.getElementById('total-bonus-dice-count').innerHTML = bonusDiceCount;
         document.getElementById('total-bonus-dice-amount').innerHTML = printNumber(bonusDiceAmount);
         document.getElementById('total-bonus-dice').classList.remove('d-none');
@@ -1579,9 +1580,13 @@ function generateReport() {
     // Populate Activity Log
     checkActivityLog();
     // Populate Gold
+    document.getElementById('starting-gold-value').innerHTML = printNumber(goldStartValue);
+    document.getElementById('ending-gold-value').innerHTML = printNumber(goldEndValue);
     document.getElementById('total-gold-value').innerHTML = printNumber(totalGold);
     document.getElementById('report-total-gold-value').innerHTML = printNumber(totalGold);
     // Populate Doubloons
+    document.getElementById('starting-doubloon-value').innerHTML = printNumber(doubloonStartValue);
+    document.getElementById('ending-doubloon-value').innerHTML = printNumber(doubloonEndValue);
     document.getElementById('total-doubloon-count').innerHTML = printNumber(totalDoubloonCount);
     document.getElementById('total-doubloon-gold').innerHTML = printNumber(totalDoubloonGold);
     document.getElementById('report-doubloon-count').innerHTML = printNumber(totalDoubloonCount);
@@ -1590,7 +1595,7 @@ function generateReport() {
     document.getElementById('total-plunder').innerHTML = printNumber(totalPlunder);
     document.getElementById('report-plunder').innerHTML = printNumber(totalPlunder);
     document.getElementById('total-job-type').innerHTML = printNumber(jobType);
-    document.getElementById('total-job-rate').innerHTML = '(' + jobRate * 100 + '%)';
+    document.getElementById('total-job-rate').innerHTML = jobRate * 100;
     document.getElementById('total-job-pay').innerHTML = printNumber(totalJobPay);
     // Populate Faction Vault Cut
     document.getElementById('faction-icon').innerHTML = factionIcon;
