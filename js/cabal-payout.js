@@ -126,6 +126,7 @@ let crewPercent10Value = 0;
 let crewSupplement = 0;
 let crewParticipation = 0;
 let crewStowawayPresent = false;
+let crewFactionless = false;
 let crewRankLevel = 0;
 
 let activity1 = '';
@@ -676,8 +677,17 @@ function checkBonusEligibility() {
         document.getElementById('bonus-list-table').classList.add('d-none');
     }
 };
-
 /* Determine Bonuses */
+function checkBonusReset() {
+    bonusDiceAmount = 0;
+    bonusPaiGowAmount = 0;
+    bonusStraightShipAmount = 0;
+    bonusStraightShipAmount = 0;
+    bonusUnitedDeckAmount = 0;
+    bonusBlackjackAmount = 0;
+    bonusCrapsTableAmount = 0;
+    totalBonus = 0;
+}
 function checkBonusStraightShip() {
     bonusStraightShip = document.getElementById("bonus-straight-ship");
     if (bonusStraightShip.checked == true) {
@@ -714,17 +724,11 @@ function checkBonusRoyalFlush() {
         bonusRoyalFlushAmount = 2500;
         document.getElementById('total-bonus-royal-flush').classList.remove('d-none');
         document.getElementById('report-bonus-royal-flush').classList.remove('d-none');
-        // Disable Straight Ship bonus
-        if (bonusStraightShipAmount > 0) {
-            bonusStraightShipAmount = 0;
-            document.getElementById('total-bonus-straight-ship').classList.add('d-none');
-            document.getElementById('report-bonus-straight-ship').classList.add('d-none');    
-        }
-        else {
-            bonusRoyalFlushAmount = 0;
-            document.getElementById('total-bonus-royal-flush').classList.add('d-none');
-            document.getElementById('report-bonus-royal-flush').classList.add('d-none');
-        }
+    }
+    else {
+        bonusRoyalFlushAmount = 0;
+        document.getElementById('total-bonus-royal-flush').classList.add('d-none');
+        document.getElementById('report-bonus-royal-flush').classList.add('d-none');
     }
 };
 function checkBonusUnitedDeck() {
@@ -742,6 +746,41 @@ function checkBonusUnitedDeck() {
         }
     }
 };
+function checkBonusLogic() {
+    // Disable Straight Ship bonus if Royal Flush is in effect
+    if (bonusRoyalFlushAmount > 0 && bonusStraightShipAmount > 0) {
+        bonusStraightShipAmount = 0;
+        document.getElementById('total-bonus-straight-ship').classList.add('d-none');
+        document.getElementById('report-bonus-straight-ship').classList.add('d-none');    
+    }
+    // Prevent impossible combinations of crew faction representation
+    if ((bonusRoyalFlushAmount > 0 && bonusFullHouseAmount > 0) || (bonusFullHouseAmount > 0 && bonusUnitedDeckAmount > 0) || (bonusUnitedDeckAmount > 0 && bonusRoyalFlushAmount > 0)) {
+        document.getElementById('warning-bonus').classList.remove('d-none');
+        errorCount++;
+        // negate all bonuses
+        bonusRoyalFlushAmount = 0;
+        bonusFullHouseAmount = 0;
+        bonusUnitedDeckAmount = 0;
+        // hide all bonuses to ensure a proper reset 
+        document.getElementById('total-bonus-full-house').classList.add('d-none');
+        document.getElementById('report-bonus-full-house').classList.add('d-none');
+        document.getElementById('total-bonus-royal-flush').classList.add('d-none');
+        document.getElementById('report-bonus-royal-flush').classList.add('d-none');
+        document.getElementById('total-bonus-united-deck').classList.add('d-none');
+        document.getElementById('report-bonus-united-deck').classList.add('d-none');
+    } 
+    else {
+        document.getElementById('warning-bonus').classList.add('d-none');
+    }
+    // Bonuses requiring faction membership are prevented if the crew includes rank crate smuggler or lower
+    if (crewFactionless == true && (bonusRoyalFlushAmount > 0 || bonusFullHouseAmount > 0 || bonusUnitedDeckAmount > 0)) {
+        errorCount++;
+        document.getElementById('warning-bonus-rank').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('warning-bonus-rank').classList.add('d-none');
+    }
+}
 // automatic bonuses based on crew rank
 function checkBonusDice() {
     if (bonusDiceCount > 0) {
@@ -866,144 +905,175 @@ function checkCrewRanks() {
     crewRankLevel = 0;
     bonusDiceCount = 0;
     crewStowawayPresent = false;
+    crewFactionless = false;
     // crew 1
     if (shipType + crewSupplement >= 1) {
         crewRank1 = document.getElementById('crewmate-1-rank');
         crewRank1Value = crewRank1.value;
-        if (crewRankLevel < crewRank1.value) {
-            crewRankLevel = crewRank1.value;
+        if (crewRankLevel < crewRank1Value) {
+            crewRankLevel = crewRank1Value;
         }
-        if (crewRank1.value < 3) {
+        if (crewRank1Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank1.value == '1') {
+        if (crewRank1Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank1Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 2
     if (shipType + crewSupplement >= 2) {
         crewRank2 = document.getElementById('crewmate-2-rank');
         crewRank2Value = crewRank2.value;
-        if (crewRankLevel < crewRank2.value) {
-            crewRankLevel = crewRank2.value;
+        if (crewRankLevel < crewRank2Value) {
+            crewRankLevel = crewRank2Value;
         }
-        if (crewRank2.value < 3) {
+        if (crewRank2Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank2.value == '1') {
+        if (crewRank2Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank2Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 3
     if (shipType + crewSupplement >= 3) {
         crewRank3 = document.getElementById('crewmate-3-rank');
         crewRank3Value = crewRank3.value;
-        if (crewRankLevel < crewRank3.value) {
-            crewRankLevel = crewRank3.value;
+        if (crewRankLevel < crewRank3Value) {
+            crewRankLevel = crewRank3Value;
         }
-        if (crewRank3.value < 3) {
+        if (crewRank3Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank3.value == '1') {
+        if (crewRank3Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank3Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 4
     if (shipType + crewSupplement >= 4) {
         crewRank4 = document.getElementById('crewmate-4-rank');
         crewRank4Value = crewRank4.value;
-        if (crewRankLevel < crewRank4.value) {
-            crewRankLevel = crewRank4.value;
+        if (crewRankLevel < crewRank4Value) {
+            crewRankLevel = crewRank4Value;
         }
-        if (crewRank4.value < 3) {
+        if (crewRank4Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank4.value == '1') {
+        if (crewRank4Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank4Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 5
     if (shipType + crewSupplement >= 5) {
         crewRank5 = document.getElementById('crewmate-5-rank');
         crewRank5Value = crewRank5.value;
-        if (crewRankLevel < crewRank5.value) {
-            crewRankLevel = crewRank5.value;
+        if (crewRankLevel < crewRank5Value) {
+            crewRankLevel = crewRank5Value;
         }
-        if (crewRank5.value < 3) {
+        if (crewRank5Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank5.value == '1') {
+        if (crewRank5Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank5Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 6
     if (shipType + crewSupplement >= 6) {
         crewRank6 = document.getElementById('crewmate-6-rank');
         crewRank6Value = crewRank6.value;
-        if (crewRankLevel < crewRank6.value) {
-            crewRankLevel = crewRank6.value;
+        if (crewRankLevel < crewRank6Value) {
+            crewRankLevel = crewRank6Value;
         }
-        if (crewRank6.value < 3) {
+        if (crewRank6Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank6.value == '1') {
+        if (crewRank6Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank6Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 7
     if (shipType + crewSupplement >= 7) {
         crewRank7 = document.getElementById('crewmate-7-rank');
         crewRank7Value = crewRank7.value;
-        if (crewRankLevel < crewRank7.value) {
-            crewRankLevel = crewRank7.value;
+        if (crewRankLevel < crewRank7Value) {
+            crewRankLevel = crewRank7Value;
         }
-        if (crewRank7.value < 3) {
+        if (crewRank7Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank7.value == '1') {
+        if (crewRank7Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank7Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 8
     if (shipType + crewSupplement >= 8) {
         crewRank8 = document.getElementById('crewmate-8-rank');
         crewRank8Value = crewRank8.value;
-        if (crewRankLevel < crewRank8.value) {
-            crewRankLevel = crewRank8.value;
+        if (crewRankLevel < crewRank8Value) {
+            crewRankLevel = crewRank8Value;
         }
-        if (crewRank8.value < 3) {
+        if (crewRank8Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank8.value == '1') {
+        if (crewRank8Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank8Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 9
     if (shipType + crewSupplement >= 9) {
         crewRank9 = document.getElementById('crewmate-9-rank');
         crewRank9Value = crewRank9.value;
-        if (crewRankLevel < crewRank9.value) {
-            crewRankLevel = crewRank9.value;
+        if (crewRankLevel < crewRank9Value) {
+            crewRankLevel = crewRank9Value;
         }
-        if (crewRank9.value < 3) {
+        if (crewRank9Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank9.value == '1') {
+        if (crewRank9Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank9Value < 4) {
+            crewFactionless = true;
         }
     }
     // crew 10
     if (shipType + crewSupplement >= 10) {
         crewRank10 = document.getElementById('crewmate-10-rank');
         crewRank10Value = crewRank10.value;
-        if (crewRankLevel < crewRank10.value) {
-            crewRankLevel = crewRank10.value;
+        if (crewRankLevel < crewRank10Value) {
+            crewRankLevel = crewRank10Value;
         }
-        if (crewRank10.value < 3) {
+        if (crewRank10Value < 3) {
             bonusDiceCount++;
         }
-        if (crewRank10.value == '1') {
+        if (crewRank10Value == 1) {
             crewStowawayPresent = true;
+        }
+        if (crewRank10Value < 4) {
+            crewFactionless = true;
         }
     }
 };
@@ -1411,7 +1481,7 @@ function checkReportErrors() {
         else {
             document.getElementById('warning-rank').classList.add('d-none');
         }
-    }
+    }    
     /* Check gold */
     goldStart = document.getElementById('gold-start');    
     goldStartValue = goldStart.value;
@@ -1502,17 +1572,19 @@ function checkReportErrors() {
             document.getElementById('warning-participation').classList.add('d-none');
         }
     }
-    /* Check for bonuses */
-    checkBonusDice();
-    checkBonusPaiGow();
+    /* Individual bonus checks */
+    checkBonusReset();
     checkBonusStraightShip();
     checkBonusFullHouse();
     checkBonusRoyalFlush();
     checkBonusUnitedDeck();
+    checkBonusLogic();
+    checkBonusDice();
+    checkBonusPaiGow();
     checkBonusBlackjack();
     checkBonusCrapsTable();
     checkBonusTotal();
-    /* Check for stowaway presence and explain $0 payout */
+    /* Check for stowaway presence and explain missing payout and report obligations */
     if (crewStowawayPresent == true) {
         document.getElementById('warning-stowaway').classList.remove('d-none');
     }
@@ -1594,7 +1666,7 @@ function generateReport() {
     // Populate Totals
     document.getElementById('total-plunder').innerHTML = printNumber(totalPlunder);
     document.getElementById('report-plunder').innerHTML = printNumber(totalPlunder);
-    document.getElementById('total-job-type').innerHTML = printNumber(jobType);
+    document.getElementById('total-job-type').innerHTML = jobType;
     document.getElementById('total-job-rate').innerHTML = jobRate * 100;
     document.getElementById('total-job-pay').innerHTML = printNumber(totalJobPay);
     // Populate Faction Vault Cut

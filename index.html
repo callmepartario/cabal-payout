@@ -9,7 +9,7 @@
 	<meta property="og:image" content="https://callmepartario.github.io/cabal-payout/images/cabal.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Mouse+Memoirs&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +27,7 @@
           <img src="images/cabal.webp" alt="Logo" aria-hidden="true" class="cabal-logo me-3">
         </div>
         <div class="d-table-cell align-middle">
-          <h1><span class="h3 d-block">Old Gus' Cabal of Thieves </span>Voyage Ledger</h1>
+          <h1><span class="og-title d-block mb-3">Old Gus' Cabal of Thieves </span>Voyage Ledger</h1>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
       </div>
       <hr>
       <h2 id="section-crew">Crew</h2>
-      <p>Record your name and rank, and your crewmates' names and ranks. If employing additional crew, record participation percentages for each.</p>
+      <p>Record your crew's names and ranks. If sailing with additional crew, record a participation percentage for each.</p>
       <div>
         <div class="row d-none" id="crew-1">
           <div class="col" id="crew-1-name">
@@ -370,8 +370,8 @@
         </div>
       </div>
       <ul class="list-inline mt-2">
-        <li class="list-inline-item"><button type="button" class="btn btn-muted" id="crew-add"><img src="images/icon-add.webp" class="icon" alt="" aria-hidden="true">Add Crewmate</button></li>
-        <li class="list-inline-item"><button type="button" class="btn btn-muted" id="crew-remove"><img src="images/icon-remove.webp" class="icon" alt="" aria-hidden="true">Remove Crewmate</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="crew-add"><img src="images/icon-add.webp" class="icon" alt="" aria-hidden="true">Add Crew</button></li>
+        <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="crew-remove"><img src="images/icon-remove.webp" class="icon" alt="" aria-hidden="true">Remove Crew</button></li>
       </ul>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-crew">
         <div class="d-table">
@@ -390,7 +390,7 @@
       <h2 id="section-bonus">Bonus</h2>
       <div id="bonus-list-table" class="d-none">
         <p>Check if the crew is eligible for bonus.</p>
-        <table class="table table-responsive-lg table-dark">
+        <div class="table-responsive"><table class="table table-responsive-lg table-dark">
           <thead>
             <tr>
               <th scope="col" class="og-control">Type</th>
@@ -416,18 +416,8 @@
                   <label class="form-check-label" for="bonus-full-house">Full House</label>
                 </div>
               </th>
-              <td>The crew represents exactly two Cabal of Thieves factions.</td>
+              <td>Each crewmate belongs to one of any two factions.</td>
               <td class="text-end">$2,000</td>
-            </tr>
-            <tr class="d-none" id="bonus-list-royal-flush">
-              <th scope="row">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="yes" id="bonus-royal-flush">
-                  <label class="form-check-label" for="bonus-royal-flush">Royal Flush</label>
-                </div>
-              </th>
-              <td>Each crewmate is a member of the same Cabal of Thieves faction, and each has a different specialty rank.</td>
-              <td class="text-end">$2,500</td>
             </tr>
             <tr class="d-none" id="bonus-list-united-deck">
               <th scope="row">
@@ -436,11 +426,21 @@
                   <label class="form-check-label" for="bonus-united-deck">United Deck</label>
                 </div>
               </th>
-              <td>Each crewmate represents a different Cabal of Thieves faction.</td>
+              <td>Each crewmate belongs to a different faction.</td>
+              <td class="text-end">$2,500</td>
+            </tr>
+            <tr class="d-none" id="bonus-list-royal-flush">
+              <th scope="row">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="yes" id="bonus-royal-flush">
+                  <label class="form-check-label" for="bonus-royal-flush">Royal Flush</label>
+                </div>
+              </th>
+              <td>All crew belong to the same faction. Each has a different specialty rank.</td>
               <td class="text-end">$2,500</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
       <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-bonus">
         <div class="d-table">
@@ -451,16 +451,15 @@
             <div class="d-table-cell">
               <div id="help-bonus-ship-size">Additional bonuses are available on a <span id="help-bonus-ship-size-sloop">brigantine or</span> galleon.</div>
               <div id="help-bonus-specialty-rank">
-                <div>Purchase one specialty rank from <code>#pirate-emporium</code> for $10,000, which displays on your Discord name.</div>
-                <div>A Royal Flush bonus supersedes a Straight Ship bonus.</div>
+                <div>Purchase a specialty rank from <code>#pirate-emporium</code> for $10,000. Specialty ranks are tagged on Discord names. Royal Flush supersedes Straight Ship.</div>
               </div>
-              <div>These bonuses apply automatically.</div>
+              <div>Dice, Pai Gow, Blackjack, and Craps Table apply automatically:</div>
             </div>
           </div>
         </div>
       </div>
       <div id="help-bonus-automatic" class="d-none">
-        <table class="table table-responsive-lg table-dark">
+        <div class="table-responsive"><table class="table table-responsive-lg table-dark">
           <thead>
             <tr>
               <th scope="col" class="og-control">Type</th>
@@ -471,12 +470,12 @@
           <tbody>
             <tr>
               <th scope="row">Dice</th>
-              <td>Earned for each Stowaway or Recruit aboard.</td>
+              <td>Pays for each Stowaway or Recruit.</td>
               <td class="text-end">$1,000 (Errand); $500 (Heist)</td>
             </tr>
             <tr>
               <th scope="row">Pai Gow</th>
-              <td>While on a brigantine or galleon, all crewmates are rank Doubloon Shark or lower.</td>
+              <td>All crew are rank Doubloon Shark or lower.</td>
               <td class="text-end">$3,000</td>
             </tr>
             <tr>
@@ -490,7 +489,7 @@
               <td class="text-end">$5,000</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </form>
     <hr>
@@ -577,8 +576,8 @@
       </div>
     </div>
     <ul class="list-inline mt-2">
-      <li class="list-inline-item"><button type="button" class="btn btn-muted" id="activity-add"><img src="images/icon-add.webp" class="icon" alt="" aria-hidden="true">Add Activity</button></li>
-      <li class="list-inline-item"><button type="button" class="btn btn-muted" id="activity-remove"><img src="images/icon-remove.webp" class="icon" alt="" aria-hidden="true">Remove Activity</button></li>
+      <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="activity-add"><img src="images/icon-add.webp" class="icon" alt="" aria-hidden="true">Add Activity</button></li>
+      <li class="list-inline-item"><button type="button" class="btn btn-muted mt-2" id="activity-remove"><img src="images/icon-remove.webp" class="icon" alt="" aria-hidden="true">Remove Activity</button></li>
     </ul>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-activity">
       <div class="d-table">
@@ -628,7 +627,7 @@
             <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
           </div>
           <div class="d-table-cell">
-            <div>Each gold is worth $1. A doubloon is worth $25. It's a good idea to save an in-game screenshot of your startng and ending gold and doubloons, in case someone checks your report!</div>
+            <div>Each gold is worth $1. A doubloon is worth $25. Save a screenshot of your startng and ending gold and doubloons, in case you need proof.</div>
           </div>
         </div>
       </div>
@@ -662,9 +661,11 @@
         <li class="d-none" id="warning-ship-name"><a href="#section-ship">Missing ship name</a></li>
         <li class="d-none" id="warning-ship-type"><a href="#section-ship">Missing ship type</a></li>
         <li class="d-none" id="warning-job-type"><a href="#section-job">Missing job type</a></li>
-        <li class="d-none" id="warning-rank"><a href="#section-crew">Crewmate 1 has insufficient rank</a> for <a href="#section-job">job type</a></li>
+        <li class="d-none" id="warning-rank"><a href="#section-crew">Crewmate 1 (You) has insufficient rank</a> for <a href="#section-job">job type</a></li>
         <li class="d-none" id="warning-participation-percentage"><a href="#section-crew">Invalid participation percentage (valid range is 1&ndash;100)</a></li>
         <li class="d-none" id="warning-participation"><a href="#section-crew">Invalid crew participation sum (<span id="crew-participation"></span>, expected <span id="crew-participation-total"></span>)</a></li>
+        <li class="d-none" id="warning-bonus"><a href="#section-bonus">Invalid bonus combination</a></li>
+        <li class="d-none" id="warning-bonus-rank"><a href="#section-bonus">Invalid bonus</a> due to <a href="#section-crew">factionless crew</a></li>
         <li class="d-none" id="warning-gold-missing"><a href="#section-plunder">Missing gold amounts</a></li>
         <li class="d-none" id="warning-gold-negative"><a href="#section-plunder">Negative gold earned</a></li>
         <li class="d-none" id="warning-doubloon-missing"><a href="#section-plunder">Missing doubloon amounts</a></li>
@@ -690,7 +691,7 @@
     </div>
     <div class="d-none" id="report-container">
       <h3>Total Plunder</h3>
-      <table class="table table-responsive-lg table-dark">
+      <div class="table-responsive"><table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
             <th scope="col">Earnings</th>
@@ -719,9 +720,9 @@
             <td class="text-end og-hl">$<span id="total-plunder">&mdash;</span></td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <h3>Faction Cut</h3>
-      <table class="table table-responsive-lg table-dark">
+      <div class="table-responsive"><table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
             <th scope="col">Earnings</th>
@@ -732,7 +733,7 @@
         <tbody>
           <tr>
             <th scope="row"><img src="images/currency-vault.webp" aria-hidden="true" alt="" class="float-start icon"><span id="total-job-type">Job Type</span></th>
-            <td>Job rate is <span id="total-job-rate">&mdash;</span>% of total plunder.</td>
+            <td><span id="total-job-rate">&mdash;</span>% of total plunder.</td>
             <td class="text-end">+$<span id="total-job-pay">&mdash;</span></td>
           </tr>
           <tr class="d-none" id="total-bonus-craps-table">
@@ -747,22 +748,22 @@
           </tr>
           <tr class="d-none" id="total-bonus-pai-gow">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Pai Gow</th>
-            <td>While on a brigantine or galleon, all crewmates are rank Doubloon Shark or lower.</td>
+            <td>All crew are rank Doubloon Shark or lower.</td>
             <td class="text-end">+$3,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-royal-flush">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Royal Flush</th>
-            <td>Each crewmate is a member of the same Cabal of Thieves faction, and each has a different specialty rank.</td>
+            <td>All crew belong to the same faction. Each has a different specialty rank.</td>
             <td class="text-end">+$2,500</td>
           </tr>
           <tr class="d-none" id="total-bonus-united-deck">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">United Deck</th>
-            <td>Each crewmate represents a different Cabal of Thieves faction.</td>
+            <td>Each crewmate belongs to a different faction.</td>
             <td class="text-end">+$2,500</td>
           </tr>
           <tr class="d-none" id="total-bonus-full-house">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Full House</th>
-            <td>The crew represents exactly two Cabal of Thieves factions.</td>
+            <td>Each crewmate belongs to one of any two factions.</td>
             <td class="text-end">+$2,000</td>
           </tr>
           <tr class="d-none" id="total-bonus-straight-ship">
@@ -772,16 +773,16 @@
           </tr>
           <tr class="d-none" id="total-bonus-dice">
             <th scope="row"><img src="images/bonus.svg" aria-hidden="true" alt="" class="float-start icon">Dice</th>
-            <td>Earn $<span id="total-bonus-dice-rate">&mdash;</span> for each Stowaway or Recruit aboard.</td>
+            <td>$<span id="total-bonus-dice-rate">&mdash;</span> for each Stowaway or Recruit.</td>
             <td class="text-end">(<span id="total-bonus-dice-count">&mdash;</span>), +$<span id="total-bonus-dice-amount">&mdash;</span></td>
           </tr>
           <tr id="total-vault">
             <th scope="row"><span class="float-start" id="faction-icon"></span><span id="total-faction">Crew Cut</span></th>
-            <td>Crew cut is a percentage of this total.</td>
+            <td>Crew cut paid from this amount.</td>
             <td class="text-end og-hl">$<span id="total-faction-vault">&mdash;</span></td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <div id="help-lf" class="d-none">
         <div id="warning-lf" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none">
           <div class="d-table">
@@ -797,10 +798,10 @@
         </div>
       </div>
       <h3>Crew Cut</h3>
-      <table class="table table-responsive-lg table-dark">
+      <div class="table-responsive"><table class="table table-responsive-lg table-dark">
         <thead>
           <tr>
-            <th scope="col">Crewmate</th>
+            <th scope="col">Crew</th>
             <th scope="col">Rank</th>
             <th scope="col" class="text-end">Cut</th>
             <th scope="col" class="text-end">Plunder</th>
@@ -868,7 +869,7 @@
             <td class="text-end og-hl"><span id="total-crew-percent-10"></span>$<span id="total-crew-amount-10">&mdash;</span></td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <div id="help-stowaway" class="d-none">
         <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="warning-stowaway">
           <div class="d-table">
@@ -896,7 +897,7 @@
               <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
             </div>
             <div class="d-table-cell">
-              <div>Copy this report to the clipboard, then paste it into <code>#criminal-enterprise</code> to link crewmate accounts and submit it for payout.</div>
+              <div>Copy this report to the clipboard, then paste it into <code>#criminal-enterprise</code> to link crew accounts, then submit it for payout.</div>
             </div>
           </div>
         </div>
@@ -927,9 +928,9 @@
         <div class="d-none" id="report-bonus-craps-table">:game_die: **Craps Table:** $5,000</div>
         <div class="d-none" id="report-bonus-blackjack">:game_die: **Blackjack:** $3,000</div>
         <div class="d-none" id="report-bonus-pai-gow">:game_die: **Pai Gow:** $3,000</div>
+        <div class="d-none" id="report-bonus-royal-flush">:game_die: **Royal Flush:** $2,500</div>
         <div class="d-none" id="report-bonus-united-deck">:game_die: **United Deck:** $2,500</div>
         <div class="d-none" id="report-bonus-full-house">:game_die: **Full House:** $2,000</div>
-        <div class="d-none" id="report-bonus-royal-flush">:game_die: **Royal Flush:** $2,000</div>
         <div class="d-none" id="report-bonus-straight-ship">:game_die: **Straight Ship:** $1,000</div>
         <div class="d-none" id="report-bonus-dice">:game_die: **Dice:** (<span id="report-bonus-dice-count">&mdash;</span>), $<span id="report-bonus-dice-amount">&mdash;</span></div>
         <div>&nbsp;</div>
@@ -949,7 +950,8 @@
     </div>
     <hr>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2">
-      <div>v1.06d (2025-03-23) &mdash; Not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
+      <div>v1.07a (2025-03-23)</div>
+      <div>This tool is an independent production, and is not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <div class="mb-3"></div>
   </div>
