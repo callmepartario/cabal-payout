@@ -1416,7 +1416,6 @@ function checkReportErrors() {
     goldStartValue = goldStart.value;
     goldEnd = document.getElementById('gold-end');    
     goldEndValue = goldEnd.value;
-    totalGold = goldEndValue - goldStartValue;
     // gold missing
     if (goldStartValue === '' || goldEndValue === '') { 
         document.getElementById('warning-gold-missing').classList.remove('d-none');
@@ -1424,6 +1423,7 @@ function checkReportErrors() {
     }
     else { 
         document.getElementById('warning-gold-missing').classList.add('d-none');
+        totalGold = goldEndValue - goldStartValue;
     }
     // gold negative
     if (totalGold < 0) { 
@@ -1445,6 +1445,7 @@ function checkReportErrors() {
     }
     else { 
         document.getElementById('warning-doubloon-missing').classList.add('d-none');
+        totalDoubloonCount = (doubloonEndValue - doubloonStartValue);
     }
     // doubloon negative
     if (totalDoubloonCount < 0) { 
@@ -1452,7 +1453,6 @@ function checkReportErrors() {
         errorCount++;
     }
     else { 
-        totalDoubloonCount = (doubloonEndValue - doubloonStartValue);
         totalDoubloonGold = totalDoubloonCount * 25;    
         document.getElementById('warning-doubloon-negative').classList.add('d-none');
     }
