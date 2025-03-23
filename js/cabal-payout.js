@@ -173,6 +173,7 @@ let activity10QtyValue = 0;
 let activityRows = 0;
 
 let errorCount = 0;
+let warningCount = 0;
 
 let helpToggle = false;
 
@@ -217,6 +218,7 @@ function toggleHelp() {
         document.getElementById('help-lf').classList.remove('d-none');
         document.getElementById('help-stowaway').classList.remove('d-none');
         document.getElementById('help-report').classList.remove('d-none');
+        document.getElementById('help-total-plunder').classList.remove('d-none');
         document.getElementById('help-discord').classList.remove('d-none');
         helpToggle = true;
         document.getElementById("toggle-help").classList.remove('btn-muted');
@@ -682,12 +684,13 @@ function checkBonusReset() {
     bonusDiceAmount = 0;
     bonusPaiGowAmount = 0;
     bonusStraightShipAmount = 0;
-    bonusStraightShipAmount = 0;
+    bonusFullHouseAmount = 0;
     bonusUnitedDeckAmount = 0;
+    bonusRoyalFlushAmount = 0;
     bonusBlackjackAmount = 0;
     bonusCrapsTableAmount = 0;
     totalBonus = 0;
-}
+};
 function checkBonusStraightShip() {
     bonusStraightShip = document.getElementById("bonus-straight-ship");
     if (bonusStraightShip.checked == true) {
@@ -747,15 +750,20 @@ function checkBonusUnitedDeck() {
     }
 };
 function checkBonusLogic() {
-    // Disable Straight Ship bonus if Royal Flush is in effect
+    // Disable Straight Ship bonus if Royal Flush is in effect and warn
     if (bonusRoyalFlushAmount > 0 && bonusStraightShipAmount > 0) {
         bonusStraightShipAmount = 0;
         document.getElementById('total-bonus-straight-ship').classList.add('d-none');
-        document.getElementById('report-bonus-straight-ship').classList.add('d-none');    
+        document.getElementById('report-bonus-straight-ship').classList.add('d-none');
+        warningCount++;
+        document.getElementById('warning-royal-flush').classList.remove('d-none');
+    } 
+    else {
+        document.getElementById('warning-royal-flush').classList.add('d-none');
     }
     // Prevent impossible combinations of crew faction representation
     if ((bonusRoyalFlushAmount > 0 && bonusFullHouseAmount > 0) || (bonusFullHouseAmount > 0 && bonusUnitedDeckAmount > 0) || (bonusUnitedDeckAmount > 0 && bonusRoyalFlushAmount > 0)) {
-        document.getElementById('warning-bonus').classList.remove('d-none');
+        document.getElementById('error-bonus').classList.remove('d-none');
         errorCount++;
         // negate all bonuses
         bonusRoyalFlushAmount = 0;
@@ -770,15 +778,46 @@ function checkBonusLogic() {
         document.getElementById('report-bonus-united-deck').classList.add('d-none');
     } 
     else {
-        document.getElementById('warning-bonus').classList.add('d-none');
+        document.getElementById('error-bonus').classList.add('d-none');
     }
     // Bonuses requiring faction membership are prevented if the crew includes rank crate smuggler or lower
     if (crewFactionless == true && (bonusRoyalFlushAmount > 0 || bonusFullHouseAmount > 0 || bonusUnitedDeckAmount > 0)) {
         errorCount++;
-        document.getElementById('warning-bonus-rank').classList.remove('d-none');
+        document.getElementById('error-bonus-rank').classList.remove('d-none');
     }
     else {
-        document.getElementById('warning-bonus-rank').classList.add('d-none');
+        document.getElementById('error-bonus-rank').classList.add('d-none');
+    }
+    // Warn for bonuses requiring faction membership
+    if (bonusRoyalFlushAmount > 0 || bonusFullHouseAmount > 0 || bonusUnitedDeckAmount > 0) {
+        if (bonusUnitedDeckAmount > 0) {
+            document.getElementById('warning-bonus-faction-bonus').innerHTML = 'United Deck';
+        }
+        else if (bonusFullHouseAmount > 0) {
+            document.getElementById('warning-bonus-faction-bonus').innerHTML = 'Full House';
+        }
+        else if (bonusRoyalFlushAmount > 0) {
+            document.getElementById('warning-bonus-faction-bonus').innerHTML = 'Royal Flush';
+        }
+        warningCount++;
+        document.getElementById('warning-bonus-faction').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('warning-bonus-faction').classList.add('d-none');
+    }
+    // Warn for bonuses requiring specialty ranks
+    if (bonusStraightShipAmount > 0 || bonusRoyalFlushAmount > 0) {
+        if (bonusStraightShipAmount > 0) {
+            document.getElementById('warning-bonus-specialty-rank-bonus').innerHTML = 'Straight Ship';
+        }
+        else if (bonusRoyalFlushAmount > 0) {
+            document.getElementById('warning-bonus-specialty-rank-bonus').innerHTML = 'Royal Flush';
+        }
+        warningCount++;
+        document.getElementById('warning-bonus-specialty-rank').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('warning-bonus-specialty-rank').classList.add('d-none');
     }
 }
 // automatic bonuses based on crew rank
@@ -848,7 +887,6 @@ function checkBonusCrapsTable() {
 function checkBonusTotal() {
     totalBonus = bonusStraightShipAmount + bonusFullHouseAmount + bonusRoyalFlushAmount + bonusUnitedDeckAmount + bonusPaiGowAmount + bonusBlackjackAmount + bonusCrapsTableAmount + bonusDiceAmount;
 }
-
 /* Determine Crew Cut */
 // check crew for minimum rank
 function checkCrewRankVerbose(rank) {
@@ -1425,114 +1463,419 @@ function checkCrewPayout() {
     }
 };
 
+function checkCrew() {
+    /* Gather crew names and ranks */
+    //crew 1
+    if (shipType + crewSupplement >= 1) {
+        crewName1 = document.getElementById('crewmate-1-name');
+        crewName1Value = crewName1.value;
+        crewRank1 = document.getElementById('crewmate-1-rank');
+        crewRank1Value = crewRank1.value;
+    }
+    //crew 2
+    if (shipType + crewSupplement >= 2) {
+        crewName2 = document.getElementById('crewmate-2-name');
+        crewName2Value = crewName2.value;
+        crewRank2 = document.getElementById('crewmate-2-rank');
+        crewRank2Value = crewRank2.value;
+    }
+    //crew 3
+    if (shipType + crewSupplement >= 3) {
+        crewName3 = document.getElementById('crewmate-3-name');
+        crewName3Value = crewName3.value;
+        crewRank3 = document.getElementById('crewmate-3-rank');
+        crewRank3Value = crewRank3.value;
+    }
+    //crew 4
+    if (shipType + crewSupplement >= 4) {
+        crewName4 = document.getElementById('crewmate-4-name');
+        crewName4Value = crewName4.value;
+        crewRank4 = document.getElementById('crewmate-4-rank');
+        crewRank4Value = crewRank4.value;
+    }
+    //crew 5
+    if (shipType + crewSupplement >= 5) {
+        crewName5 = document.getElementById('crewmate-5-name');
+        crewName5Value = crewName5.value;
+        crewRank5 = document.getElementById('crewmate-5-rank');
+        crewRank5Value = crewRank5.value;
+    }
+    //crew 6
+    if (shipType + crewSupplement >= 6) {
+        crewName6 = document.getElementById('crewmate-6-name');
+        crewName6Value = crewName6.value;
+        crewRank6 = document.getElementById('crewmate-6-rank');
+        crewRank6Value = crewRank6.value;
+    }
+    //crew 7
+    if (shipType + crewSupplement >= 7) {
+        crewName7 = document.getElementById('crewmate-7-name');
+        crewName7Value = crewName7.value;
+        crewRank7 = document.getElementById('crewmate-7-rank');
+        crewRank7Value = crewRank7.value;
+    }
+    //crew 8
+    if (shipType + crewSupplement >= 8) {
+        crewName8 = document.getElementById('crewmate-8-name');
+        crewName8Value = crewName8.value;
+        crewRank8 = document.getElementById('crewmate-8-rank');
+        crewRank8Value = crewRank8.value;
+    }
+    //crew 9
+    if (shipType + crewSupplement >= 9) {
+        crewName9 = document.getElementById('crewmate-9-name');
+        crewName9Value = crewName9.value;
+        crewRank9 = document.getElementById('crewmate-9-rank');
+        crewRank9Value = crewRank9.value;
+    }
+    //crew 10
+    if (shipType + crewSupplement >= 10) {
+        crewName10 = document.getElementById('crewmate-10-name');
+        crewName10Value = crewName10.value;
+        crewRank10 = document.getElementById('crewmate-10-rank');
+        crewRank10Value = crewRank10.value;
+    }
+};
+
+function checkCrewPayout() {
+    /* report and display each crewmember */
+    //crew 1
+    if (shipType + crewSupplement >= 1) {
+        document.getElementById('total-crew-name-1').innerHTML = crewName1Value;
+        document.getElementById('total-crew-rank-1').innerHTML = checkCrewRankVerbose(crewRank1Value);
+        document.getElementById('total-crew-cut-1').innerHTML = Math.round(checkCrewRate(crewRank1Value) * 100);
+        document.getElementById('total-crew-amount-1').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+        document.getElementById('report-crew-name-1').innerHTML = crewName1Value;
+        document.getElementById('report-crew-rank-1').innerHTML = checkCrewRankAbbr(crewRank1.value);
+        document.getElementById('report-crew-1-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+        document.getElementById('total-crew-1').classList.remove('d-none');
+        document.getElementById('report-crew-1').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-1').classList.add('d-none');
+        document.getElementById('report-crew-1').classList.add('d-none');
+    }
+    //crew 2
+    if (shipType + crewSupplement >= 2) {
+        document.getElementById('total-crew-name-2').innerHTML = crewName2Value;
+        document.getElementById('total-crew-rank-2').innerHTML = checkCrewRankVerbose(crewRank2Value);
+        document.getElementById('total-crew-cut-2').innerHTML = Math.round(checkCrewRate(crewRank2Value) * 100);
+        document.getElementById('total-crew-amount-2').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank2Value) * crewPercent2Value / 100));
+        document.getElementById('report-crew-name-2').innerHTML = crewName2Value;
+        document.getElementById('report-crew-rank-2').innerHTML = checkCrewRankAbbr(crewRank2.value);
+        document.getElementById('report-crew-2-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank2Value) * crewPercent2Value / 100));
+        document.getElementById('total-crew-2').classList.remove('d-none');
+        document.getElementById('report-crew-2').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-2').classList.add('d-none');
+        document.getElementById('report-crew-2').classList.add('d-none');
+    }
+    //crew 3
+    if (shipType + crewSupplement >= 3) {
+        document.getElementById('total-crew-name-3').innerHTML = crewName3Value;
+        document.getElementById('total-crew-rank-3').innerHTML = checkCrewRankVerbose(crewRank3Value);
+        document.getElementById('total-crew-cut-3').innerHTML = Math.round(checkCrewRate(crewRank3Value) * 100);
+        document.getElementById('total-crew-amount-3').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank3Value) * crewPercent3Value / 100));
+        document.getElementById('report-crew-name-3').innerHTML = crewName3Value;
+        document.getElementById('report-crew-rank-3').innerHTML = checkCrewRankAbbr(crewRank3.value);
+        document.getElementById('report-crew-3-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank3Value) * crewPercent3Value / 100));
+        document.getElementById('total-crew-3').classList.remove('d-none');
+        document.getElementById('report-crew-3').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-3').classList.add('d-none');
+        document.getElementById('report-crew-3').classList.add('d-none');
+    }
+    //crew 4
+    if (shipType + crewSupplement >= 4) {
+        document.getElementById('total-crew-name-4').innerHTML = crewName4Value;
+        document.getElementById('total-crew-rank-4').innerHTML = checkCrewRankVerbose(crewRank4Value);
+        document.getElementById('total-crew-cut-4').innerHTML = Math.round(checkCrewRate(crewRank4Value) * 100);
+        document.getElementById('total-crew-amount-4').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank4Value) * crewPercent4Value / 100));
+        document.getElementById('report-crew-name-4').innerHTML = crewName4Value;
+        document.getElementById('report-crew-rank-4').innerHTML = checkCrewRankAbbr(crewRank4.value);
+        document.getElementById('report-crew-4-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank4Value) * crewPercent4Value / 100));
+        document.getElementById('total-crew-4').classList.remove('d-none');
+        document.getElementById('report-crew-4').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-4').classList.add('d-none');
+        document.getElementById('report-crew-4').classList.add('d-none');
+    }
+    //crew 5
+    if (shipType + crewSupplement >= 5) {
+        document.getElementById('total-crew-name-5').innerHTML = crewName5Value;
+        document.getElementById('total-crew-rank-5').innerHTML = checkCrewRankVerbose(crewRank5Value);
+        document.getElementById('total-crew-cut-5').innerHTML = Math.round(checkCrewRate(crewRank5Value) * 100);
+        document.getElementById('total-crew-amount-5').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank5Value) * crewPercent5Value / 100));
+        document.getElementById('report-crew-name-5').innerHTML = crewName5Value;
+        document.getElementById('report-crew-rank-5').innerHTML = checkCrewRankAbbr(crewRank5.value);
+        document.getElementById('report-crew-5-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank5Value) * crewPercent5Value / 100));
+        document.getElementById('total-crew-5').classList.remove('d-none');
+        document.getElementById('report-crew-5').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-5').classList.add('d-none');
+        document.getElementById('report-crew-5').classList.add('d-none');
+    }
+    //crew 6
+    if (shipType + crewSupplement >= 6) {
+        document.getElementById('total-crew-name-6').innerHTML = crewName6Value;
+        document.getElementById('total-crew-rank-6').innerHTML = checkCrewRankVerbose(crewRank6Value);
+        document.getElementById('total-crew-cut-6').innerHTML = Math.round(checkCrewRate(crewRank6Value) * 100);
+        document.getElementById('total-crew-amount-6').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank6Value) * crewPercent6Value / 100));
+        document.getElementById('report-crew-name-6').innerHTML = crewName6Value;
+        document.getElementById('report-crew-rank-6').innerHTML = checkCrewRankAbbr(crewRank6.value);
+        document.getElementById('report-crew-6-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank6Value) * crewPercent6Value / 100));
+        document.getElementById('total-crew-6').classList.remove('d-none');
+        document.getElementById('report-crew-6').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-6').classList.add('d-none');
+        document.getElementById('report-crew-6').classList.add('d-none');
+    }
+    //crew 7
+    if (shipType + crewSupplement >= 7) {
+        document.getElementById('total-crew-name-7').innerHTML = crewName7Value;
+        document.getElementById('total-crew-rank-7').innerHTML = checkCrewRankVerbose(crewRank7Value);
+        document.getElementById('total-crew-cut-7').innerHTML = Math.round(checkCrewRate(crewRank7Value) * 100);
+        document.getElementById('total-crew-amount-7').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank7Value) * crewPercent7Value / 100));
+        document.getElementById('report-crew-name-7').innerHTML = crewName7Value;
+        document.getElementById('report-crew-rank-7').innerHTML = checkCrewRankAbbr(crewRank7.value);
+        document.getElementById('report-crew-7-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank7Value) * crewPercent7Value / 100));
+        document.getElementById('total-crew-7').classList.remove('d-none');
+        document.getElementById('report-crew-7').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-7').classList.add('d-none');
+        document.getElementById('report-crew-7').classList.add('d-none');
+    }
+    //crew 8
+    if (shipType + crewSupplement >= 8) {
+        document.getElementById('total-crew-name-8').innerHTML = crewName8Value;
+        document.getElementById('total-crew-rank-8').innerHTML = checkCrewRankVerbose(crewRank8Value);
+        document.getElementById('total-crew-cut-8').innerHTML = Math.round(checkCrewRate(crewRank8Value) * 100);
+        document.getElementById('total-crew-amount-8').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank8Value) * crewPercent8Value / 100));
+        document.getElementById('report-crew-name-8').innerHTML = crewName8Value;
+        document.getElementById('report-crew-rank-8').innerHTML = checkCrewRankAbbr(crewRank8.value);
+        document.getElementById('report-crew-8-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank8Value) * crewPercent8Value / 100));
+        document.getElementById('total-crew-8').classList.remove('d-none');
+        document.getElementById('report-crew-8').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-8').classList.add('d-none');
+        document.getElementById('report-crew-8').classList.add('d-none');
+    }
+    //crew 9
+    if (shipType + crewSupplement >= 9) {
+        document.getElementById('total-crew-name-9').innerHTML = crewName9Value;
+        document.getElementById('total-crew-rank-9').innerHTML = checkCrewRankVerbose(crewRank9Value);
+        document.getElementById('total-crew-cut-9').innerHTML = Math.round(checkCrewRate(crewRank9Value) * 100);
+        document.getElementById('total-crew-amount-9').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank9Value) * crewPercent9Value / 100));
+        document.getElementById('report-crew-name-9').innerHTML = crewName9Value;
+        document.getElementById('report-crew-rank-9').innerHTML = checkCrewRankAbbr(crewRank9.value);
+        document.getElementById('report-crew-9-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank9Value) * crewPercent9Value / 100));
+        document.getElementById('total-crew-9').classList.remove('d-none');
+        document.getElementById('report-crew-9').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-9').classList.add('d-none');
+        document.getElementById('report-crew-9').classList.add('d-none');
+    }
+    //crew 10
+    if (shipType + crewSupplement >= 10) {
+        document.getElementById('total-crew-name-10').innerHTML = crewName10Value;
+        document.getElementById('total-crew-rank-10').innerHTML = checkCrewRankVerbose(crewRank10Value);
+        document.getElementById('total-crew-cut-10').innerHTML = Math.round(checkCrewRate(crewRank10Value) * 100);
+        document.getElementById('total-crew-amount-10').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank10Value) * crewPercent10Value / 100));
+        document.getElementById('report-crew-name-10').innerHTML = crewName10Value;
+        document.getElementById('report-crew-rank-10').innerHTML = checkCrewRankAbbr(crewRank10.value);
+        document.getElementById('report-crew-10-amount').innerHTML = printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank10Value) * crewPercent10Value / 100));
+        document.getElementById('total-crew-10').classList.remove('d-none');
+        document.getElementById('report-crew-10').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('total-crew-10').classList.add('d-none');
+        document.getElementById('report-crew-10').classList.add('d-none');
+    }
+};
+
 /* Error check */
 function checkReportErrors() {
     /* reset */
     errorCount = 0;
+    warningCount = 0;
     /* Check voyage number */
     voyageNumber = document.getElementById('voyage-number');
     voyageNumberValue = voyageNumber.value;
     if (voyageNumberValue == '') { 
-        document.getElementById('warning-voyage-number').classList.remove('d-none');
+        document.getElementById('error-voyage-number').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-voyage-number').classList.add('d-none');
+        document.getElementById('error-voyage-number').classList.add('d-none');
     }
     /* Check faction */
     if (faction == '') { 
-        document.getElementById('warning-faction').classList.remove('d-none');
+        document.getElementById('error-faction').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-faction').classList.add('d-none');
+        document.getElementById('error-faction').classList.add('d-none');
     }
     /* Check ship name */
     shipName = document.getElementById('ship-name');
-    shipNameValue = shipName.value;    
+    shipNameValue = shipName.value;
     if (shipNameValue == '') { 
-        document.getElementById('warning-ship-name').classList.remove('d-none');
+        document.getElementById('error-ship-name').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-ship-name').classList.add('d-none');
+        document.getElementById('error-ship-name').classList.add('d-none');
     }
     /* Check ship type */
     if (shipType == '0') { 
-        document.getElementById('warning-ship-type').classList.remove('d-none');
+        document.getElementById('error-ship-type').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-ship-type').classList.add('d-none');
+        document.getElementById('error-ship-type').classList.add('d-none');
     }
     /* Check job type */
     if (jobRate == '0') { 
-        document.getElementById('warning-job-type').classList.remove('d-none');
+        document.getElementById('error-job-type').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-job-type').classList.add('d-none');
+        document.getElementById('error-job-type').classList.add('d-none');
         /* Check crew ranks vs job types */
         checkCrewRanks();
         if ((jobType == 'Errand' && crewRank1Value < 5) || (jobType == 'Heist' && crewRank1Value < 8)) {
-            document.getElementById('warning-rank').classList.remove('d-none');
+            document.getElementById('error-rank').classList.remove('d-none');
             errorCount++;
         }
         else {
-            document.getElementById('warning-rank').classList.add('d-none');
+            document.getElementById('error-rank').classList.add('d-none');
         }
-    }    
+        /* Heist eligible, but not declared */
+        if ((shipType >= 3 && jobType == 'Errand' && crewRank1Value > 6)) {
+            document.getElementById('warning-crew-rank').classList.remove('d-none');
+            warningCount++;
+        }
+        else {
+            document.getElementById('warning-crew-rank').classList.add('d-none');
+        }
+    }
+    /* Crew names are empty */
+    checkCrew();
+    if ((shipType + crewSupplement >= 1 && crewName1Value == '')
+        || (shipType + crewSupplement >= 2 && crewName2Value == '')
+        || (shipType + crewSupplement >= 3 && crewName3Value == '')
+        || (shipType + crewSupplement >= 4 && crewName4Value == '')
+        || (shipType + crewSupplement >= 5 && crewName5Value == '')
+        || (shipType + crewSupplement >= 6 && crewName6Value == '')
+        || (shipType + crewSupplement >= 7 && crewName7Value == '')
+        || (shipType + crewSupplement >= 8 && crewName8Value == '')
+        || (shipType + crewSupplement >= 9 && crewName9Value == '')
+        || (shipType + crewSupplement >= 10 && crewName10Value == '')) {
+        document.getElementById('warning-crew-name').classList.remove('d-none');
+        warningCount++;
+    }
+    else {
+        document.getElementById('warning-crew-name').classList.add('d-none');
+    }
+    /* activity log is empty */
+    checkActivityLog();
+    // activity log empty
+    if (activityRows == 0) {
+        warningCount++;
+        document.getElementById('warning-activity-missing').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('warning-activity-missing').classList.add('d-none');
+    }
+    // check activities for empties
+    if ((activityRows >= 1 && activity1Value == '')
+        || (activityRows >= 2 && activity2Value == '') 
+        || (activityRows >= 3 && activity3Value == '') 
+        || (activityRows >= 4 && activity4Value == '') 
+        || (activityRows >= 5 && activity5Value == '') 
+        || (activityRows >= 6 && activity6Value == '') 
+        || (activityRows >= 7 && activity7Value == '') 
+        || (activityRows >= 8 && activity8Value == '') 
+        || (activityRows >= 9 && activity9Value == '') 
+        || (activityRows >= 10 && activity10Value == '')) {
+        warningCount++;
+        document.getElementById('warning-activity-empty').classList.remove('d-none');
+    }
+    else {
+        document.getElementById('warning-activity-empty').classList.add('d-none');
+    }
+    // check activity numbers for negatives
+    if ((activityRows >= 1 && activity1QtyValue < 1)
+        || (activityRows >= 2 && activity2QtyValue < 1) 
+        || (activityRows >= 3 && activity3QtyValue < 1) 
+        || (activityRows >= 4 && activity4QtyValue < 1) 
+        || (activityRows >= 5 && activity5QtyValue < 1) 
+        || (activityRows >= 6 && activity6QtyValue < 1) 
+        || (activityRows >= 7 && activity7QtyValue < 1) 
+        || (activityRows >= 8 && activity8QtyValue < 1) 
+        || (activityRows >= 9 && activity9QtyValue < 1) 
+        || (activityRows >= 10 && activity10QtyValue < 1)) {
+        errorCount++;
+        document.getElementById('error-activity-negative').classList.remove('d-none');
+    }
     /* Check gold */
-    goldStart = document.getElementById('gold-start');    
+    goldStart = document.getElementById('gold-start');
     goldStartValue = goldStart.value;
-    goldEnd = document.getElementById('gold-end');    
+    goldEnd = document.getElementById('gold-end');
     goldEndValue = goldEnd.value;
     // gold missing
     if (goldStartValue === '' || goldEndValue === '') { 
-        document.getElementById('warning-gold-missing').classList.remove('d-none');
+        document.getElementById('error-gold-missing').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-gold-missing').classList.add('d-none');
+        document.getElementById('error-gold-missing').classList.add('d-none');
         totalGold = goldEndValue - goldStartValue;
     }
     // gold negative
     if (totalGold < 0) { 
-        document.getElementById('warning-gold-negative').classList.remove('d-none');
+        document.getElementById('error-gold-negative').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-gold-negative').classList.add('d-none');
+        document.getElementById('error-gold-negative').classList.add('d-none');
     }
     /* Check doubloons */
-    doubloonStart = document.getElementById('doubloon-start');    
+    doubloonStart = document.getElementById('doubloon-start');
     doubloonStartValue = doubloonStart.value;
     doubloonEnd = document.getElementById('doubloon-end');
     doubloonEndValue = doubloonEnd.value;
     // doubloon missing
     if (doubloonStartValue === '' || doubloonEndValue === '') { 
-        document.getElementById('warning-doubloon-missing').classList.remove('d-none');
+        document.getElementById('error-doubloon-missing').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-doubloon-missing').classList.add('d-none');
+        document.getElementById('error-doubloon-missing').classList.add('d-none');
         totalDoubloonCount = (doubloonEndValue - doubloonStartValue);
     }
     // doubloon negative
     if (totalDoubloonCount < 0) { 
-        document.getElementById('warning-doubloon-negative').classList.remove('d-none');
+        document.getElementById('error-doubloon-negative').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        totalDoubloonGold = totalDoubloonCount * 25;    
-        document.getElementById('warning-doubloon-negative').classList.add('d-none');
+        totalDoubloonGold = totalDoubloonCount * 25;
+        document.getElementById('error-doubloon-negative').classList.add('d-none');
     }
     /* Check for participation totals */
     checkCrewCut();
     if (crewSupplement > 0) {
         // all crew participate between 1-100%
-        if (
-               (shipType + crewSupplement >= 1 && crewPercent1Value < 1) 
+        if ((shipType + crewSupplement >= 1 && crewPercent1Value < 1) 
             || (shipType + crewSupplement >= 2 && crewPercent2Value < 1) 
             || (shipType + crewSupplement >= 3 && crewPercent3Value < 1) 
             || (shipType + crewSupplement >= 4 && crewPercent4Value < 1) 
@@ -1542,7 +1885,6 @@ function checkReportErrors() {
             || (shipType + crewSupplement >= 8 && crewPercent8Value < 1) 
             || (shipType + crewSupplement >= 9 && crewPercent9Value < 1) 
             || (shipType + crewSupplement >= 10 && crewPercent10Value < 1) 
-
             || (shipType + crewSupplement >= 1 && crewPercent1Value > 100) 
             || (shipType + crewSupplement >= 2 && crewPercent2Value > 100) 
             || (shipType + crewSupplement >= 3 && crewPercent3Value > 100) 
@@ -1552,24 +1894,23 @@ function checkReportErrors() {
             || (shipType + crewSupplement >= 7 && crewPercent7Value > 100) 
             || (shipType + crewSupplement >= 8 && crewPercent8Value > 100) 
             || (shipType + crewSupplement >= 9 && crewPercent9Value > 100) 
-            || (shipType + crewSupplement >= 10 && crewPercent10Value > 100) 
-        ) {
-            document.getElementById('warning-participation-percentage').classList.remove('d-none');
+            || (shipType + crewSupplement >= 10 && crewPercent10Value > 100)) {
+            document.getElementById('error-participation-percentage').classList.remove('d-none');
             errorCount++;
         }
         else {
-            document.getElementById('warning-participation-percentage').classList.add('d-none');
+            document.getElementById('error-participation-percentage').classList.add('d-none');
         }
         // percentage sum matches ship capacity
         crewParticipation = +crewPercent1Value + +crewPercent2Value + +crewPercent3Value + +crewPercent4Value + +crewPercent5Value + +crewPercent6Value + +crewPercent7Value + +crewPercent8Value + +crewPercent9Value + +crewPercent10Value;
         if (crewParticipation != shipType * 100) {
             document.getElementById('crew-participation').innerHTML = crewParticipation;
             document.getElementById('crew-participation-total').innerHTML = shipType * 100;
-            document.getElementById('warning-participation').classList.remove('d-none');
+            document.getElementById('error-participation').classList.remove('d-none');
             errorCount++;
         }
         else {
-            document.getElementById('warning-participation').classList.add('d-none');
+            document.getElementById('error-participation').classList.add('d-none');
         }
     }
     /* Individual bonus checks */
@@ -1587,31 +1928,43 @@ function checkReportErrors() {
     /* Check for stowaway presence and explain missing payout and report obligations */
     if (crewStowawayPresent == true) {
         document.getElementById('warning-stowaway').classList.remove('d-none');
+        warningCount++;
     }
     else {
         document.getElementById('warning-stowaway').classList.add('d-none');
     }
     /* Check summary */
     voyageSummary = document.getElementById('voyage-summary');
-    voyageSummaryValue = voyageSummary.value;    
+    voyageSummaryValue = voyageSummary.value;
     if (voyageSummaryValue == '') { 
-        document.getElementById('warning-summary').classList.remove('d-none');
+        document.getElementById('error-summary').classList.remove('d-none');
         errorCount++;
     }
     else { 
-        document.getElementById('warning-summary').classList.add('d-none');
+        document.getElementById('error-summary').classList.add('d-none');
     }
     /* Show errors or success */
     if (errorCount > 0) {
         document.getElementById('report-error-count').innerHTML = errorCount;
         document.getElementById('errors-true').classList.remove('d-none');
+        document.getElementById('errors-warning').classList.add('d-none');
         document.getElementById('errors-false').classList.add('d-none');
         document.getElementById('report-container').classList.add('d-none');
         document.getElementById('generate-report').classList.remove('btn-muted');
         document.getElementById('generate-report').classList.add('btn-selected');
     }
+    else if (warningCount > 0) {
+        document.getElementById('report-warning-count').innerHTML = warningCount;
+        document.getElementById('errors-true').classList.add('d-none');
+        document.getElementById('errors-warning').classList.remove('d-none');
+        document.getElementById('errors-false').classList.add('d-none');
+        document.getElementById('report-container').classList.remove('d-none');
+        document.getElementById('generate-report').classList.remove('btn-selected');
+        document.getElementById('generate-report').classList.add('btn-muted');    
+    }
     else {
         document.getElementById('errors-true').classList.add('d-none');
+        document.getElementById('errors-warning').classList.add('d-none');
         document.getElementById('errors-false').classList.remove('d-none');
         document.getElementById('report-container').classList.remove('d-none');
         document.getElementById('generate-report').classList.remove('btn-selected');
@@ -1619,10 +1972,10 @@ function checkReportErrors() {
     }
     // Issue warnings
     if (faction == 'LF') {
-        document.getElementById('warning-lf').classList.remove('d-none');
+        document.getElementById('help-faction-cut').classList.remove('d-none');
     }
     else {
-        document.getElementById('warning-lf').classList.add('d-none');
+        document.getElementById('help-faction-cut').classList.add('d-none');
     }
     // Create totals
     totalPlunder = totalGold + totalDoubloonGold;
@@ -1634,7 +1987,7 @@ function checkReportErrors() {
 /* Generate Report */
 function printNumber(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+};
 
 function generateReport() {
     // check for Errors
@@ -1649,8 +2002,6 @@ function generateReport() {
     document.getElementById('report-job-type').innerHTML = jobType;
     document.getElementById('report-job-rate').innerHTML = jobRate * 100;
     document.getElementById('report-voyage-summary').innerHTML = voyageSummaryValue;
-    // Populate Activity Log
-    checkActivityLog();
     // Populate Gold
     document.getElementById('starting-gold-value').innerHTML = printNumber(goldStartValue);
     document.getElementById('ending-gold-value').innerHTML = printNumber(goldEndValue);

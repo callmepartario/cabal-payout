@@ -114,10 +114,12 @@
           </div>
           <div class="col" id="crew-1-rank">
             <select class="form-select d-inline-block bg-dark text-white border border-secondary mb-3" name="crewmate-1-rank" id="crewmate-1-rank">
+              <!--
               <option value="1">Stowaway</option>
               <option value="2">Recruit</option>
               <option value="3">Rum Runner</option>
               <option value="4">Crate Smuggler</option>
+              -->
               <option value="5">Smuggler</option>
               <option value="6">Flintlock Dealer</option>
               <option value="7">Doubloon Shark</option>
@@ -451,7 +453,7 @@
             <div class="d-table-cell">
               <div id="help-bonus-ship-size">Additional bonuses are available on a <span id="help-bonus-ship-size-sloop">brigantine or</span> galleon.</div>
               <div id="help-bonus-specialty-rank">
-                <div>Purchase a specialty rank from <code>#pirate-emporium</code> for $10,000. Specialty ranks are tagged on Discord names. Royal Flush supersedes Straight Ship.</div>
+                <div>Purchase a specialty rank from <code>#pirate-emporium</code> for $10,000. Specialty ranks are tagged on Discord names.</div>
               </div>
               <div>Dice, Pai Gow, Blackjack, and Craps Table apply automatically:</div>
             </div>
@@ -627,7 +629,7 @@
             <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
           </div>
           <div class="d-table-cell">
-            <div>Each gold is worth $1. A doubloon is worth $25. Save a screenshot of your startng and ending gold and doubloons, in case you need proof.</div>
+            <div>Save in-game screenshots of your startng and ending gold and doubloons, in the event you need to verify your voyage.</div>
           </div>
         </div>
       </div>
@@ -651,30 +653,50 @@
     <hr>
     <h2 id="section-report">Report</h2>
     <ul class="list-inline mt-2 mb-0">
-      <li class="list-inline-item mb-2"><button type="button" class="btn btn-muted" id="generate-report"><img src="images/wheel.webp" class="icon" alt="" aria-hidden="true">Create Report</button></li>
+      <li class="list-inline-item mb-2"><button type="button" class="btn btn-muted" id="generate-report"><img src="images/shovel.webp" class="icon" alt="" aria-hidden="true">Create Report</button></li>
     </ul>
-    <div class="og-error p-2 rounded-2 mt-2 mb-2 d-none" id="errors-true">
+    <div id="errors-true" class="og-error p-2 rounded-2 mt-2 mb-3 d-none">
       <div><img src="images/keg.webp" class="icon" alt="" aria-hidden="true"><span id="report-error-count">0</span> errors detected!</div>
       <ol class="mt-2 mb-2">
-        <li class="d-none" id="warning-voyage-number"><a href="#section-faction">Missing voyage number</a></li>
-        <li class="d-none" id="warning-faction"><a href="#section-faction">Missing faction</a></li>
-        <li class="d-none" id="warning-ship-name"><a href="#section-ship">Missing ship name</a></li>
-        <li class="d-none" id="warning-ship-type"><a href="#section-ship">Missing ship type</a></li>
-        <li class="d-none" id="warning-job-type"><a href="#section-job">Missing job type</a></li>
-        <li class="d-none" id="warning-rank"><a href="#section-crew">Crewmate 1 (You) has insufficient rank</a> for <a href="#section-job">job type</a></li>
-        <li class="d-none" id="warning-participation-percentage"><a href="#section-crew">Invalid participation percentage (valid range is 1&ndash;100)</a></li>
-        <li class="d-none" id="warning-participation"><a href="#section-crew">Invalid crew participation sum (<span id="crew-participation"></span>, expected <span id="crew-participation-total"></span>)</a></li>
-        <li class="d-none" id="warning-bonus"><a href="#section-bonus">Invalid bonus combination</a></li>
-        <li class="d-none" id="warning-bonus-rank"><a href="#section-bonus">Invalid bonus</a> due to <a href="#section-crew">factionless crew</a></li>
-        <li class="d-none" id="warning-gold-missing"><a href="#section-plunder">Missing gold amounts</a></li>
-        <li class="d-none" id="warning-gold-negative"><a href="#section-plunder">Negative gold earned</a></li>
-        <li class="d-none" id="warning-doubloon-missing"><a href="#section-plunder">Missing doubloon amounts</a></li>
-        <li class="d-none" id="warning-doubloon-negative"><a href="#section-plunder">Negative doubloons earned</a></li>
-        <li class="d-none" id="warning-summary"><a href="#section-summary">Missing summary</a></li>
+        <li class="d-none" id="error-voyage-number"><a href="#section-faction">Missing voyage number</a></li>
+        <li class="d-none" id="error-faction"><a href="#section-faction">Missing faction</a></li>
+        <li class="d-none" id="error-ship-name"><a href="#section-ship">Missing ship name</a></li>
+        <li class="d-none" id="error-ship-type"><a href="#section-ship">Missing ship type</a></li>
+        <li class="d-none" id="error-job-type"><a href="#section-job">Missing job type</a></li>
+        <li class="d-none" id="error-rank"><a href="#section-crew">Crewmate 1 (You) has insufficient rank</a> for <a href="#section-job">job type</a></li>
+        <li class="d-none" id="error-participation-percentage"><a href="#section-crew">Invalid participation percentage (valid range is 1&ndash;100)</a></li>
+        <li class="d-none" id="error-participation"><a href="#section-crew">Invalid crew participation sum (<span id="crew-participation"></span>, expected <span id="crew-participation-total"></span>)</a></li>
+        <li class="d-none" id="error-bonus"><a href="#section-bonus">Invalid bonus combination</a></li>
+        <li class="d-none" id="error-bonus-rank"><a href="#section-bonus">Invalid bonus</a> due to <a href="#section-crew">factionless crew</a></li>
+        <li class="d-none" id="error-activity-negative"><a href="#section-activity-negative">Listed activities must be completed at least once</a></li>
+        <li class="d-none" id="error-gold-missing"><a href="#section-plunder">Missing gold amounts</a></li>
+        <li class="d-none" id="error-gold-negative"><a href="#section-plunder">Negative gold earned</a></li>
+        <li class="d-none" id="error-doubloon-missing"><a href="#section-plunder">Missing doubloon amounts</a></li>
+        <li class="d-none" id="error-doubloon-negative"><a href="#section-plunder">Negative doubloons earned</a></li>
+        <li class="d-none" id="error-summary"><a href="#section-summary">Missing summary</a></li>
       </ol>
       <div>Having trouble? <a href="#top">Toggle help</a> to &ldquo;on&rdquo; for additional information.</div>
     </div>
-    <div id="errors-false" class="og-success pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
+    <div id="errors-warning" class="og-warning p-2 rounded-2 mt-2 mb-3 d-none">
+      <div><img src="images/flag-reaper.webp" class="icon" alt="" aria-hidden="true">Report successful, with <span id="report-warning-count">0</span> warnings:</div>
+      <ol class="mt-2 mb-2">
+        <li class="d-none" id="warning-crew-rank"><a href="#section-crew">Crewmate 1 (You)</a> eligible for <a href="#section-job">Heist job rate</a></li>
+        <li class="d-none" id="warning-crew-name"><a href="#section-crew">Missing crew names</a></li>
+        <li class="d-none" id="warning-stowaway">Stowaways don't earn income. To reach rank Recruit, the Stowaway must complete two voyages, and one of the following:
+            <ul class="mb-0">
+              <li>Participated on voyages that sum to at least $500,000 of total plunder</li>
+              <li>Be a member of the Cabal of Thieves' Discord server for at least four days</li>
+            </ul>
+            If the stowaway completes any criteria, note it in the report. See <code>#ranks-and-promotion</code> for more.
+        </li>
+        <li class="d-none" id="warning-royal-flush"><a href="#section-bonus">Royal Flush bonus supersedes Straight Ship bonus (removed)</a></li>
+        <li class="d-none" id="warning-bonus-faction"><a href="#section-bonus">Verify crew factions eligible for <span id="warning-bonus-faction-bonus">&mdash;</span> bonus</a></li>
+        <li class="d-none" id="warning-bonus-specialty-rank"><a href="#section-bonus">Verify crew specialty ranks eligible for <span id="warning-bonus-specialty-rank-bonus">&mdash;</span> bonus</a></li>
+        <li class="d-none" id="warning-activity-missing"><a href="#section-activity">Missing activity record, enter manually if needed</a></li>
+        <li class="d-none" id="warning-activity-empty"><a href="#section-activity">Empty activity types</a></li>
+      </ol>
+    </div>
+    <div id="errors-false" class="og-success pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-3 d-none">
       <div><img src="images/grog.webp" class="icon" alt="" aria-hidden="true">Report successful. No errors detected.</div>
     </div>
     <div id="help-report" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
@@ -721,6 +743,18 @@
           </tr>
         </tbody>
       </table></div>
+      <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="help-total-plunder">
+        <div class="d-table">
+          <div class="d-table-row">
+            <div class="d-table-cell">
+              <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+            </div>
+            <div class="d-table-cell">
+              <div>Save a screenshot of your startng and ending gold and doubloons, in the event you need to verify your voyage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <h3>Faction Cut</h3>
       <div class="table-responsive"><table class="table table-responsive-lg table-dark">
         <thead>
@@ -783,16 +817,14 @@
           </tr>
         </tbody>
       </table></div>
-      <div id="help-lf" class="d-none">
-        <div id="warning-lf" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none">
-          <div class="d-table">
-            <div class="d-table-row">
-              <div class="d-table-cell">
-                <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
-              </div>
-              <div class="d-table-cell">
-                <div>The Lord of the Fleets doesn't maintain a vault.</div>
-              </div>
+      <div id="help-faction-cut" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none">
+        <div class="d-table">
+          <div class="d-table-row">
+            <div class="d-table-cell">
+              <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
+            </div>
+            <div class="d-table-cell">
+              <div>The Lord of the Fleets doesn't need to maintain a vault.</div>
             </div>
           </div>
         </div>
@@ -870,25 +902,6 @@
           </tr>
         </tbody>
       </table></div>
-      <div id="help-stowaway" class="d-none">
-        <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-1 mb-3 d-none" id="warning-stowaway">
-          <div class="d-table">
-            <div class="d-table-row">
-              <div class="d-table-cell">
-                <img src="images/dialogue.webp" class="icon" alt="" aria-hidden="true">
-              </div>
-              <div class="d-table-cell">
-                <div>Stowaways don't earn income. In order to be reach rank Recruit, the Stowaway must be listed on two voyages, and one of the following.</div>
-                <ul class="mb-0">
-                  <li>Sailed on voyages totaling $500,000</li>
-                  <li>Be a member of the Cabal of Thieves' Discord server for at least four days</li>
-                </ul>
-                <div>If the stowaway completes any criteria, note it in the report. See <code>#ranks-and-promotion</code> for more.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <h3>Discord Report</h3>
       <div id="help-discord" class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2 d-none">
         <div class="d-table">
@@ -950,7 +963,7 @@
     </div>
     <hr>
     <div class="og-help pt-2 pb-2 ps-3 pe-3 rounded-2 mt-2 mb-2">
-      <div>v1.07a (2025-03-23)</div>
+      <div>v1.08a (2025-03-23)</div>
       <div>This tool is an independent production, and is not affiliated with <a href="https://www.seaofthieves.com">Sea of Thieves</a> or <a href="https://thecabalofthieves.com">The Cabal of Thieves</a>.</div>
     </div>
     <div class="mb-3"></div>

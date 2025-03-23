@@ -42,17 +42,17 @@ h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Windlass";
     font-weight: 400;
     font-style: normal;
-    font-variant: small-caps;
     letter-spacing: 0.0375em;
     color: #6cd6a2;
     letter-spacing: 0.0375em;
 }
 h2 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    font-variant: small-caps;
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 }
 hr {
     height: 0px;
@@ -120,6 +120,10 @@ code, .og-discord {
 .og-error { 
     background-image: linear-gradient(to bottom, #7d3b2f, #472b25);
     border: 3px solid #facc8e;
+}
+.og-warning { 
+    background-image: linear-gradient(to bottom, #AB6503, #7D4E1C);
+    border: 3px solid #fca832;
 }
 .og-success {
     background-color: #1d4b42;
