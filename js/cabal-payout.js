@@ -1477,7 +1477,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-2').innerHTML = crewName2Value;
         document.getElementById('report-crew-rank-2').innerHTML = checkCrewRankAbbr(crewRank2.value);
         if (crewRank2Value > 1) {
-            document.getElementById('report-crew-2-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-2-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank2Value) * crewPercentValue / 100));
             document.getElementById('report-crew-2-amount').classList.remove('d-none');
             document.getElementById('total-crew-2').classList.remove('d-none');
         }
@@ -1503,7 +1503,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-3').innerHTML = crewName3Value;
         document.getElementById('report-crew-rank-3').innerHTML = checkCrewRankAbbr(crewRank3.value);
         if (crewRank3Value > 1) {
-            document.getElementById('report-crew-3-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-3-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank3Value) * crewPercent3Value / 100));
             document.getElementById('report-crew-3-amount').classList.remove('d-none');
             document.getElementById('total-crew-3').classList.remove('d-none');
         }
@@ -1529,7 +1529,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-4').innerHTML = crewName4Value;
         document.getElementById('report-crew-rank-4').innerHTML = checkCrewRankAbbr(crewRank4.value);
         if (crewRank4Value > 1) {
-            document.getElementById('report-crew-4-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-4-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank4Value) * crewPercent4Value / 100));
             document.getElementById('report-crew-4-amount').classList.remove('d-none');
             document.getElementById('total-crew-4').classList.remove('d-none');
         }
@@ -1555,7 +1555,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-5').innerHTML = crewName5Value;
         document.getElementById('report-crew-rank-5').innerHTML = checkCrewRankAbbr(crewRank5.value);
         if (crewRank5Value > 1) {
-            document.getElementById('report-crew-5-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-5-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank5Value) * crewPercent5Value / 100));
             document.getElementById('report-crew-5-amount').classList.remove('d-none');
             document.getElementById('total-crew-5').classList.remove('d-none');
         }
@@ -1581,7 +1581,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-6').innerHTML = crewName6Value;
         document.getElementById('report-crew-rank-6').innerHTML = checkCrewRankAbbr(crewRank6.value);
         if (crewRank6Value > 1) {
-            document.getElementById('report-crew-6-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-6-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank6Value) * crewPercent6Value / 100));
             document.getElementById('report-crew-6-amount').classList.remove('d-none');
             document.getElementById('total-crew-6').classList.remove('d-none');
         }
@@ -1607,7 +1607,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-7').innerHTML = crewName7Value;
         document.getElementById('report-crew-rank-7').innerHTML = checkCrewRankAbbr(crewRank7.value);
         if (crewRank7Value > 1) {
-            document.getElementById('report-crew-7-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-7-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank7Value) * crewPercent7Value / 100));
             document.getElementById('report-crew-7-amount').classList.remove('d-none');
             document.getElementById('total-crew-7').classList.remove('d-none');
         }
@@ -1633,7 +1633,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-8').innerHTML = crewName8Value;
         document.getElementById('report-crew-rank-8').innerHTML = checkCrewRankAbbr(crewRank8.value);
         if (crewRank8Value > 1) {
-            document.getElementById('report-crew-8-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-8-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank8Value) * crewPercent8Value / 100));
             document.getElementById('report-crew-8-amount').classList.remove('d-none');
             document.getElementById('total-crew-8').classList.remove('d-none');
         }
@@ -1659,7 +1659,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-9').innerHTML = crewName9Value;
         document.getElementById('report-crew-rank-9').innerHTML = checkCrewRankAbbr(crewRank9.value);
         if (crewRank9Value > 1) {
-            document.getElementById('report-crew-9-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-9-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank9Value) * crewPercent9Value / 100));
             document.getElementById('report-crew-9-amount').classList.remove('d-none');
             document.getElementById('report-crew-9').classList.remove('d-none');
         }
@@ -1685,7 +1685,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-10').innerHTML = crewName10Value;
         document.getElementById('report-crew-rank-10').innerHTML = checkCrewRankAbbr(crewRank10.value);
         if (crewRank10Value > 1) {
-            document.getElementById('report-crew-10-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank1Value) * crewPercent1Value / 100));
+            document.getElementById('report-crew-10-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank10Value) * crewPercent10Value / 100));
             document.getElementById('report-crew-10-amount').classList.remove('d-none');
             document.getElementById('total-crew-10').classList.remove('d-none');
         }
