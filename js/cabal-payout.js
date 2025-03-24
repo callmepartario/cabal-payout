@@ -275,7 +275,6 @@ function toggleHelp() {
         document.getElementById('help-activity').classList.remove('d-none');
         document.getElementById('help-plunder').classList.remove('d-none');
         document.getElementById('help-summary').classList.remove('d-none');
-        document.getElementById('help-faction-cut').classList.remove('d-none');
         document.getElementById('help-report').classList.remove('d-none');
         document.getElementById('help-total-plunder').classList.remove('d-none');
         document.getElementById('help-discord').classList.remove('d-none');
@@ -293,7 +292,6 @@ function toggleHelp() {
         document.getElementById('help-activity').classList.add('d-none');
         document.getElementById('help-plunder').classList.add('d-none');
         document.getElementById('help-summary').classList.add('d-none');
-        document.getElementById('help-faction-cut').classList.add('d-none');
         document.getElementById('help-report').classList.add('d-none');
         document.getElementById('help-discord').classList.add('d-none');
         helpToggle = false;
