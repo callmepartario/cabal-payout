@@ -1477,7 +1477,7 @@ function checkCrewPayout() {
         document.getElementById('report-crew-name-2').innerHTML = crewName2Value;
         document.getElementById('report-crew-rank-2').innerHTML = checkCrewRankAbbr(crewRank2.value);
         if (crewRank2Value > 1) {
-            document.getElementById('report-crew-2-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank2Value) * crewPercentValue / 100));
+            document.getElementById('report-crew-2-amount').innerHTML = '$' + printNumber(Math.round(totalFactionVault * checkCrewRate(crewRank2Value) * crewPercent2Value / 100));
             document.getElementById('report-crew-2-amount').classList.remove('d-none');
             document.getElementById('total-crew-2').classList.remove('d-none');
         }
