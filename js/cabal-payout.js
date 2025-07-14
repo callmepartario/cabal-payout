@@ -1022,11 +1022,10 @@ function checkBonusDice() {
     }
 };
 function checkBonusPaiGow() {
-    if (shipType >= 3 && crewRankLevel < 8) {
+    if (jobType == 'Errand' && shipType >= 3 && crewRankLevel < 8) {
         bonusPaiGowAmount = 3000;
         document.getElementById('total-bonus-pai-gow').classList.remove('d-none');
         document.getElementById('report-bonus-pai-gow').classList.remove('d-none');
-
     }
     else {
         bonusPaiGowAmount = 0;
@@ -1117,32 +1116,25 @@ function checkCrewRate(rank) {
 };
 function checkCrewRanks() {
     // reset
-    crewRankLevel = 0;
+    crewRankLevel = crewRank1.value;
     bonusDiceCount = 0;
     crewStowawayPresent = false;
     crewFactionless = false;
-    // crew 1
-    if (shipType + crewSupplement >= 1) {
-        crewRank1 = document.getElementById('crewmate-1-rank');
-        crewRank1Value = crewRank1.value;
-        if (crewRankLevel < crewRank1Value) {
-            crewRankLevel = crewRank1Value;
-        }
-        if (crewRank1Value < 3) {
-            bonusDiceCount++;
-        }
-        if (crewRank1Value == 1) {
-            crewStowawayPresent = true;
-        }
-        if (crewRank1Value < 4) {
-            crewFactionless = true;
-        }
-    }
+    // check individual crew
+    checkCrewRanks2();
+    checkCrewRanks3();
+    checkCrewRanks4();
+    checkCrewRanks5();
+    checkCrewRanks6();
+    checkCrewRanks7();
+    checkCrewRanks8();
+    checkCrewRanks9();
+    checkCrewRanks10();
+};
+function checkCrewRanks2() {
     // crew 2
     if (shipType + crewSupplement >= 2) {
-        crewRank2 = document.getElementById('crewmate-2-rank');
-        crewRank2Value = crewRank2.value;
-        if (crewRankLevel < crewRank2Value) {
+        if (crewRank2Value >= crewRankLevel) {
             crewRankLevel = crewRank2Value;
         }
         if (crewRank2Value < 3) {
@@ -1155,11 +1147,11 @@ function checkCrewRanks() {
             crewFactionless = true;
         }
     }
+};
+function checkCrewRanks3() {
     // crew 3
     if (shipType + crewSupplement >= 3) {
-        crewRank3 = document.getElementById('crewmate-3-rank');
-        crewRank3Value = crewRank3.value;
-        if (crewRankLevel < crewRank3Value) {
+        if (crewRank3Value >= crewRankLevel) {
             crewRankLevel = crewRank3Value;
         }
         if (crewRank3Value < 3) {
@@ -1172,11 +1164,11 @@ function checkCrewRanks() {
             crewFactionless = true;
         }
     }
+};
+function checkCrewRanks4() {
     // crew 4
     if (shipType + crewSupplement >= 4) {
-        crewRank4 = document.getElementById('crewmate-4-rank');
-        crewRank4Value = crewRank4.value;
-        if (crewRankLevel < crewRank4Value) {
+        if (crewRank4Value >= crewRankLevel) {
             crewRankLevel = crewRank4Value;
         }
         if (crewRank4Value < 3) {
@@ -1189,11 +1181,11 @@ function checkCrewRanks() {
             crewFactionless = true;
         }
     }
+};
+function checkCrewRanks5() {
     // crew 5
     if (shipType + crewSupplement >= 5) {
-        crewRank5 = document.getElementById('crewmate-5-rank');
-        crewRank5Value = crewRank5.value;
-        if (crewRankLevel < crewRank5Value) {
+        if (crewRank5Value >= crewRankLevel) {
             crewRankLevel = crewRank5Value;
         }
         if (crewRank5Value < 3) {
@@ -1206,11 +1198,11 @@ function checkCrewRanks() {
             crewFactionless = true;
         }
     }
+};
+function checkCrewRanks6() {
     // crew 6
     if (shipType + crewSupplement >= 6) {
-        crewRank6 = document.getElementById('crewmate-6-rank');
-        crewRank6Value = crewRank6.value;
-        if (crewRankLevel < crewRank6Value) {
+        if (crewRank6Value >= crewRankLevel) {
             crewRankLevel = crewRank6Value;
         }
         if (crewRank6Value < 3) {
@@ -1223,11 +1215,11 @@ function checkCrewRanks() {
             crewFactionless = true;
         }
     }
+};
+function checkCrewRanks7() {
     // crew 7
     if (shipType + crewSupplement >= 7) {
-        crewRank7 = document.getElementById('crewmate-7-rank');
-        crewRank7Value = crewRank7.value;
-        if (crewRankLevel < crewRank7Value) {
+        if (crewRank7Value >= crewRankLevel) {
             crewRankLevel = crewRank7Value;
         }
         if (crewRank7Value < 3) {
@@ -1240,11 +1232,11 @@ function checkCrewRanks() {
             crewFactionless = true;
         }
     }
+};
+function checkCrewRanks8() {
     // crew 8
     if (shipType + crewSupplement >= 8) {
-        crewRank8 = document.getElementById('crewmate-8-rank');
-        crewRank8Value = crewRank8.value;
-        if (crewRankLevel < crewRank8Value) {
+        if (crewRank8Value >= crewRankLevel) {
             crewRankLevel = crewRank8Value;
         }
         if (crewRank8Value < 3) {
@@ -1257,11 +1249,11 @@ function checkCrewRanks() {
             crewFactionless = true;
         }
     }
+};
+function checkCrewRanks9() {
     // crew 9
     if (shipType + crewSupplement >= 9) {
-        crewRank9 = document.getElementById('crewmate-9-rank');
-        crewRank9Value = crewRank9.value;
-        if (crewRankLevel < crewRank9Value) {
+        if (crewRank9Value >= crewRankLevel) {
             crewRankLevel = crewRank9Value;
         }
         if (crewRank9Value < 3) {
@@ -1274,11 +1266,11 @@ function checkCrewRanks() {
             crewFactionless = true;
         }
     }
+};
+function checkCrewRanks10() {
     // crew 10
     if (shipType + crewSupplement >= 10) {
-        crewRank10 = document.getElementById('crewmate-10-rank');
-        crewRank10Value = crewRank10.value;
-        if (crewRankLevel < crewRank10Value) {
+        if (crewRank10Value >= crewRankLevel) {
             crewRankLevel = crewRank10Value;
         }
         if (crewRank10Value < 3) {
@@ -1441,9 +1433,7 @@ function checkCrewPayout() {
     //crew 1
     if (shipType + crewSupplement >= 1) {
         crewName1 = document.getElementById('crewmate-1-name');
-        crewName1Value = crewName1.value;
         crewRank1 = document.getElementById('crewmate-1-rank');
-        crewRank1Value = crewRank1.value;
         document.getElementById('total-crew-name-1').innerHTML = crewName1Value;
         document.getElementById('total-crew-rank-1').innerHTML = checkCrewRankVerbose(crewRank1Value);
         document.getElementById('total-crew-cut-1').innerHTML = Math.round(checkCrewRate(crewRank1Value) * 100);
@@ -1467,9 +1457,7 @@ function checkCrewPayout() {
     //crew 2
     if (shipType + crewSupplement >= 2) {
         crewName2 = document.getElementById('crewmate-2-name');
-        crewName2Value = crewName2.value;
         crewRank2 = document.getElementById('crewmate-2-rank');
-        crewRank2Value = crewRank2.value;
         document.getElementById('total-crew-name-2').innerHTML = crewName2Value;
         document.getElementById('total-crew-rank-2').innerHTML = checkCrewRankVerbose(crewRank2Value);
         document.getElementById('total-crew-cut-2').innerHTML = Math.round(checkCrewRate(crewRank2Value) * 100);
@@ -1493,9 +1481,7 @@ function checkCrewPayout() {
     //crew 3
     if (shipType + crewSupplement >= 3) {
         crewName3 = document.getElementById('crewmate-3-name');
-        crewName3Value = crewName3.value;
         crewRank3 = document.getElementById('crewmate-3-rank');
-        crewRank3Value = crewRank3.value;
         document.getElementById('total-crew-name-3').innerHTML = crewName3Value;
         document.getElementById('total-crew-rank-3').innerHTML = checkCrewRankVerbose(crewRank3Value);
         document.getElementById('total-crew-cut-3').innerHTML = Math.round(checkCrewRate(crewRank3Value) * 100);
@@ -1519,9 +1505,7 @@ function checkCrewPayout() {
     //crew 4
     if (shipType + crewSupplement >= 4) {
         crewName4 = document.getElementById('crewmate-4-name');
-        crewName4Value = crewName4.value;
         crewRank4 = document.getElementById('crewmate-4-rank');
-        crewRank4Value = crewRank4.value;
         document.getElementById('total-crew-name-4').innerHTML = crewName4Value;
         document.getElementById('total-crew-rank-4').innerHTML = checkCrewRankVerbose(crewRank4Value);
         document.getElementById('total-crew-cut-4').innerHTML = Math.round(checkCrewRate(crewRank4Value) * 100);
@@ -1545,9 +1529,7 @@ function checkCrewPayout() {
     //crew 5
     if (shipType + crewSupplement >= 5) {
         crewName5 = document.getElementById('crewmate-5-name');
-        crewName5Value = crewName5.value;
         crewRank5 = document.getElementById('crewmate-5-rank');
-        crewRank5Value = crewRank5.value;
         document.getElementById('total-crew-name-5').innerHTML = crewName5Value;
         document.getElementById('total-crew-rank-5').innerHTML = checkCrewRankVerbose(crewRank5Value);
         document.getElementById('total-crew-cut-5').innerHTML = Math.round(checkCrewRate(crewRank5Value) * 100);
@@ -1571,9 +1553,7 @@ function checkCrewPayout() {
     //crew 6
     if (shipType + crewSupplement >= 6) {
         crewName6 = document.getElementById('crewmate-6-name');
-        crewName6Value = crewName6.value;
         crewRank6 = document.getElementById('crewmate-6-rank');
-        crewRank6Value = crewRank6.value;
         document.getElementById('total-crew-name-6').innerHTML = crewName6Value;
         document.getElementById('total-crew-rank-6').innerHTML = checkCrewRankVerbose(crewRank6Value);
         document.getElementById('total-crew-cut-6').innerHTML = Math.round(checkCrewRate(crewRank6Value) * 100);
@@ -1597,9 +1577,7 @@ function checkCrewPayout() {
     //crew 7
     if (shipType + crewSupplement >= 7) {
         crewName7 = document.getElementById('crewmate-7-name');
-        crewName7Value = crewName7.value;
         crewRank7 = document.getElementById('crewmate-7-rank');
-        crewRank7Value = crewRank7.value;
         document.getElementById('total-crew-name-7').innerHTML = crewName7Value;
         document.getElementById('total-crew-rank-7').innerHTML = checkCrewRankVerbose(crewRank7Value);
         document.getElementById('total-crew-cut-7').innerHTML = Math.round(checkCrewRate(crewRank7Value) * 100);
@@ -1623,9 +1601,7 @@ function checkCrewPayout() {
     //crew 8
     if (shipType + crewSupplement >= 8) {
         crewName8 = document.getElementById('crewmate-8-name');
-        crewName8Value = crewName8.value;
         crewRank8 = document.getElementById('crewmate-8-rank');
-        crewRank8Value = crewRank8.value;
         document.getElementById('total-crew-name-8').innerHTML = crewName8Value;
         document.getElementById('total-crew-rank-8').innerHTML = checkCrewRankVerbose(crewRank8Value);
         document.getElementById('total-crew-cut-8').innerHTML = Math.round(checkCrewRate(crewRank8Value) * 100);
@@ -1649,9 +1625,7 @@ function checkCrewPayout() {
     //crew 9
     if (shipType + crewSupplement >= 9) {
         crewName9 = document.getElementById('crewmate-9-name');
-        crewName9Value = crewName9.value;
         crewRank9 = document.getElementById('crewmate-9-rank');
-        crewRank9Value = crewRank9.value;
         document.getElementById('total-crew-name-9').innerHTML = crewName9Value;
         document.getElementById('total-crew-rank-9').innerHTML = checkCrewRankVerbose(crewRank9Value);
         document.getElementById('total-crew-cut-9').innerHTML = Math.round(checkCrewRate(crewRank9Value) * 100);
@@ -1675,9 +1649,7 @@ function checkCrewPayout() {
     //crew 10
     if (shipType + crewSupplement >= 10) {
         crewName10 = document.getElementById('crewmate-10-name');
-        crewName10Value = crewName10.value;
         crewRank10 = document.getElementById('crewmate-10-rank');
-        crewRank10Value = crewRank10.value;
         document.getElementById('total-crew-name-10').innerHTML = crewName10Value;
         document.getElementById('total-crew-rank-10').innerHTML = checkCrewRankVerbose(crewRank10Value);
         document.getElementById('total-crew-cut-10').innerHTML = Math.round(checkCrewRate(crewRank10Value) * 100);
@@ -1825,7 +1797,6 @@ function checkReportErrors() {
     else { 
         document.getElementById('error-job-type').classList.add('d-none');
         /* Check crew ranks vs job types */
-        checkCrewRanks();
         if ((jobType == 'Errand' && crewRank1Value < 5) || (jobType == 'Heist' && crewRank1Value < 8)) {
             document.getElementById('error-rank').classList.remove('d-none');
             errorCount++;
@@ -1843,7 +1814,6 @@ function checkReportErrors() {
         }
     }
     /* Crew names are empty */
-    checkCrew();
     if ((shipType + crewSupplement >= 1 && crewName1Value == '')
         || (shipType + crewSupplement >= 2 && crewName2Value == '')
         || (shipType + crewSupplement >= 3 && crewName3Value == '')
@@ -2087,8 +2057,15 @@ function printNumber(x) {
 };
 
 function generateReport() {
+    checkCrew();
+    checkCrewRanks();
     // check for Errors
     checkReportErrors();
+
+    // debug
+    document.getElementById('crewCount').innerHTML = shipType + crewSupplement;
+    document.getElementById('crewRankLevel').innerHTML = crewRankLevel;
+
     // Scroll to success or failure
     document.getElementById('section-report').scrollIntoView();
     // Populate Text
