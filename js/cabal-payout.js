@@ -129,46 +129,48 @@ let crewStowawayPresent = false;
 let crewFactionless = false;
 let crewRankLevel = 0;
 
+let activityRows = 0;
+
 const nActivities = 25;
 const activities = Array(nActivities);
 const activityValues = Array(nActivities);
 const activityQties = Array(nActivities);
 const activityQtyValues = Array(nActivities);
 
-let activityRows = 0;
-
 let errorCount = 0;
 let warningCount = 0;
 
 let helpToggle = false;
 
+// HTML interfacing
+// select faction
 document.getElementById('select-faction-ao').onclick = function() {selectFactionAO()};
 document.getElementById('select-faction-ac').onclick = function() {selectFactionAC()};
 document.getElementById('select-faction-kw').onclick = function() {selectFactionKW()};
 document.getElementById('select-faction-ns').onclick = function() {selectFactionNS()};
 document.getElementById('select-faction-mg').onclick = function() {selectFactionMG()};
 document.getElementById('select-faction-lf').onclick = function() {selectFactionLF()};
-
+// select ship type
 document.getElementById('select-ship-sloop').onclick = function() {selectShipSloop()};
 document.getElementById('select-ship-brigantine').onclick = function() {selectShipBrigantine()};
 document.getElementById('select-ship-galleon').onclick = function() {selectShipGalleon()};
-
+// select job type
 document.getElementById('select-job-errand').onclick = function() {selectJobErrand()};
 document.getElementById('select-job-heist').onclick = function() {selectJobHeist()};
-
+// add or remove crew
 document.getElementById('crew-add').onclick = function() {crewAdd()};
 document.getElementById('crew-remove').onclick = function() {crewRemove()};
-
+// add or remove activity
 document.getElementById('activity-add').onclick = function() {activityAdd()};
 document.getElementById('activity-remove').onclick = function() {activityRemove()};
-
+// generate report
 document.getElementById('generate-report').onclick = function() {generateReport()};
-
+// show or hide approprite bonus options (based ship and job type)
 document.getElementById("voyage").addEventListener("load", checkBonusEligibility());
-
+// toggle help
 document.getElementById("toggle-help").onclick = function() {toggleHelp()};
 
-/* Toggle help */
+// Toggle help
 function toggleHelp() {
     if (helpToggle == false) {
         document.getElementById('help-faction').classList.remove('d-none');
@@ -206,7 +208,7 @@ function toggleHelp() {
     checkBonusEligibility()
 };
 
-/* Select Faction */
+// Select Faction
 function deselectFaction() {
     document.getElementById('total-vault').classList.remove('d-none');
     if (document.getElementById('select-faction-ao').classList.contains('btn-selected')) {
@@ -301,7 +303,7 @@ function selectFactionLF() {
     factionVaultAccount = '@lordoffleetsvault';
 };
 
-/* Select Ship Size */
+// Select Ship Size
 function deselectShip() {
     document.getElementById('help-job-sloop').classList.add('d-none');
     if (document.getElementById('select-ship-sloop').classList.contains('btn-selected')) {
@@ -347,7 +349,7 @@ function selectShipGalleon() {
     checkBonusEligibility();
 };
 
-/* Select Job */
+// Select Job
 function deselectJob() {
     document.getElementById('help-job-errand').classList.add('d-none');
     if (document.getElementById('select-job-errand').classList.contains('btn-selected')) {
@@ -381,7 +383,7 @@ function selectJobHeist() {
     }
 };
 
-/* Add or remove crew rows */
+// Add or remove crew rows
 function crewAdd() {
     if (shipType >= 2) {
         crewSupplement++;
@@ -488,11 +490,10 @@ function crewShow() {
         document.getElementById('crew-8-participation').classList.add('d-none');
         document.getElementById('crew-9-participation').classList.add('d-none');
         document.getElementById('crew-10-participation').classList.add('d-none');
-        // restore name width
     }
 };
 
-/* Add or remove activity rows */
+// Add or remove activity rows
 function activityAdd() {
     activityRows++;
     if (activityRows > 25) {
@@ -531,7 +532,7 @@ function checkActivityLog() {
   }
 }
 
-/* Check Bonus Eligibility */
+// Check Bonus Eligibility
 function checkBonusEligibility() {
     document.getElementById('bonus-list-straight-ship').classList.add('d-none');
     document.getElementById('bonus-list-full-house').classList.add('d-none');
@@ -572,7 +573,7 @@ function checkBonusEligibility() {
         document.getElementById('bonus-list-table').classList.add('d-none');
     }
 };
-/* Determine Bonuses */
+// Determine Bonuses
 function checkBonusReset() {
     bonusDiceAmount = 0;
     bonusPaiGowAmount = 0;
@@ -584,6 +585,7 @@ function checkBonusReset() {
     bonusCrapsTableAmount = 0;
     totalBonus = 0;
 };
+// check for Straight Ship
 function checkBonusStraightShip() {
     bonusStraightShip = document.getElementById("bonus-straight-ship");
     if (bonusStraightShip.checked == true) {
@@ -599,6 +601,7 @@ function checkBonusStraightShip() {
         }
     }
 };
+// check for Full House
 function checkBonusFullHouse() {
     bonusFullHouse = document.getElementById("bonus-full-house");
     if (bonusFullHouse.checked == true) {
@@ -614,6 +617,7 @@ function checkBonusFullHouse() {
         }
     }
 };
+// check for Royal Flush
 function checkBonusRoyalFlush() {
     bonusRoyalFlush = document.getElementById("bonus-royal-flush");
     if (bonusRoyalFlush.checked == true && shipType == 4) {
@@ -627,6 +631,7 @@ function checkBonusRoyalFlush() {
         document.getElementById('report-bonus-royal-flush').classList.add('d-none');
     }
 };
+// check for United Deck
 function checkBonusUnitedDeck() {
     bonusUnitedDeck = document.getElementById("bonus-united-deck");
     if (bonusUnitedDeck.checked == true) {
@@ -779,51 +784,51 @@ function checkBonusCrapsTable() {
 function checkBonusTotal() {
     totalBonus = bonusStraightShipAmount + bonusFullHouseAmount + bonusRoyalFlushAmount + bonusUnitedDeckAmount + bonusPaiGowAmount + bonusBlackjackAmount + bonusCrapsTableAmount + bonusDiceAmount;
 }
-/* Determine Crew Cut */
+// Determine Crew Cut
 // check crew for minimum rank
 function checkCrewRankVerbose(rank) {
-    if (rank == '1') { return 'Stowaway';}
-    if (rank == '2') { return 'Recruit';}
-    if (rank == '3') { return 'Rum Runner';}
-    if (rank == '4') { return 'Crate Smuggler';}
-    if (rank == '5') { return 'Smuggler';}
-    if (rank == '6') { return 'Flintlock Dealer';}
-    if (rank == '7') { return 'Doubloon Shark';}
-    if (rank == '8') { return 'Boatswain';}
-    if (rank == '9') { return 'Powder Monkey';}
-    if (rank == '10') { return 'Quartermaster';}
-    if (rank == '11') { return 'First Mate';}
-    if (rank == '12') { return 'Cabal Captain';}
-    if (rank == '13') { return 'Cabal Boss';}
-    if (rank == '14') { return 'Cabal Leader';}
+    if (rank == 1) { return 'Stowaway';}
+    if (rank == 2) { return 'Recruit';}
+    if (rank == 3) { return 'Rum Runner';}
+    if (rank == 4) { return 'Crate Smuggler';}
+    if (rank == 5) { return 'Smuggler';}
+    if (rank == 6) { return 'Flintlock Dealer';}
+    if (rank == 7) { return 'Doubloon Shark';}
+    if (rank == 8) { return 'Boatswain';}
+    if (rank == 9) { return 'Powder Monkey';}
+    if (rank == 10) { return 'Quartermaster';}
+    if (rank == 11) { return 'First Mate';}
+    if (rank == 12) { return 'Cabal Captain';}
+    if (rank == 13) { return 'Cabal Boss';}
+    if (rank == 14) { return 'Cabal Leader';}
 };
 function checkCrewRankAbbr(rank) {
-    if (rank == '1') { return 'Stowaway, 1st/2nd voyage, $X earned in Y days';}
-    if (rank == '2') { return 'R';}
-    if (rank == '3') { return 'RR';}
-    if (rank == '4') { return 'CS';}
-    if (rank == '5') { return 'S';}
-    if (rank == '6') { return 'FD';}
-    if (rank == '7') { return 'DS';}
-    if (rank == '8') { return 'BS';}
-    if (rank == '9') { return 'PM';}
-    if (rank == '10') { return 'QM';}
-    if (rank == '11') { return '1M';}
-    if (rank == '12') { return 'CC';}
-    if (rank == '13') { return 'CB';}
-    if (rank == '14') { return 'CL';}
+    if (rank == 1) { return 'Stowaway, 1st/2nd voyage, $X earned in Y days';}
+    if (rank == 2) { return 'R';}
+    if (rank == 3) { return 'RR';}
+    if (rank == 4) { return 'CS';}
+    if (rank == 5) { return 'S';}
+    if (rank == 6) { return 'FD';}
+    if (rank == 7) { return 'DS';}
+    if (rank == 8) { return 'BS';}
+    if (rank == 9) { return 'PM';}
+    if (rank == 10) { return 'QM';}
+    if (rank == 11) { return '1M';}
+    if (rank == 12) { return 'CC';}
+    if (rank == 13) { return 'CB';}
+    if (rank == 14) { return 'CL';}
 };
 // check crew for rate
 function checkCrewRate(rank) {
     return (rank - 1) * 0.05;
 };
 function checkCrewRanks() {
-    // reset
-    crewRankLevel = crewRank1Value = parseInt(document.getElementById('crewmate-1-rank').value);
+    // reset, crew 1
     bonusDiceCount = 0;
     crewStowawayPresent = false;
     crewFactionless = false;
-    // check individual crew
+    crewRankLevel = crewRank1Value = parseInt(document.getElementById('crewmate-1-rank').value);
+    // check remaining crew
     checkCrewRanks2();
     checkCrewRanks3();
     checkCrewRanks4();
@@ -840,13 +845,13 @@ function checkCrewRanks2() {
         if (parseInt(document.getElementById('crewmate-2-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-2-rank').value);
         }
-        if (crewRank2Value < 3) {
+        if (parseInt(document.getElementById('crewmate-2-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank2Value == 1) {
+        if (parseInt(document.getElementById('crewmate-2-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank2Value < 4) {
+        if (parseInt(document.getElementById('crewmate-2-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -857,13 +862,13 @@ function checkCrewRanks3() {
         if (parseInt(document.getElementById('crewmate-3-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-3-rank').value);
         }
-        if (crewRank3Value < 3) {
+        if (parseInt(document.getElementById('crewmate-3-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank3Value == 1) {
+        if (parseInt(document.getElementById('crewmate-3-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank3Value < 4) {
+        if (parseInt(document.getElementById('crewmate-3-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -874,13 +879,13 @@ function checkCrewRanks4() {
         if (parseInt(document.getElementById('crewmate-4-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-4-rank').value);
         }
-        if (crewRank4Value < 3) {
+        if (parseInt(document.getElementById('crewmate-4-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank4Value == 1) {
+        if (parseInt(document.getElementById('crewmate-4-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank4Value < 4) {
+        if (parseInt(document.getElementById('crewmate-4-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -891,13 +896,13 @@ function checkCrewRanks5() {
         if (parseInt(document.getElementById('crewmate-5-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-5-rank').value);
         }
-        if (crewRank5Value < 3) {
+        if (parseInt(document.getElementById('crewmate-5-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank5Value == 1) {
+        if (parseInt(document.getElementById('crewmate-5-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank5Value < 4) {
+        if (parseInt(document.getElementById('crewmate-5-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -908,13 +913,13 @@ function checkCrewRanks6() {
         if (parseInt(document.getElementById('crewmate-6-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-6-rank').value);
         }
-        if (crewRank6Value < 3) {
+        if (parseInt(document.getElementById('crewmate-6-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank6Value == 1) {
+        if (parseInt(document.getElementById('crewmate-6-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank6Value < 4) {
+        if (parseInt(document.getElementById('crewmate-6-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -925,13 +930,13 @@ function checkCrewRanks7() {
         if (parseInt(document.getElementById('crewmate-7-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-7-rank').value);
         }
-        if (crewRank7Value < 3) {
+        if (parseInt(document.getElementById('crewmate-7-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank7Value == 1) {
+        if (parseInt(document.getElementById('crewmate-7-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank7Value < 4) {
+        if (parseInt(document.getElementById('crewmate-7-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -942,13 +947,13 @@ function checkCrewRanks8() {
         if (parseInt(document.getElementById('crewmate-8-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-8-rank').value);
         }
-        if (crewRank8Value < 3) {
+        if (parseInt(document.getElementById('crewmate-8-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank8Value == 1) {
+        if (parseInt(document.getElementById('crewmate-8-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank8Value < 4) {
+        if (parseInt(document.getElementById('crewmate-8-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -959,13 +964,13 @@ function checkCrewRanks9() {
         if (parseInt(document.getElementById('crewmate-9-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-9-rank').value);
         }
-        if (crewRank9Value < 3) {
+        if (parseInt(document.getElementById('crewmate-9-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank9Value == 1) {
+        if (parseInt(document.getElementById('crewmate-9-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank9Value < 4) {
+        if (parseInt(document.getElementById('crewmate-9-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -976,13 +981,13 @@ function checkCrewRanks10() {
         if (parseInt(document.getElementById('crewmate-10-rank').value) >= crewRankLevel) {
             crewRankLevel = parseInt(document.getElementById('crewmate-10-rank').value);
         }
-        if (crewRank10Value < 3) {
+        if (parseInt(document.getElementById('crewmate-10-rank').value) < 3) {
             bonusDiceCount++;
         }
-        if (crewRank10Value == 1) {
+        if (parseInt(document.getElementById('crewmate-10-rank').value) == 1) {
             crewStowawayPresent = true;
         }
-        if (crewRank10Value < 4) {
+        if (parseInt(document.getElementById('crewmate-10-rank').value) < 4) {
             crewFactionless = true;
         }
     }
@@ -1136,7 +1141,9 @@ function checkCrewPayout() {
     //crew 1
     if (shipType + crewSupplement >= 1) {
         crewName1 = document.getElementById('crewmate-1-name');
+        crewName1Value = crewName1.value;
         crewRank1 = document.getElementById('crewmate-1-rank');
+        crewRank1Value = crewRank1.value;
         document.getElementById('total-crew-name-1').innerHTML = crewName1Value;
         document.getElementById('total-crew-rank-1').innerHTML = checkCrewRankVerbose(crewRank1Value);
         document.getElementById('total-crew-cut-1').innerHTML = Math.round(checkCrewRate(crewRank1Value) * 100);
@@ -1160,7 +1167,9 @@ function checkCrewPayout() {
     //crew 2
     if (shipType + crewSupplement >= 2) {
         crewName2 = document.getElementById('crewmate-2-name');
+        crewName2Value = crewName2.value;
         crewRank2 = document.getElementById('crewmate-2-rank');
+        crewRank2Value = crewRank2.value;
         document.getElementById('total-crew-name-2').innerHTML = crewName2Value;
         document.getElementById('total-crew-rank-2').innerHTML = checkCrewRankVerbose(crewRank2Value);
         document.getElementById('total-crew-cut-2').innerHTML = Math.round(checkCrewRate(crewRank2Value) * 100);
@@ -1184,7 +1193,9 @@ function checkCrewPayout() {
     //crew 3
     if (shipType + crewSupplement >= 3) {
         crewName3 = document.getElementById('crewmate-3-name');
+        crewName3Value = crewName3.value;
         crewRank3 = document.getElementById('crewmate-3-rank');
+        crewRank3Value = crewRank3.value;
         document.getElementById('total-crew-name-3').innerHTML = crewName3Value;
         document.getElementById('total-crew-rank-3').innerHTML = checkCrewRankVerbose(crewRank3Value);
         document.getElementById('total-crew-cut-3').innerHTML = Math.round(checkCrewRate(crewRank3Value) * 100);
@@ -1208,7 +1219,9 @@ function checkCrewPayout() {
     //crew 4
     if (shipType + crewSupplement >= 4) {
         crewName4 = document.getElementById('crewmate-4-name');
+        crewName4Value = crewName4.value;
         crewRank4 = document.getElementById('crewmate-4-rank');
+        crewRank4Value = crewRank4.value;
         document.getElementById('total-crew-name-4').innerHTML = crewName4Value;
         document.getElementById('total-crew-rank-4').innerHTML = checkCrewRankVerbose(crewRank4Value);
         document.getElementById('total-crew-cut-4').innerHTML = Math.round(checkCrewRate(crewRank4Value) * 100);
@@ -1232,7 +1245,9 @@ function checkCrewPayout() {
     //crew 5
     if (shipType + crewSupplement >= 5) {
         crewName5 = document.getElementById('crewmate-5-name');
+        crewName5Value = crewName5.value;
         crewRank5 = document.getElementById('crewmate-5-rank');
+        crewRank5Value = crewRank5.value;
         document.getElementById('total-crew-name-5').innerHTML = crewName5Value;
         document.getElementById('total-crew-rank-5').innerHTML = checkCrewRankVerbose(crewRank5Value);
         document.getElementById('total-crew-cut-5').innerHTML = Math.round(checkCrewRate(crewRank5Value) * 100);
@@ -1256,7 +1271,9 @@ function checkCrewPayout() {
     //crew 6
     if (shipType + crewSupplement >= 6) {
         crewName6 = document.getElementById('crewmate-6-name');
+        crewName6Value = crewName6.value;
         crewRank6 = document.getElementById('crewmate-6-rank');
+        crewRank6Value = crewRank6.value;
         document.getElementById('total-crew-name-6').innerHTML = crewName6Value;
         document.getElementById('total-crew-rank-6').innerHTML = checkCrewRankVerbose(crewRank6Value);
         document.getElementById('total-crew-cut-6').innerHTML = Math.round(checkCrewRate(crewRank6Value) * 100);
@@ -1280,7 +1297,9 @@ function checkCrewPayout() {
     //crew 7
     if (shipType + crewSupplement >= 7) {
         crewName7 = document.getElementById('crewmate-7-name');
+        crewName7Value = crewName7.value;
         crewRank7 = document.getElementById('crewmate-7-rank');
+        crewRank7Value = crewRank7.value;
         document.getElementById('total-crew-name-7').innerHTML = crewName7Value;
         document.getElementById('total-crew-rank-7').innerHTML = checkCrewRankVerbose(crewRank7Value);
         document.getElementById('total-crew-cut-7').innerHTML = Math.round(checkCrewRate(crewRank7Value) * 100);
@@ -1304,7 +1323,9 @@ function checkCrewPayout() {
     //crew 8
     if (shipType + crewSupplement >= 8) {
         crewName8 = document.getElementById('crewmate-8-name');
+        crewName8Value = crewName8.value;
         crewRank8 = document.getElementById('crewmate-8-rank');
+        crewRank8Value = crewRank8.value;
         document.getElementById('total-crew-name-8').innerHTML = crewName8Value;
         document.getElementById('total-crew-rank-8').innerHTML = checkCrewRankVerbose(crewRank8Value);
         document.getElementById('total-crew-cut-8').innerHTML = Math.round(checkCrewRate(crewRank8Value) * 100);
@@ -1328,7 +1349,9 @@ function checkCrewPayout() {
     //crew 9
     if (shipType + crewSupplement >= 9) {
         crewName9 = document.getElementById('crewmate-9-name');
+        crewName9Value = crewName9.value;
         crewRank9 = document.getElementById('crewmate-9-rank');
+        crewRank9Value = crewRank9.value;
         document.getElementById('total-crew-name-9').innerHTML = crewName9Value;
         document.getElementById('total-crew-rank-9').innerHTML = checkCrewRankVerbose(crewRank9Value);
         document.getElementById('total-crew-cut-9').innerHTML = Math.round(checkCrewRate(crewRank9Value) * 100);
@@ -1352,7 +1375,9 @@ function checkCrewPayout() {
     //crew 10
     if (shipType + crewSupplement >= 10) {
         crewName10 = document.getElementById('crewmate-10-name');
+        crewName10Value = crewName10.value;
         crewRank10 = document.getElementById('crewmate-10-rank');
+        crewRank10Value = crewRank10.value;
         document.getElementById('total-crew-name-10').innerHTML = crewName10Value;
         document.getElementById('total-crew-rank-10').innerHTML = checkCrewRankVerbose(crewRank10Value);
         document.getElementById('total-crew-cut-10').innerHTML = Math.round(checkCrewRate(crewRank10Value) * 100);
@@ -1378,7 +1403,7 @@ function checkCrewPayout() {
 };
 
 function checkCrew() {
-    /* Gather crew names and ranks */
+    // Gather crew names and ranks
     //crew 1
     if (shipType + crewSupplement >= 1) {
         crewName1 = document.getElementById('crewmate-1-name');
@@ -1451,15 +1476,12 @@ function checkCrew() {
     }
 };
 
-/* Error check */
+// Error check
 function checkReportErrors() {
-    /* reset */
+    // reset
     errorCount = 0;
     warningCount = 0;
-    /* gather crew data */
-    checkCrew();
-    checkCrewRanks();
-    /* Check voyage number */
+    // Check voyage number
     voyageNumber = document.getElementById('voyage-number');
     voyageNumberValue = voyageNumber.value;
     if (voyageNumberValue == '') { 
@@ -1469,7 +1491,7 @@ function checkReportErrors() {
     else { 
         document.getElementById('error-voyage-number').classList.add('d-none');
     }
-    /* Check faction */
+    // Check faction
     if (faction == '') { 
         document.getElementById('error-faction').classList.remove('d-none');
         errorCount++;
@@ -1477,7 +1499,7 @@ function checkReportErrors() {
     else { 
         document.getElementById('error-faction').classList.add('d-none');
     }
-    /* Check ship name */
+    // Check ship name
     shipName = document.getElementById('ship-name');
     shipNameValue = shipName.value;
     if (shipNameValue == '') { 
@@ -1487,7 +1509,7 @@ function checkReportErrors() {
     else { 
         document.getElementById('error-ship-name').classList.add('d-none');
     }
-    /* Check ship type */
+    // Check ship type
     if (shipType == '0') { 
         document.getElementById('error-ship-type').classList.remove('d-none');
         errorCount++;
@@ -1495,14 +1517,14 @@ function checkReportErrors() {
     else { 
         document.getElementById('error-ship-type').classList.add('d-none');
     }
-    /* Check job type */
+    // Check job type
     if (jobRate == '0') { 
         document.getElementById('error-job-type').classList.remove('d-none');
         errorCount++;
     }
     else { 
         document.getElementById('error-job-type').classList.add('d-none');
-        /* Check crew ranks vs job types */
+        // Check crew ranks vs job types
         if ((jobType == 'Errand' && crewRank1Value < 5) || (jobType == 'Heist' && crewRank1Value < 8)) {
             document.getElementById('error-rank').classList.remove('d-none');
             errorCount++;
@@ -1510,7 +1532,7 @@ function checkReportErrors() {
         else {
             document.getElementById('error-rank').classList.add('d-none');
         }
-        /* Heist eligible, but not declared */
+        // Heist eligible, but not declared
         if ((shipType >= 3 && jobType == 'Errand' && crewRank1Value > 6)) {
             document.getElementById('warning-crew-rank').classList.remove('d-none');
             warningCount++;
@@ -1519,7 +1541,7 @@ function checkReportErrors() {
             document.getElementById('warning-crew-rank').classList.add('d-none');
         }
     }
-    /* Crew names are empty */
+    // Crew names are empty
     if ((shipType + crewSupplement >= 1 && crewName1Value == '')
         || (shipType + crewSupplement >= 2 && crewName2Value == '')
         || (shipType + crewSupplement >= 3 && crewName3Value == '')
@@ -1536,7 +1558,7 @@ function checkReportErrors() {
     else {
         document.getElementById('warning-crew-name').classList.add('d-none');
     }
-    /* activity log is empty */
+    // activity log is empty
     checkActivityLog();
     // activity log empty
     if (activityRows == 0) {
@@ -1607,7 +1629,7 @@ function checkReportErrors() {
         errorCount++;
         document.getElementById('error-activity-negative').classList.remove('d-none');
     }
-    /* Check gold */
+    // Check gold
     goldStart = document.getElementById('gold-start');
     goldStartValue = goldStart.value;
     goldEnd = document.getElementById('gold-end');
@@ -1629,7 +1651,7 @@ function checkReportErrors() {
     else { 
         document.getElementById('error-gold-negative').classList.add('d-none');
     }
-    /* Check doubloons */
+    // Check doubloons
     doubloonStart = document.getElementById('doubloon-start');
     doubloonStartValue = doubloonStart.value;
     doubloonEnd = document.getElementById('doubloon-end');
@@ -1652,7 +1674,7 @@ function checkReportErrors() {
         totalDoubloonGold = totalDoubloonCount * 25;
         document.getElementById('error-doubloon-negative').classList.add('d-none');
     }
-    /* Check for participation totals */
+    // Check for participation totals
     checkCrewCut();
     if (crewSupplement > 0) {
         // all crew participate between 1-100%
@@ -1694,7 +1716,7 @@ function checkReportErrors() {
             document.getElementById('error-participation').classList.add('d-none');
         }
     }
-    /* Individual bonus checks */
+    // Individual bonus checks
     checkBonusReset();
     checkBonusStraightShip();
     checkBonusFullHouse();
@@ -1706,14 +1728,14 @@ function checkReportErrors() {
     checkBonusBlackjack();
     checkBonusCrapsTable();
     checkBonusTotal();
-    /* Check for stowaway presence and explain missing payout and report obligations */
+    // Check for stowaway presence and explain missing payout and report obligations
     if (crewStowawayPresent == true) {
         document.getElementById('info-stowaway').classList.remove('d-none');
     }
     else {
         document.getElementById('info-stowaway').classList.add('d-none');
     }
-    /* Check summary */
+    // Check summary
     voyageSummary = document.getElementById('voyage-summary');
     voyageSummaryValue = voyageSummary.value;
     if (voyageSummaryValue == '') { 
@@ -1723,7 +1745,7 @@ function checkReportErrors() {
     else { 
         document.getElementById('error-summary').classList.add('d-none');
     }
-    /* Show errors or success */
+    // Show errors or success
     if (errorCount > 0) {
         document.getElementById('report-error-count').innerHTML = errorCount;
         document.getElementById('errors-true').classList.remove('d-none');
@@ -1757,13 +1779,16 @@ function checkReportErrors() {
     checkCrewPayout();
 };
 
-/* Generate Report */
+// Generate Report
 function printNumber(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 function generateReport() {
-    // check for Errors
+    // gather crew data
+    checkCrew();
+    checkCrewRanks();
+    // check for errors
     checkReportErrors();
     // Scroll to success or failure
     document.getElementById('section-report').scrollIntoView();
