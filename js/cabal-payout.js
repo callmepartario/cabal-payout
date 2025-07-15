@@ -131,11 +131,112 @@ let crewRankLevel = 0;
 
 let activityRows = 0;
 
-const nActivities = 25;
-const activities = Array(nActivities);
-const activityValues = Array(nActivities);
-const activityQties = Array(nActivities);
-const activityQtyValues = Array(nActivities);
+// const nActivities = 25;
+// const activities = Array(nActivities);
+// const activityValues = Array(nActivities);
+// const activityQties = Array(nActivities);
+// const activityQtyValues = Array(nActivities);
+
+let activity1 = '';
+let activity1Value = ''
+let activity1Qty = 0;
+let activity1QtyValue = 0;
+let activity2 = '';
+let activity2Value = ''
+let activity2Qty = 0;
+let activity2QtyValue = 0;
+let activity3 = '';
+let activity3Value = ''
+let activity3Qty = 0;
+let activity3QtyValue = 0;
+let activity4 = '';
+let activity4Value = ''
+let activity4Qty = 0;
+let activity4QtyValue = 0;
+let activity5 = '';
+let activity5Value = ''
+let activity5Qty = 0;
+let activity5QtyValue = 0;
+let activity6 = '';
+let activity6Value = ''
+let activity6Qty = 0;
+let activity6QtyValue = 0;
+let activity7 = '';
+let activity7Value = ''
+let activity7Qty = 0;
+let activity7QtyValue = 0;
+let activity8 = '';
+let activity8Value = ''
+let activity8Qty = 0;
+let activity8QtyValue = 0;
+let activity9 = '';
+let activity9Value = ''
+let activity9Qty = 0;
+let activity9QtyValue = 0;
+let activity10 = '';
+let activity10Value = ''
+let activity10Qty = 0;
+let activity10QtyValue = 0;
+let activity11 = '';
+let activity11Value = ''
+let activity11Qty = 0;
+let activity11QtyValue = 0;
+let activity12 = '';
+let activity12Value = ''
+let activity12Qty = 0;
+let activity12QtyValue = 0;
+let activity13 = '';
+let activity13Value = ''
+let activity13Qty = 0;
+let activity13QtyValue = 0;
+let activity14 = '';
+let activity14Value = ''
+let activity14Qty = 0;
+let activity14QtyValue = 0;
+let activity15 = '';
+let activity15Value = ''
+let activity15Qty = 0;
+let activity15QtyValue = 0;
+let activity16 = '';
+let activity16Value = ''
+let activity16Qty = 0;
+let activity16QtyValue = 0;
+let activity17 = '';
+let activity17Value = ''
+let activity17Qty = 0;
+let activity17QtyValue = 0;
+let activity18 = '';
+let activity18Value = ''
+let activity18Qty = 0;
+let activity18QtyValue = 0;
+let activity19 = '';
+let activity19Value = ''
+let activity19Qty = 0;
+let activity19QtyValue = 0;
+let activity20 = '';
+let activity20Value = ''
+let activity20Qty = 0;
+let activity20QtyValue = 0;
+let activity21 = '';
+let activity21Value = ''
+let activity21Qty = 0;
+let activity21QtyValue = 0;
+let activity22 = '';
+let activity22Value = ''
+let activity22Qty = 0;
+let activity22QtyValue = 0;
+let activity23 = '';
+let activity23Value = ''
+let activity23Qty = 0;
+let activity23QtyValue = 0;
+let activity24 = '';
+let activity24Value = ''
+let activity24Qty = 0;
+let activity24QtyValue = 0;
+let activity25 = '';
+let activity25Value = ''
+let activity25Qty = 0;
+let activity25QtyValue = 0;
 
 let errorCount = 0;
 let warningCount = 0;
@@ -519,18 +620,218 @@ function checkActivityRow(x) {
     }
 };
 function checkActivityLog() {
-  for(let i = 1 ; i <= nActivities ; i++) {
-    checkActivityRow(i);
-  }
-  for(let i = 1 ; i <= nActivities ; i++) {
-    activities[i] = document.getElementById(`activity-${i}-type`);
-    activityQties[i] = document.getElementById(`activity-${i}-qty`);
-    activityValues[i] = activities[i].value;
-    activityQtyValues[i] = activityQties[i].valueAsNumber;
-    document.getElementById(`report-activity-${i}-type`).innerHTML = activityValues[i];
-    document.getElementById(`report-activity-${i}-qty`).innerHTML = activityQtyValues[i];
-  }
-}
+//  for(let i = 1 ; i <= nActivities ; i++) {
+//    checkActivityRow(i);
+//  }
+//  for(let i = 1 ; i <= nActivities ; i++) {
+//    activities[i] = document.getElementById(`activity-${i}-type`);
+//    activityQties[i] = document.getElementById(`activity-${i}-qty`);
+//    activityValues[i] = activities[i].value;
+//    activityQtyValues[i] = activityQties[i].valueAsNumber;
+//    document.getElementById(`report-activity-${i}-type`).innerHTML = activityValues[i];
+//    document.getElementById(`report-activity-${i}-qty`).innerHTML = activityQtyValues[i];
+//  }
+    checkActivityRow(1);
+    checkActivityRow(2);
+    checkActivityRow(3);
+    checkActivityRow(4);
+    checkActivityRow(5);
+    checkActivityRow(6);
+    checkActivityRow(7);
+    checkActivityRow(8);
+    checkActivityRow(9);
+    checkActivityRow(10);
+    checkActivityRow(11);
+    checkActivityRow(12);
+    checkActivityRow(13);
+    checkActivityRow(14);
+    checkActivityRow(15);
+    checkActivityRow(16);
+    checkActivityRow(17);
+    checkActivityRow(18);
+    checkActivityRow(19);
+    checkActivityRow(20);
+    checkActivityRow(21);
+    checkActivityRow(22);
+    checkActivityRow(23);
+    checkActivityRow(24);
+    checkActivityRow(25);
+    // row 1
+    activity1 = document.getElementById('activity-1-type');
+    activity1Qty = document.getElementById('activity-1-qty');
+    activity1Value = activity1.value;
+    activity1QtyValue = activity1Qty.value;
+    document.getElementById('report-activity-1-type').innerHTML = activity1Value;
+    document.getElementById('report-activity-1-qty').innerHTML = activity1QtyValue;
+    // row 2
+    activity2 = document.getElementById('activity-2-type');
+    activity2Qty = document.getElementById('activity-2-qty');
+    activity2Value = activity2.value;
+    activity2QtyValue = activity2Qty.value;
+    document.getElementById('report-activity-2-type').innerHTML = activity2Value;
+    document.getElementById('report-activity-2-qty').innerHTML = activity2QtyValue;
+    // row 3
+    activity3 = document.getElementById('activity-3-type');
+    activity3Qty = document.getElementById('activity-3-qty');
+    activity3Value = activity3.value;
+    activity3QtyValue = activity3Qty.value;
+    document.getElementById('report-activity-3-type').innerHTML = activity3Value;
+    document.getElementById('report-activity-3-qty').innerHTML = activity3QtyValue;
+    // row 4
+    activity4 = document.getElementById('activity-4-type');
+    activity4Qty = document.getElementById('activity-4-qty');
+    activity4Value = activity4.value;
+    activity4QtyValue = activity4Qty.value;
+    document.getElementById('report-activity-4-type').innerHTML = activity4Value;
+    document.getElementById('report-activity-4-qty').innerHTML = activity4QtyValue;
+    // row 5
+    activity5 = document.getElementById('activity-5-type');
+    activity5Qty = document.getElementById('activity-5-qty');
+    activity5Value = activity5.value;
+    activity5QtyValue = activity5Qty.value;
+    document.getElementById('report-activity-5-type').innerHTML = activity5Value;
+    document.getElementById('report-activity-5-qty').innerHTML = activity5QtyValue;
+    // row 6
+    activity6 = document.getElementById('activity-6-type');
+    activity6Qty = document.getElementById('activity-6-qty');
+    activity6Value = activity6.value;
+    activity6QtyValue = activity6Qty.value;
+    document.getElementById('report-activity-6-type').innerHTML = activity6Value;
+    document.getElementById('report-activity-6-qty').innerHTML = activity6QtyValue;
+    // row 7
+    activity7 = document.getElementById('activity-7-type');
+    activity7Qty = document.getElementById('activity-7-qty');
+    activity7Value = activity7.value;
+    activity7QtyValue = activity7Qty.value;
+    document.getElementById('report-activity-7-type').innerHTML = activity7Value;
+    document.getElementById('report-activity-7-qty').innerHTML = activity7QtyValue;
+    // row 8
+    activity8 = document.getElementById('activity-8-type');
+    activity8Qty = document.getElementById('activity-8-qty');
+    activity8Value = activity8.value;
+    activity8QtyValue = activity8Qty.value;
+    document.getElementById('report-activity-8-type').innerHTML = activity8Value;
+    document.getElementById('report-activity-8-qty').innerHTML = activity8QtyValue;
+    // row 9
+    activity9 = document.getElementById('activity-9-type');
+    activity9Qty = document.getElementById('activity-9-qty');
+    activity9Value = activity9.value;
+    activity9QtyValue = activity9Qty.value;
+    document.getElementById('report-activity-9-type').innerHTML = activity9Value;
+    document.getElementById('report-activity-9-qty').innerHTML = activity9QtyValue;
+    // row 10
+    activity10 = document.getElementById('activity-10-type');
+    activity10Qty = document.getElementById('activity-10-qty');
+    activity10Value = activity10.value;
+    activity10QtyValue = activity10Qty.value;
+    document.getElementById('report-activity-10-type').innerHTML = activity10Value;
+    document.getElementById('report-activity-10-qty').innerHTML = activity10QtyValue;
+    // row 11
+    activity11 = document.getElementById('activity-11-type');
+    activity11Qty = document.getElementById('activity-11-qty');
+    activity11Value = activity11.value;
+    activity11QtyValue = activity11Qty.value;
+    document.getElementById('report-activity-11-type').innerHTML = activity11Value;
+    document.getElementById('report-activity-11-qty').innerHTML = activity11QtyValue;
+    // row 12
+    activity12 = document.getElementById('activity-12-type');
+    activity12Qty = document.getElementById('activity-12-qty');
+    activity12Value = activity12.value;
+    activity12QtyValue = activity12Qty.value;
+    document.getElementById('report-activity-12-type').innerHTML = activity12Value;
+    document.getElementById('report-activity-12-qty').innerHTML = activity12QtyValue;
+    // row 13
+    activity13 = document.getElementById('activity-13-type');
+    activity13Qty = document.getElementById('activity-13-qty');
+    activity13Value = activity13.value;
+    activity13QtyValue = activity13Qty.value;
+    document.getElementById('report-activity-13-type').innerHTML = activity13Value;
+    document.getElementById('report-activity-13-qty').innerHTML = activity13QtyValue;
+    // row 14
+    activity14 = document.getElementById('activity-14-type');
+    activity14Qty = document.getElementById('activity-14-qty');
+    activity14Value = activity14.value;
+    activity14QtyValue = activity14Qty.value;
+    document.getElementById('report-activity-14-type').innerHTML = activity14Value;
+    document.getElementById('report-activity-14-qty').innerHTML = activity14QtyValue;
+    // row 15
+    activity15 = document.getElementById('activity-15-type');
+    activity15Qty = document.getElementById('activity-15-qty');
+    activity15Value = activity15.value;
+    activity15QtyValue = activity15Qty.value;
+    document.getElementById('report-activity-15-type').innerHTML = activity15Value;
+    document.getElementById('report-activity-15-qty').innerHTML = activity15QtyValue;
+    // row 16
+    activity16 = document.getElementById('activity-16-type');
+    activity16Qty = document.getElementById('activity-16-qty');
+    activity16Value = activity16.value;
+    activity16QtyValue = activity16Qty.value;
+    document.getElementById('report-activity-16-type').innerHTML = activity16Value;
+    document.getElementById('report-activity-16-qty').innerHTML = activity16QtyValue;
+    // row 17
+    activity17 = document.getElementById('activity-17-type');
+    activity17Qty = document.getElementById('activity-17-qty');
+    activity17Value = activity17.value;
+    activity17QtyValue = activity17Qty.value;
+    document.getElementById('report-activity-17-type').innerHTML = activity17Value;
+    document.getElementById('report-activity-17-qty').innerHTML = activity17QtyValue;
+    // row 18
+    activity18 = document.getElementById('activity-18-type');
+    activity18Qty = document.getElementById('activity-18-qty');
+    activity18Value = activity18.value;
+    activity18QtyValue = activity18Qty.value;
+    document.getElementById('report-activity-18-type').innerHTML = activity18Value;
+    document.getElementById('report-activity-18-qty').innerHTML = activity18QtyValue;
+    // row 19
+    activity19 = document.getElementById('activity-19-type');
+    activity19Qty = document.getElementById('activity-19-qty');
+    activity19Value = activity19.value;
+    activity19QtyValue = activity19Qty.value;
+    document.getElementById('report-activity-19-type').innerHTML = activity19Value;
+    document.getElementById('report-activity-19-qty').innerHTML = activity19QtyValue;
+    // row 20
+    activity20 = document.getElementById('activity-20-type');
+    activity20Qty = document.getElementById('activity-12-qty');
+    activity20Value = activity20.value;
+    activity20QtyValue = activity20Qty.value;
+    document.getElementById('report-activity-20-type').innerHTML = activity10Value;
+    document.getElementById('report-activity-20-qty').innerHTML = activity10QtyValue;
+    // row 21
+    activity21 = document.getElementById('activity-21-type');
+    activity21Qty = document.getElementById('activity-12-qty');
+    activity21Value = activity21.value;
+    activity21QtyValue = activity21Qty.value;
+    document.getElementById('report-activity-21-type').innerHTML = activity11Value;
+    document.getElementById('report-activity-21-qty').innerHTML = activity11QtyValue;
+    // row 22
+    activity22 = document.getElementById('activity-22-type');
+    activity22Qty = document.getElementById('activity-12-qty');
+    activity22Value = activity22.value;
+    activity22QtyValue = activity22Qty.value;
+    document.getElementById('report-activity-22-type').innerHTML = activity12Value;
+    document.getElementById('report-activity-22-qty').innerHTML = activity12QtyValue;
+    // row 23
+    activity23 = document.getElementById('activity-23-type');
+    activity23Qty = document.getElementById('activity-23-qty');
+    activity23Value = activity23.value;
+    activity23QtyValue = activity23Qty.value;
+    document.getElementById('report-activity-23-type').innerHTML = activity13Value;
+    document.getElementById('report-activity-23-qty').innerHTML = activity13QtyValue;
+    // row 24
+    activity24 = document.getElementById('activity-24-type');
+    activity24Qty = document.getElementById('activity-24-qty');
+    activity24Value = activity24.value;
+    activity24QtyValue = activity24Qty.value;
+    document.getElementById('report-activity-24-type').innerHTML = activity14Value;
+    document.getElementById('report-activity-24-qty').innerHTML = activity14QtyValue;
+    // row 25
+    activity25 = document.getElementById('activity-25-type');
+    activity25Qty = document.getElementById('activity-25-qty');
+    activity25Value = activity25.value;
+    activity25QtyValue = activity25Qty.value;
+    document.getElementById('report-activity-25-type').innerHTML = activity15Value;
+    document.getElementById('report-activity-25-qty').innerHTML = activity15QtyValue;
+};
 
 // Check Bonus Eligibility
 function checkBonusEligibility() {
