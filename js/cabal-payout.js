@@ -1121,7 +1121,12 @@ function checkCrewRankAbbr(rank) {
 };
 // check crew for rate
 function checkCrewRate(rank) {
-    return (rank - 1) * 0.05;
+    if (rank <= 10) {
+        return (rank - 1) * 0.05;
+    }
+    if (rank >= 11) {
+        return (rank - 2) * 0.05;
+    }
 };
 function checkCrewRanks() {
     // reset, crew 1
