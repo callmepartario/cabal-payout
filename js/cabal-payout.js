@@ -342,7 +342,7 @@ function selectFactionAO() {
     document.getElementById('select-faction-ao').classList.remove('btn-muted');
     document.getElementById('select-faction-ao').classList.add('btn-selected');
     faction = 'AO';
-    factionFleet = 'The Ancient Armada';
+    factionFleet = 'TheAncientArmada';
     factionIcon = "<img src='images/faction-ao.webp' aria-hidden='true' alt='' class='icon'>";
     factionIconReport = ":AO:";
     factionVault = 'Ancients Vault';
@@ -353,7 +353,7 @@ function selectFactionAC() {
     document.getElementById('select-faction-ac').classList.remove('btn-muted');
     document.getElementById('select-faction-ac').classList.add('btn-selected');
     faction = 'AC';
-    factionFleet = "The Devil's Fleet";
+    factionFleet = "TheDevilsFleet";
     factionIcon = "<img src='images/faction-ac.webp' aria-hidden='true' alt='' class='icon'>";
     factionIconReport = ":ASH:";
     factionVault = 'Ashen Vault';
@@ -364,7 +364,7 @@ function selectFactionKW() {
     document.getElementById('select-faction-kw').classList.remove('btn-muted');
     document.getElementById('select-faction-kw').classList.add('btn-selected');
     faction = 'KW';
-    factionFleet = 'The Convoy of the Wilds';
+    factionFleet = 'TheConvoyoftheWilds';
     factionIcon = "<img src='images/faction-kw.webp' aria-hidden='true' alt='' class='icon'>";
     factionIconReport = ":KW:";
     factionVault = 'Kinship Vault';
@@ -375,7 +375,7 @@ function selectFactionNS() {
     document.getElementById('select-faction-ns').classList.remove('btn-muted');
     document.getElementById('select-faction-ns').classList.add('btn-selected');
     faction = 'NS';
-    factionFleet = "The Norsemen's Storm Fleet";
+    factionFleet = "TheNorsemensStormFleet";
     factionIcon = "<img src='images/faction-ns.webp' aria-hidden='true' alt='' class='icon'>";
     factionIconReport = ":Norseman:";
     factionVault = 'Norsemen Vault';
@@ -388,7 +388,7 @@ function selectFactionMG() {
     faction = 'MG';
     factionIcon = "<img src='images/faction-mg.webp' aria-hidden='true' alt='' class='icon'>";
     factionIconReport = ":marauders:";
-    factionFleet = "The Marauder's Legion";
+    factionFleet = "TheMaraudersLegion";
     factionVault = 'Marauders Vault';
     factionVaultAccount = '@maraudersvault';
 };
@@ -399,7 +399,7 @@ function selectFactionLF() {
     faction = 'LF';
     factionIcon = "<img src='images/cabal.webp' aria-hidden='true' alt='' class='icon'>";
     factionIconReport = ":cabal:";
-    factionFleet = "The Lord of the Fleets";
+    factionFleet = "LordoftheFleets";
     factionVault = 'Lord of the Fleets Vault';
     factionVaultAccount = '@lordoffleetsvault';
 };
